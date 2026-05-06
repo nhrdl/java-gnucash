@@ -30,4 +30,4 @@ jextract --dump-includes /tmp/all-includes `pkg-config --cflags glib-2.0` -I/usr
 
 grep -e "gnucash\|GList\|GDate\|_GObjectClass\|_GObject\|GTypeClass\|_GSList\|_GTypeInstance" /tmp/all-includes > /tmp/gnucash.includes
 
-jextract '@/tmp/gnucash.includes' --output "../java-gnucash/src/main/java" -t net.raohome.gnucash.gen  `pkg-config --cflags glib-2.0` -I/usr/include/gnucash -l libgnc-engine -l libgnc-core-utils  --header-class-name GNUCashBinding /tmp/gnucash_files.h 
+jextract '@/tmp/gnucash.includes' --output "../java-gnucash/src/main/java" -t net.raohome.gnucash.gen  `pkg-config --cflags glib-2.0` -I/usr/include/gnucash -l gnc-engine -l gnc-core-utils  --header-class-name GNUCashBinding /tmp/gnucash_files.h 

@@ -20,8 +20,8 @@ class GNUCashBinding_1 extends GNUCashBinding$shared {
 
     static final Arena LIBRARY_ARENA = Arena.ofAuto();
 
-    static final SymbolLookup SYMBOL_LOOKUP = SymbolLookup.libraryLookup(System.mapLibraryName("libgnc-engine"), LIBRARY_ARENA)
-            .or(SymbolLookup.libraryLookup(System.mapLibraryName("libgnc-core-utils"), LIBRARY_ARENA))
+    static final SymbolLookup SYMBOL_LOOKUP = SymbolLookup.libraryLookup(System.mapLibraryName("gnc-engine"), LIBRARY_ARENA)
+            .or(SymbolLookup.libraryLookup(System.mapLibraryName("gnc-core-utils"), LIBRARY_ARENA))
             .or(SymbolLookup.loaderLookup())
             .or(Linker.nativeLinker().defaultLookup());
 
