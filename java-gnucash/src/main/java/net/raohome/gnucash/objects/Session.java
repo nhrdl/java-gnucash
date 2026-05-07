@@ -40,7 +40,7 @@ public class Session extends BaseObject implements Closeable{
 	}
 
 	@Override
-	public void close() throws IOException {
+	public void close()  {
 		
 		qof_session_end(pointer);
 		qof_session_destroy(pointer);
