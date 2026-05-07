@@ -79,4 +79,8 @@ public class Account extends BaseObject {
 		MemorySegment callbackPtr = TransactionCallback.allocate(callback, Arena.ofAuto());
 		xaccAccountTreeForEachTransaction(pointer, callbackPtr, pointer);
 	}
+	
+	public Commodity getCommodity() {
+		return new Commodity(xaccAccountGetCommodity(pointer));
+	}
 }
