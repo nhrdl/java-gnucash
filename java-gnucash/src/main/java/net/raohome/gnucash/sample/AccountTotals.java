@@ -25,13 +25,13 @@ public class AccountTotals {
 			
 			GList<Account> list = session.getBook().getRootAccount().getDescendends();
 
-			Commodity lookup = session.getBook().getCommidityTable().lookup("ISO4217", "USD");
+			Commodity usd = session.getBook().getCommidityTable().lookup("ISO4217", "USD");
 			NumberFormat nf = NumberFormat.getNumberInstance(Locale.US);
 			
 			for (Account a : list) {
-				if (false == BigDecimal.ZERO.equals(a.getBalanceInCurrency(lookup))) {
+				if (false == BigDecimal.ZERO.equals(a.getBalanceInCurrency(usd))) {
 					System.out.printf("%s,%s,%s,%s,%s%n", a.getName(), a.getCode(), a.getDescription(),
-							nf.format(a.getBalance()), nf.format(a.getBalanceInCurrency(lookup)));
+							nf.format(a.getBalance()), nf.format(a.getBalanceInCurrency(usd)));
 				}
 			}
 		}

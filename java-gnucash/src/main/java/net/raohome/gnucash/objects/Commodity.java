@@ -14,4 +14,9 @@ public class Commodity extends BaseObject {
 		MemorySegment fullname = gnc_commodity_get_fullname(this.pointer);
 		return fullname.getString(0);
 	}
+	
+	public String getNamespace() {
+		MemorySegment namespace = gnc_commodity_get_namespace(this.pointer);
+		return namespace.getString(0);
+	}
 }
