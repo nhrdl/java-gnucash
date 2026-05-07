@@ -22,6 +22,7 @@ class GNUCashBinding_1 extends GNUCashBinding$shared {
 
     static final SymbolLookup SYMBOL_LOOKUP = SymbolLookup.libraryLookup(System.mapLibraryName("gnc-engine"), LIBRARY_ARENA)
             .or(SymbolLookup.libraryLookup(System.mapLibraryName("gnc-core-utils"), LIBRARY_ARENA))
+            .or(SymbolLookup.libraryLookup(System.mapLibraryName("glib-2.0"), LIBRARY_ARENA))
             .or(SymbolLookup.loaderLookup())
             .or(Linker.nativeLinker().defaultLookup());
 
@@ -154,6 +155,2384 @@ class GNUCashBinding_1 extends GNUCashBinding$shared {
      * }
      */
     public static final OfByte GDateDay = GNUCashBinding.C_CHAR;
+
+    private static class g_listenv {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            GNUCashBinding.C_POINTER    );
+
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("g_listenv");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern gchar **g_listenv()
+     * }
+     */
+    public static FunctionDescriptor g_listenv$descriptor() {
+        return g_listenv.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern gchar **g_listenv()
+     * }
+     */
+    public static MethodHandle g_listenv$handle() {
+        return g_listenv.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern gchar **g_listenv()
+     * }
+     */
+    public static MemorySegment g_listenv$address() {
+        return g_listenv.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern gchar **g_listenv()
+     * }
+     */
+    public static MemorySegment g_listenv() {
+        var mh$ = g_listenv.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("g_listenv");
+            }
+            return (MemorySegment)mh$.invokeExact();
+        } catch (Error | RuntimeException ex) {
+           throw ex;
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class g_list_alloc {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            GNUCashBinding.C_POINTER    );
+
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("g_list_alloc");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern GList *g_list_alloc()
+     * }
+     */
+    public static FunctionDescriptor g_list_alloc$descriptor() {
+        return g_list_alloc.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern GList *g_list_alloc()
+     * }
+     */
+    public static MethodHandle g_list_alloc$handle() {
+        return g_list_alloc.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern GList *g_list_alloc()
+     * }
+     */
+    public static MemorySegment g_list_alloc$address() {
+        return g_list_alloc.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern GList *g_list_alloc()
+     * }
+     */
+    public static MemorySegment g_list_alloc() {
+        var mh$ = g_list_alloc.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("g_list_alloc");
+            }
+            return (MemorySegment)mh$.invokeExact();
+        } catch (Error | RuntimeException ex) {
+           throw ex;
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class g_list_free {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.ofVoid(
+            GNUCashBinding.C_POINTER
+        );
+
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("g_list_free");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern void g_list_free(GList *list)
+     * }
+     */
+    public static FunctionDescriptor g_list_free$descriptor() {
+        return g_list_free.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern void g_list_free(GList *list)
+     * }
+     */
+    public static MethodHandle g_list_free$handle() {
+        return g_list_free.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern void g_list_free(GList *list)
+     * }
+     */
+    public static MemorySegment g_list_free$address() {
+        return g_list_free.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern void g_list_free(GList *list)
+     * }
+     */
+    public static void g_list_free(MemorySegment list) {
+        var mh$ = g_list_free.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("g_list_free", list);
+            }
+            mh$.invokeExact(list);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class g_list_free_1 {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.ofVoid(
+            GNUCashBinding.C_POINTER
+        );
+
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("g_list_free_1");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern void g_list_free_1(GList *list)
+     * }
+     */
+    public static FunctionDescriptor g_list_free_1$descriptor() {
+        return g_list_free_1.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern void g_list_free_1(GList *list)
+     * }
+     */
+    public static MethodHandle g_list_free_1$handle() {
+        return g_list_free_1.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern void g_list_free_1(GList *list)
+     * }
+     */
+    public static MemorySegment g_list_free_1$address() {
+        return g_list_free_1.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern void g_list_free_1(GList *list)
+     * }
+     */
+    public static void g_list_free_1(MemorySegment list) {
+        var mh$ = g_list_free_1.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("g_list_free_1", list);
+            }
+            mh$.invokeExact(list);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class g_list_free_full {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.ofVoid(
+            GNUCashBinding.C_POINTER,
+            GNUCashBinding.C_POINTER
+        );
+
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("g_list_free_full");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern void g_list_free_full(GList *list, GDestroyNotify free_func)
+     * }
+     */
+    public static FunctionDescriptor g_list_free_full$descriptor() {
+        return g_list_free_full.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern void g_list_free_full(GList *list, GDestroyNotify free_func)
+     * }
+     */
+    public static MethodHandle g_list_free_full$handle() {
+        return g_list_free_full.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern void g_list_free_full(GList *list, GDestroyNotify free_func)
+     * }
+     */
+    public static MemorySegment g_list_free_full$address() {
+        return g_list_free_full.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern void g_list_free_full(GList *list, GDestroyNotify free_func)
+     * }
+     */
+    public static void g_list_free_full(MemorySegment list, MemorySegment free_func) {
+        var mh$ = g_list_free_full.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("g_list_free_full", list, free_func);
+            }
+            mh$.invokeExact(list, free_func);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class g_list_append {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            GNUCashBinding.C_POINTER,
+            GNUCashBinding.C_POINTER,
+            GNUCashBinding.C_POINTER
+        );
+
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("g_list_append");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern GList *g_list_append(GList *list, gpointer data)
+     * }
+     */
+    public static FunctionDescriptor g_list_append$descriptor() {
+        return g_list_append.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern GList *g_list_append(GList *list, gpointer data)
+     * }
+     */
+    public static MethodHandle g_list_append$handle() {
+        return g_list_append.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern GList *g_list_append(GList *list, gpointer data)
+     * }
+     */
+    public static MemorySegment g_list_append$address() {
+        return g_list_append.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern GList *g_list_append(GList *list, gpointer data)
+     * }
+     */
+    public static MemorySegment g_list_append(MemorySegment list, MemorySegment data) {
+        var mh$ = g_list_append.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("g_list_append", list, data);
+            }
+            return (MemorySegment)mh$.invokeExact(list, data);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class g_list_prepend {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            GNUCashBinding.C_POINTER,
+            GNUCashBinding.C_POINTER,
+            GNUCashBinding.C_POINTER
+        );
+
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("g_list_prepend");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern GList *g_list_prepend(GList *list, gpointer data)
+     * }
+     */
+    public static FunctionDescriptor g_list_prepend$descriptor() {
+        return g_list_prepend.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern GList *g_list_prepend(GList *list, gpointer data)
+     * }
+     */
+    public static MethodHandle g_list_prepend$handle() {
+        return g_list_prepend.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern GList *g_list_prepend(GList *list, gpointer data)
+     * }
+     */
+    public static MemorySegment g_list_prepend$address() {
+        return g_list_prepend.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern GList *g_list_prepend(GList *list, gpointer data)
+     * }
+     */
+    public static MemorySegment g_list_prepend(MemorySegment list, MemorySegment data) {
+        var mh$ = g_list_prepend.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("g_list_prepend", list, data);
+            }
+            return (MemorySegment)mh$.invokeExact(list, data);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class g_list_insert {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            GNUCashBinding.C_POINTER,
+            GNUCashBinding.C_POINTER,
+            GNUCashBinding.C_POINTER,
+            GNUCashBinding.C_INT
+        );
+
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("g_list_insert");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern GList *g_list_insert(GList *list, gpointer data, gint position)
+     * }
+     */
+    public static FunctionDescriptor g_list_insert$descriptor() {
+        return g_list_insert.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern GList *g_list_insert(GList *list, gpointer data, gint position)
+     * }
+     */
+    public static MethodHandle g_list_insert$handle() {
+        return g_list_insert.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern GList *g_list_insert(GList *list, gpointer data, gint position)
+     * }
+     */
+    public static MemorySegment g_list_insert$address() {
+        return g_list_insert.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern GList *g_list_insert(GList *list, gpointer data, gint position)
+     * }
+     */
+    public static MemorySegment g_list_insert(MemorySegment list, MemorySegment data, int position) {
+        var mh$ = g_list_insert.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("g_list_insert", list, data, position);
+            }
+            return (MemorySegment)mh$.invokeExact(list, data, position);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class g_list_insert_sorted {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            GNUCashBinding.C_POINTER,
+            GNUCashBinding.C_POINTER,
+            GNUCashBinding.C_POINTER,
+            GNUCashBinding.C_POINTER
+        );
+
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("g_list_insert_sorted");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern GList *g_list_insert_sorted(GList *list, gpointer data, GCompareFunc func)
+     * }
+     */
+    public static FunctionDescriptor g_list_insert_sorted$descriptor() {
+        return g_list_insert_sorted.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern GList *g_list_insert_sorted(GList *list, gpointer data, GCompareFunc func)
+     * }
+     */
+    public static MethodHandle g_list_insert_sorted$handle() {
+        return g_list_insert_sorted.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern GList *g_list_insert_sorted(GList *list, gpointer data, GCompareFunc func)
+     * }
+     */
+    public static MemorySegment g_list_insert_sorted$address() {
+        return g_list_insert_sorted.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern GList *g_list_insert_sorted(GList *list, gpointer data, GCompareFunc func)
+     * }
+     */
+    public static MemorySegment g_list_insert_sorted(MemorySegment list, MemorySegment data, MemorySegment func) {
+        var mh$ = g_list_insert_sorted.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("g_list_insert_sorted", list, data, func);
+            }
+            return (MemorySegment)mh$.invokeExact(list, data, func);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class g_list_insert_sorted_with_data {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            GNUCashBinding.C_POINTER,
+            GNUCashBinding.C_POINTER,
+            GNUCashBinding.C_POINTER,
+            GNUCashBinding.C_POINTER,
+            GNUCashBinding.C_POINTER
+        );
+
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("g_list_insert_sorted_with_data");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern GList *g_list_insert_sorted_with_data(GList *list, gpointer data, GCompareDataFunc func, gpointer user_data)
+     * }
+     */
+    public static FunctionDescriptor g_list_insert_sorted_with_data$descriptor() {
+        return g_list_insert_sorted_with_data.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern GList *g_list_insert_sorted_with_data(GList *list, gpointer data, GCompareDataFunc func, gpointer user_data)
+     * }
+     */
+    public static MethodHandle g_list_insert_sorted_with_data$handle() {
+        return g_list_insert_sorted_with_data.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern GList *g_list_insert_sorted_with_data(GList *list, gpointer data, GCompareDataFunc func, gpointer user_data)
+     * }
+     */
+    public static MemorySegment g_list_insert_sorted_with_data$address() {
+        return g_list_insert_sorted_with_data.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern GList *g_list_insert_sorted_with_data(GList *list, gpointer data, GCompareDataFunc func, gpointer user_data)
+     * }
+     */
+    public static MemorySegment g_list_insert_sorted_with_data(MemorySegment list, MemorySegment data, MemorySegment func, MemorySegment user_data) {
+        var mh$ = g_list_insert_sorted_with_data.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("g_list_insert_sorted_with_data", list, data, func, user_data);
+            }
+            return (MemorySegment)mh$.invokeExact(list, data, func, user_data);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class g_list_insert_before {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            GNUCashBinding.C_POINTER,
+            GNUCashBinding.C_POINTER,
+            GNUCashBinding.C_POINTER,
+            GNUCashBinding.C_POINTER
+        );
+
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("g_list_insert_before");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern GList *g_list_insert_before(GList *list, GList *sibling, gpointer data)
+     * }
+     */
+    public static FunctionDescriptor g_list_insert_before$descriptor() {
+        return g_list_insert_before.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern GList *g_list_insert_before(GList *list, GList *sibling, gpointer data)
+     * }
+     */
+    public static MethodHandle g_list_insert_before$handle() {
+        return g_list_insert_before.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern GList *g_list_insert_before(GList *list, GList *sibling, gpointer data)
+     * }
+     */
+    public static MemorySegment g_list_insert_before$address() {
+        return g_list_insert_before.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern GList *g_list_insert_before(GList *list, GList *sibling, gpointer data)
+     * }
+     */
+    public static MemorySegment g_list_insert_before(MemorySegment list, MemorySegment sibling, MemorySegment data) {
+        var mh$ = g_list_insert_before.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("g_list_insert_before", list, sibling, data);
+            }
+            return (MemorySegment)mh$.invokeExact(list, sibling, data);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class g_list_insert_before_link {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            GNUCashBinding.C_POINTER,
+            GNUCashBinding.C_POINTER,
+            GNUCashBinding.C_POINTER,
+            GNUCashBinding.C_POINTER
+        );
+
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("g_list_insert_before_link");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern GList *g_list_insert_before_link(GList *list, GList *sibling, GList *link_)
+     * }
+     */
+    public static FunctionDescriptor g_list_insert_before_link$descriptor() {
+        return g_list_insert_before_link.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern GList *g_list_insert_before_link(GList *list, GList *sibling, GList *link_)
+     * }
+     */
+    public static MethodHandle g_list_insert_before_link$handle() {
+        return g_list_insert_before_link.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern GList *g_list_insert_before_link(GList *list, GList *sibling, GList *link_)
+     * }
+     */
+    public static MemorySegment g_list_insert_before_link$address() {
+        return g_list_insert_before_link.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern GList *g_list_insert_before_link(GList *list, GList *sibling, GList *link_)
+     * }
+     */
+    public static MemorySegment g_list_insert_before_link(MemorySegment list, MemorySegment sibling, MemorySegment link_) {
+        var mh$ = g_list_insert_before_link.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("g_list_insert_before_link", list, sibling, link_);
+            }
+            return (MemorySegment)mh$.invokeExact(list, sibling, link_);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class g_list_concat {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            GNUCashBinding.C_POINTER,
+            GNUCashBinding.C_POINTER,
+            GNUCashBinding.C_POINTER
+        );
+
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("g_list_concat");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern GList *g_list_concat(GList *list1, GList *list2)
+     * }
+     */
+    public static FunctionDescriptor g_list_concat$descriptor() {
+        return g_list_concat.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern GList *g_list_concat(GList *list1, GList *list2)
+     * }
+     */
+    public static MethodHandle g_list_concat$handle() {
+        return g_list_concat.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern GList *g_list_concat(GList *list1, GList *list2)
+     * }
+     */
+    public static MemorySegment g_list_concat$address() {
+        return g_list_concat.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern GList *g_list_concat(GList *list1, GList *list2)
+     * }
+     */
+    public static MemorySegment g_list_concat(MemorySegment list1, MemorySegment list2) {
+        var mh$ = g_list_concat.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("g_list_concat", list1, list2);
+            }
+            return (MemorySegment)mh$.invokeExact(list1, list2);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class g_list_remove {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            GNUCashBinding.C_POINTER,
+            GNUCashBinding.C_POINTER,
+            GNUCashBinding.C_POINTER
+        );
+
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("g_list_remove");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern GList *g_list_remove(GList *list, gconstpointer data)
+     * }
+     */
+    public static FunctionDescriptor g_list_remove$descriptor() {
+        return g_list_remove.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern GList *g_list_remove(GList *list, gconstpointer data)
+     * }
+     */
+    public static MethodHandle g_list_remove$handle() {
+        return g_list_remove.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern GList *g_list_remove(GList *list, gconstpointer data)
+     * }
+     */
+    public static MemorySegment g_list_remove$address() {
+        return g_list_remove.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern GList *g_list_remove(GList *list, gconstpointer data)
+     * }
+     */
+    public static MemorySegment g_list_remove(MemorySegment list, MemorySegment data) {
+        var mh$ = g_list_remove.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("g_list_remove", list, data);
+            }
+            return (MemorySegment)mh$.invokeExact(list, data);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class g_list_remove_all {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            GNUCashBinding.C_POINTER,
+            GNUCashBinding.C_POINTER,
+            GNUCashBinding.C_POINTER
+        );
+
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("g_list_remove_all");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern GList *g_list_remove_all(GList *list, gconstpointer data)
+     * }
+     */
+    public static FunctionDescriptor g_list_remove_all$descriptor() {
+        return g_list_remove_all.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern GList *g_list_remove_all(GList *list, gconstpointer data)
+     * }
+     */
+    public static MethodHandle g_list_remove_all$handle() {
+        return g_list_remove_all.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern GList *g_list_remove_all(GList *list, gconstpointer data)
+     * }
+     */
+    public static MemorySegment g_list_remove_all$address() {
+        return g_list_remove_all.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern GList *g_list_remove_all(GList *list, gconstpointer data)
+     * }
+     */
+    public static MemorySegment g_list_remove_all(MemorySegment list, MemorySegment data) {
+        var mh$ = g_list_remove_all.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("g_list_remove_all", list, data);
+            }
+            return (MemorySegment)mh$.invokeExact(list, data);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class g_list_remove_link {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            GNUCashBinding.C_POINTER,
+            GNUCashBinding.C_POINTER,
+            GNUCashBinding.C_POINTER
+        );
+
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("g_list_remove_link");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern GList *g_list_remove_link(GList *list, GList *llink)
+     * }
+     */
+    public static FunctionDescriptor g_list_remove_link$descriptor() {
+        return g_list_remove_link.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern GList *g_list_remove_link(GList *list, GList *llink)
+     * }
+     */
+    public static MethodHandle g_list_remove_link$handle() {
+        return g_list_remove_link.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern GList *g_list_remove_link(GList *list, GList *llink)
+     * }
+     */
+    public static MemorySegment g_list_remove_link$address() {
+        return g_list_remove_link.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern GList *g_list_remove_link(GList *list, GList *llink)
+     * }
+     */
+    public static MemorySegment g_list_remove_link(MemorySegment list, MemorySegment llink) {
+        var mh$ = g_list_remove_link.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("g_list_remove_link", list, llink);
+            }
+            return (MemorySegment)mh$.invokeExact(list, llink);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class g_list_delete_link {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            GNUCashBinding.C_POINTER,
+            GNUCashBinding.C_POINTER,
+            GNUCashBinding.C_POINTER
+        );
+
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("g_list_delete_link");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern GList *g_list_delete_link(GList *list, GList *link_)
+     * }
+     */
+    public static FunctionDescriptor g_list_delete_link$descriptor() {
+        return g_list_delete_link.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern GList *g_list_delete_link(GList *list, GList *link_)
+     * }
+     */
+    public static MethodHandle g_list_delete_link$handle() {
+        return g_list_delete_link.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern GList *g_list_delete_link(GList *list, GList *link_)
+     * }
+     */
+    public static MemorySegment g_list_delete_link$address() {
+        return g_list_delete_link.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern GList *g_list_delete_link(GList *list, GList *link_)
+     * }
+     */
+    public static MemorySegment g_list_delete_link(MemorySegment list, MemorySegment link_) {
+        var mh$ = g_list_delete_link.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("g_list_delete_link", list, link_);
+            }
+            return (MemorySegment)mh$.invokeExact(list, link_);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class g_list_reverse {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            GNUCashBinding.C_POINTER,
+            GNUCashBinding.C_POINTER
+        );
+
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("g_list_reverse");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern GList *g_list_reverse(GList *list)
+     * }
+     */
+    public static FunctionDescriptor g_list_reverse$descriptor() {
+        return g_list_reverse.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern GList *g_list_reverse(GList *list)
+     * }
+     */
+    public static MethodHandle g_list_reverse$handle() {
+        return g_list_reverse.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern GList *g_list_reverse(GList *list)
+     * }
+     */
+    public static MemorySegment g_list_reverse$address() {
+        return g_list_reverse.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern GList *g_list_reverse(GList *list)
+     * }
+     */
+    public static MemorySegment g_list_reverse(MemorySegment list) {
+        var mh$ = g_list_reverse.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("g_list_reverse", list);
+            }
+            return (MemorySegment)mh$.invokeExact(list);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class g_list_copy {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            GNUCashBinding.C_POINTER,
+            GNUCashBinding.C_POINTER
+        );
+
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("g_list_copy");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern GList *g_list_copy(GList *list)
+     * }
+     */
+    public static FunctionDescriptor g_list_copy$descriptor() {
+        return g_list_copy.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern GList *g_list_copy(GList *list)
+     * }
+     */
+    public static MethodHandle g_list_copy$handle() {
+        return g_list_copy.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern GList *g_list_copy(GList *list)
+     * }
+     */
+    public static MemorySegment g_list_copy$address() {
+        return g_list_copy.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern GList *g_list_copy(GList *list)
+     * }
+     */
+    public static MemorySegment g_list_copy(MemorySegment list) {
+        var mh$ = g_list_copy.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("g_list_copy", list);
+            }
+            return (MemorySegment)mh$.invokeExact(list);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class g_list_copy_deep {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            GNUCashBinding.C_POINTER,
+            GNUCashBinding.C_POINTER,
+            GNUCashBinding.C_POINTER,
+            GNUCashBinding.C_POINTER
+        );
+
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("g_list_copy_deep");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern GList *g_list_copy_deep(GList *list, GCopyFunc func, gpointer user_data)
+     * }
+     */
+    public static FunctionDescriptor g_list_copy_deep$descriptor() {
+        return g_list_copy_deep.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern GList *g_list_copy_deep(GList *list, GCopyFunc func, gpointer user_data)
+     * }
+     */
+    public static MethodHandle g_list_copy_deep$handle() {
+        return g_list_copy_deep.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern GList *g_list_copy_deep(GList *list, GCopyFunc func, gpointer user_data)
+     * }
+     */
+    public static MemorySegment g_list_copy_deep$address() {
+        return g_list_copy_deep.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern GList *g_list_copy_deep(GList *list, GCopyFunc func, gpointer user_data)
+     * }
+     */
+    public static MemorySegment g_list_copy_deep(MemorySegment list, MemorySegment func, MemorySegment user_data) {
+        var mh$ = g_list_copy_deep.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("g_list_copy_deep", list, func, user_data);
+            }
+            return (MemorySegment)mh$.invokeExact(list, func, user_data);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class g_list_nth {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            GNUCashBinding.C_POINTER,
+            GNUCashBinding.C_POINTER,
+            GNUCashBinding.C_INT
+        );
+
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("g_list_nth");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern GList *g_list_nth(GList *list, guint n)
+     * }
+     */
+    public static FunctionDescriptor g_list_nth$descriptor() {
+        return g_list_nth.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern GList *g_list_nth(GList *list, guint n)
+     * }
+     */
+    public static MethodHandle g_list_nth$handle() {
+        return g_list_nth.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern GList *g_list_nth(GList *list, guint n)
+     * }
+     */
+    public static MemorySegment g_list_nth$address() {
+        return g_list_nth.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern GList *g_list_nth(GList *list, guint n)
+     * }
+     */
+    public static MemorySegment g_list_nth(MemorySegment list, int n) {
+        var mh$ = g_list_nth.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("g_list_nth", list, n);
+            }
+            return (MemorySegment)mh$.invokeExact(list, n);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class g_list_nth_prev {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            GNUCashBinding.C_POINTER,
+            GNUCashBinding.C_POINTER,
+            GNUCashBinding.C_INT
+        );
+
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("g_list_nth_prev");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern GList *g_list_nth_prev(GList *list, guint n)
+     * }
+     */
+    public static FunctionDescriptor g_list_nth_prev$descriptor() {
+        return g_list_nth_prev.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern GList *g_list_nth_prev(GList *list, guint n)
+     * }
+     */
+    public static MethodHandle g_list_nth_prev$handle() {
+        return g_list_nth_prev.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern GList *g_list_nth_prev(GList *list, guint n)
+     * }
+     */
+    public static MemorySegment g_list_nth_prev$address() {
+        return g_list_nth_prev.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern GList *g_list_nth_prev(GList *list, guint n)
+     * }
+     */
+    public static MemorySegment g_list_nth_prev(MemorySegment list, int n) {
+        var mh$ = g_list_nth_prev.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("g_list_nth_prev", list, n);
+            }
+            return (MemorySegment)mh$.invokeExact(list, n);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class g_list_find {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            GNUCashBinding.C_POINTER,
+            GNUCashBinding.C_POINTER,
+            GNUCashBinding.C_POINTER
+        );
+
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("g_list_find");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern GList *g_list_find(GList *list, gconstpointer data)
+     * }
+     */
+    public static FunctionDescriptor g_list_find$descriptor() {
+        return g_list_find.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern GList *g_list_find(GList *list, gconstpointer data)
+     * }
+     */
+    public static MethodHandle g_list_find$handle() {
+        return g_list_find.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern GList *g_list_find(GList *list, gconstpointer data)
+     * }
+     */
+    public static MemorySegment g_list_find$address() {
+        return g_list_find.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern GList *g_list_find(GList *list, gconstpointer data)
+     * }
+     */
+    public static MemorySegment g_list_find(MemorySegment list, MemorySegment data) {
+        var mh$ = g_list_find.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("g_list_find", list, data);
+            }
+            return (MemorySegment)mh$.invokeExact(list, data);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class g_list_find_custom {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            GNUCashBinding.C_POINTER,
+            GNUCashBinding.C_POINTER,
+            GNUCashBinding.C_POINTER,
+            GNUCashBinding.C_POINTER
+        );
+
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("g_list_find_custom");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern GList *g_list_find_custom(GList *list, gconstpointer data, GCompareFunc func)
+     * }
+     */
+    public static FunctionDescriptor g_list_find_custom$descriptor() {
+        return g_list_find_custom.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern GList *g_list_find_custom(GList *list, gconstpointer data, GCompareFunc func)
+     * }
+     */
+    public static MethodHandle g_list_find_custom$handle() {
+        return g_list_find_custom.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern GList *g_list_find_custom(GList *list, gconstpointer data, GCompareFunc func)
+     * }
+     */
+    public static MemorySegment g_list_find_custom$address() {
+        return g_list_find_custom.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern GList *g_list_find_custom(GList *list, gconstpointer data, GCompareFunc func)
+     * }
+     */
+    public static MemorySegment g_list_find_custom(MemorySegment list, MemorySegment data, MemorySegment func) {
+        var mh$ = g_list_find_custom.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("g_list_find_custom", list, data, func);
+            }
+            return (MemorySegment)mh$.invokeExact(list, data, func);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class g_list_position {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            GNUCashBinding.C_INT,
+            GNUCashBinding.C_POINTER,
+            GNUCashBinding.C_POINTER
+        );
+
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("g_list_position");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern gint g_list_position(GList *list, GList *llink)
+     * }
+     */
+    public static FunctionDescriptor g_list_position$descriptor() {
+        return g_list_position.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern gint g_list_position(GList *list, GList *llink)
+     * }
+     */
+    public static MethodHandle g_list_position$handle() {
+        return g_list_position.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern gint g_list_position(GList *list, GList *llink)
+     * }
+     */
+    public static MemorySegment g_list_position$address() {
+        return g_list_position.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern gint g_list_position(GList *list, GList *llink)
+     * }
+     */
+    public static int g_list_position(MemorySegment list, MemorySegment llink) {
+        var mh$ = g_list_position.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("g_list_position", list, llink);
+            }
+            return (int)mh$.invokeExact(list, llink);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class g_list_index {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            GNUCashBinding.C_INT,
+            GNUCashBinding.C_POINTER,
+            GNUCashBinding.C_POINTER
+        );
+
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("g_list_index");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern gint g_list_index(GList *list, gconstpointer data)
+     * }
+     */
+    public static FunctionDescriptor g_list_index$descriptor() {
+        return g_list_index.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern gint g_list_index(GList *list, gconstpointer data)
+     * }
+     */
+    public static MethodHandle g_list_index$handle() {
+        return g_list_index.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern gint g_list_index(GList *list, gconstpointer data)
+     * }
+     */
+    public static MemorySegment g_list_index$address() {
+        return g_list_index.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern gint g_list_index(GList *list, gconstpointer data)
+     * }
+     */
+    public static int g_list_index(MemorySegment list, MemorySegment data) {
+        var mh$ = g_list_index.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("g_list_index", list, data);
+            }
+            return (int)mh$.invokeExact(list, data);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class g_list_last {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            GNUCashBinding.C_POINTER,
+            GNUCashBinding.C_POINTER
+        );
+
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("g_list_last");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern GList *g_list_last(GList *list)
+     * }
+     */
+    public static FunctionDescriptor g_list_last$descriptor() {
+        return g_list_last.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern GList *g_list_last(GList *list)
+     * }
+     */
+    public static MethodHandle g_list_last$handle() {
+        return g_list_last.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern GList *g_list_last(GList *list)
+     * }
+     */
+    public static MemorySegment g_list_last$address() {
+        return g_list_last.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern GList *g_list_last(GList *list)
+     * }
+     */
+    public static MemorySegment g_list_last(MemorySegment list) {
+        var mh$ = g_list_last.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("g_list_last", list);
+            }
+            return (MemorySegment)mh$.invokeExact(list);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class g_list_first {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            GNUCashBinding.C_POINTER,
+            GNUCashBinding.C_POINTER
+        );
+
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("g_list_first");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern GList *g_list_first(GList *list)
+     * }
+     */
+    public static FunctionDescriptor g_list_first$descriptor() {
+        return g_list_first.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern GList *g_list_first(GList *list)
+     * }
+     */
+    public static MethodHandle g_list_first$handle() {
+        return g_list_first.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern GList *g_list_first(GList *list)
+     * }
+     */
+    public static MemorySegment g_list_first$address() {
+        return g_list_first.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern GList *g_list_first(GList *list)
+     * }
+     */
+    public static MemorySegment g_list_first(MemorySegment list) {
+        var mh$ = g_list_first.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("g_list_first", list);
+            }
+            return (MemorySegment)mh$.invokeExact(list);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class g_list_length {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            GNUCashBinding.C_INT,
+            GNUCashBinding.C_POINTER
+        );
+
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("g_list_length");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern guint g_list_length(GList *list)
+     * }
+     */
+    public static FunctionDescriptor g_list_length$descriptor() {
+        return g_list_length.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern guint g_list_length(GList *list)
+     * }
+     */
+    public static MethodHandle g_list_length$handle() {
+        return g_list_length.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern guint g_list_length(GList *list)
+     * }
+     */
+    public static MemorySegment g_list_length$address() {
+        return g_list_length.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern guint g_list_length(GList *list)
+     * }
+     */
+    public static int g_list_length(MemorySegment list) {
+        var mh$ = g_list_length.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("g_list_length", list);
+            }
+            return (int)mh$.invokeExact(list);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class g_list_foreach {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.ofVoid(
+            GNUCashBinding.C_POINTER,
+            GNUCashBinding.C_POINTER,
+            GNUCashBinding.C_POINTER
+        );
+
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("g_list_foreach");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern void g_list_foreach(GList *list, GFunc func, gpointer user_data)
+     * }
+     */
+    public static FunctionDescriptor g_list_foreach$descriptor() {
+        return g_list_foreach.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern void g_list_foreach(GList *list, GFunc func, gpointer user_data)
+     * }
+     */
+    public static MethodHandle g_list_foreach$handle() {
+        return g_list_foreach.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern void g_list_foreach(GList *list, GFunc func, gpointer user_data)
+     * }
+     */
+    public static MemorySegment g_list_foreach$address() {
+        return g_list_foreach.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern void g_list_foreach(GList *list, GFunc func, gpointer user_data)
+     * }
+     */
+    public static void g_list_foreach(MemorySegment list, MemorySegment func, MemorySegment user_data) {
+        var mh$ = g_list_foreach.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("g_list_foreach", list, func, user_data);
+            }
+            mh$.invokeExact(list, func, user_data);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class g_list_sort {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            GNUCashBinding.C_POINTER,
+            GNUCashBinding.C_POINTER,
+            GNUCashBinding.C_POINTER
+        );
+
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("g_list_sort");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern GList *g_list_sort(GList *list, GCompareFunc compare_func)
+     * }
+     */
+    public static FunctionDescriptor g_list_sort$descriptor() {
+        return g_list_sort.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern GList *g_list_sort(GList *list, GCompareFunc compare_func)
+     * }
+     */
+    public static MethodHandle g_list_sort$handle() {
+        return g_list_sort.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern GList *g_list_sort(GList *list, GCompareFunc compare_func)
+     * }
+     */
+    public static MemorySegment g_list_sort$address() {
+        return g_list_sort.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern GList *g_list_sort(GList *list, GCompareFunc compare_func)
+     * }
+     */
+    public static MemorySegment g_list_sort(MemorySegment list, MemorySegment compare_func) {
+        var mh$ = g_list_sort.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("g_list_sort", list, compare_func);
+            }
+            return (MemorySegment)mh$.invokeExact(list, compare_func);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class g_list_sort_with_data {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            GNUCashBinding.C_POINTER,
+            GNUCashBinding.C_POINTER,
+            GNUCashBinding.C_POINTER,
+            GNUCashBinding.C_POINTER
+        );
+
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("g_list_sort_with_data");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern GList *g_list_sort_with_data(GList *list, GCompareDataFunc compare_func, gpointer user_data)
+     * }
+     */
+    public static FunctionDescriptor g_list_sort_with_data$descriptor() {
+        return g_list_sort_with_data.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern GList *g_list_sort_with_data(GList *list, GCompareDataFunc compare_func, gpointer user_data)
+     * }
+     */
+    public static MethodHandle g_list_sort_with_data$handle() {
+        return g_list_sort_with_data.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern GList *g_list_sort_with_data(GList *list, GCompareDataFunc compare_func, gpointer user_data)
+     * }
+     */
+    public static MemorySegment g_list_sort_with_data$address() {
+        return g_list_sort_with_data.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern GList *g_list_sort_with_data(GList *list, GCompareDataFunc compare_func, gpointer user_data)
+     * }
+     */
+    public static MemorySegment g_list_sort_with_data(MemorySegment list, MemorySegment compare_func, MemorySegment user_data) {
+        var mh$ = g_list_sort_with_data.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("g_list_sort_with_data", list, compare_func, user_data);
+            }
+            return (MemorySegment)mh$.invokeExact(list, compare_func, user_data);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class g_list_nth_data {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            GNUCashBinding.C_POINTER,
+            GNUCashBinding.C_POINTER,
+            GNUCashBinding.C_INT
+        );
+
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("g_list_nth_data");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern gpointer g_list_nth_data(GList *list, guint n)
+     * }
+     */
+    public static FunctionDescriptor g_list_nth_data$descriptor() {
+        return g_list_nth_data.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern gpointer g_list_nth_data(GList *list, guint n)
+     * }
+     */
+    public static MethodHandle g_list_nth_data$handle() {
+        return g_list_nth_data.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern gpointer g_list_nth_data(GList *list, guint n)
+     * }
+     */
+    public static MemorySegment g_list_nth_data$address() {
+        return g_list_nth_data.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern gpointer g_list_nth_data(GList *list, guint n)
+     * }
+     */
+    public static MemorySegment g_list_nth_data(MemorySegment list, int n) {
+        var mh$ = g_list_nth_data.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("g_list_nth_data", list, n);
+            }
+            return (MemorySegment)mh$.invokeExact(list, n);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class g_key_file_get_string_list {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            GNUCashBinding.C_POINTER,
+            GNUCashBinding.C_POINTER,
+            GNUCashBinding.C_POINTER,
+            GNUCashBinding.C_POINTER,
+            GNUCashBinding.C_POINTER,
+            GNUCashBinding.C_POINTER
+        );
+
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("g_key_file_get_string_list");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern gchar **g_key_file_get_string_list(GKeyFile *key_file, const gchar *group_name, const gchar *key, gsize *length, GError **error)
+     * }
+     */
+    public static FunctionDescriptor g_key_file_get_string_list$descriptor() {
+        return g_key_file_get_string_list.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern gchar **g_key_file_get_string_list(GKeyFile *key_file, const gchar *group_name, const gchar *key, gsize *length, GError **error)
+     * }
+     */
+    public static MethodHandle g_key_file_get_string_list$handle() {
+        return g_key_file_get_string_list.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern gchar **g_key_file_get_string_list(GKeyFile *key_file, const gchar *group_name, const gchar *key, gsize *length, GError **error)
+     * }
+     */
+    public static MemorySegment g_key_file_get_string_list$address() {
+        return g_key_file_get_string_list.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern gchar **g_key_file_get_string_list(GKeyFile *key_file, const gchar *group_name, const gchar *key, gsize *length, GError **error)
+     * }
+     */
+    public static MemorySegment g_key_file_get_string_list(MemorySegment key_file, MemorySegment group_name, MemorySegment key, MemorySegment length, MemorySegment error) {
+        var mh$ = g_key_file_get_string_list.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("g_key_file_get_string_list", key_file, group_name, key, length, error);
+            }
+            return (MemorySegment)mh$.invokeExact(key_file, group_name, key, length, error);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class g_key_file_set_string_list {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.ofVoid(
+            GNUCashBinding.C_POINTER,
+            GNUCashBinding.C_POINTER,
+            GNUCashBinding.C_POINTER,
+            GNUCashBinding.C_POINTER,
+            GNUCashBinding.C_LONG
+        );
+
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("g_key_file_set_string_list");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern void g_key_file_set_string_list(GKeyFile *key_file, const gchar *group_name, const gchar *key, const gchar *const list[], gsize length)
+     * }
+     */
+    public static FunctionDescriptor g_key_file_set_string_list$descriptor() {
+        return g_key_file_set_string_list.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern void g_key_file_set_string_list(GKeyFile *key_file, const gchar *group_name, const gchar *key, const gchar *const list[], gsize length)
+     * }
+     */
+    public static MethodHandle g_key_file_set_string_list$handle() {
+        return g_key_file_set_string_list.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern void g_key_file_set_string_list(GKeyFile *key_file, const gchar *group_name, const gchar *key, const gchar *const list[], gsize length)
+     * }
+     */
+    public static MemorySegment g_key_file_set_string_list$address() {
+        return g_key_file_set_string_list.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern void g_key_file_set_string_list(GKeyFile *key_file, const gchar *group_name, const gchar *key, const gchar *const list[], gsize length)
+     * }
+     */
+    public static void g_key_file_set_string_list(MemorySegment key_file, MemorySegment group_name, MemorySegment key, MemorySegment list, long length) {
+        var mh$ = g_key_file_set_string_list.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("g_key_file_set_string_list", key_file, group_name, key, list, length);
+            }
+            mh$.invokeExact(key_file, group_name, key, list, length);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class g_key_file_get_locale_string_list {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            GNUCashBinding.C_POINTER,
+            GNUCashBinding.C_POINTER,
+            GNUCashBinding.C_POINTER,
+            GNUCashBinding.C_POINTER,
+            GNUCashBinding.C_POINTER,
+            GNUCashBinding.C_POINTER,
+            GNUCashBinding.C_POINTER
+        );
+
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("g_key_file_get_locale_string_list");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern gchar **g_key_file_get_locale_string_list(GKeyFile *key_file, const gchar *group_name, const gchar *key, const gchar *locale, gsize *length, GError **error)
+     * }
+     */
+    public static FunctionDescriptor g_key_file_get_locale_string_list$descriptor() {
+        return g_key_file_get_locale_string_list.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern gchar **g_key_file_get_locale_string_list(GKeyFile *key_file, const gchar *group_name, const gchar *key, const gchar *locale, gsize *length, GError **error)
+     * }
+     */
+    public static MethodHandle g_key_file_get_locale_string_list$handle() {
+        return g_key_file_get_locale_string_list.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern gchar **g_key_file_get_locale_string_list(GKeyFile *key_file, const gchar *group_name, const gchar *key, const gchar *locale, gsize *length, GError **error)
+     * }
+     */
+    public static MemorySegment g_key_file_get_locale_string_list$address() {
+        return g_key_file_get_locale_string_list.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern gchar **g_key_file_get_locale_string_list(GKeyFile *key_file, const gchar *group_name, const gchar *key, const gchar *locale, gsize *length, GError **error)
+     * }
+     */
+    public static MemorySegment g_key_file_get_locale_string_list(MemorySegment key_file, MemorySegment group_name, MemorySegment key, MemorySegment locale, MemorySegment length, MemorySegment error) {
+        var mh$ = g_key_file_get_locale_string_list.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("g_key_file_get_locale_string_list", key_file, group_name, key, locale, length, error);
+            }
+            return (MemorySegment)mh$.invokeExact(key_file, group_name, key, locale, length, error);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class g_key_file_set_locale_string_list {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.ofVoid(
+            GNUCashBinding.C_POINTER,
+            GNUCashBinding.C_POINTER,
+            GNUCashBinding.C_POINTER,
+            GNUCashBinding.C_POINTER,
+            GNUCashBinding.C_POINTER,
+            GNUCashBinding.C_LONG
+        );
+
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("g_key_file_set_locale_string_list");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern void g_key_file_set_locale_string_list(GKeyFile *key_file, const gchar *group_name, const gchar *key, const gchar *locale, const gchar *const list[], gsize length)
+     * }
+     */
+    public static FunctionDescriptor g_key_file_set_locale_string_list$descriptor() {
+        return g_key_file_set_locale_string_list.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern void g_key_file_set_locale_string_list(GKeyFile *key_file, const gchar *group_name, const gchar *key, const gchar *locale, const gchar *const list[], gsize length)
+     * }
+     */
+    public static MethodHandle g_key_file_set_locale_string_list$handle() {
+        return g_key_file_set_locale_string_list.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern void g_key_file_set_locale_string_list(GKeyFile *key_file, const gchar *group_name, const gchar *key, const gchar *locale, const gchar *const list[], gsize length)
+     * }
+     */
+    public static MemorySegment g_key_file_set_locale_string_list$address() {
+        return g_key_file_set_locale_string_list.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern void g_key_file_set_locale_string_list(GKeyFile *key_file, const gchar *group_name, const gchar *key, const gchar *locale, const gchar *const list[], gsize length)
+     * }
+     */
+    public static void g_key_file_set_locale_string_list(MemorySegment key_file, MemorySegment group_name, MemorySegment key, MemorySegment locale, MemorySegment list, long length) {
+        var mh$ = g_key_file_set_locale_string_list.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("g_key_file_set_locale_string_list", key_file, group_name, key, locale, list, length);
+            }
+            mh$.invokeExact(key_file, group_name, key, locale, list, length);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class g_list_push_allocator {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.ofVoid(
+            GNUCashBinding.C_POINTER
+        );
+
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("g_list_push_allocator");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern void g_list_push_allocator(GAllocator *allocator)
+     * }
+     */
+    public static FunctionDescriptor g_list_push_allocator$descriptor() {
+        return g_list_push_allocator.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern void g_list_push_allocator(GAllocator *allocator)
+     * }
+     */
+    public static MethodHandle g_list_push_allocator$handle() {
+        return g_list_push_allocator.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern void g_list_push_allocator(GAllocator *allocator)
+     * }
+     */
+    public static MemorySegment g_list_push_allocator$address() {
+        return g_list_push_allocator.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern void g_list_push_allocator(GAllocator *allocator)
+     * }
+     */
+    public static void g_list_push_allocator(MemorySegment allocator) {
+        var mh$ = g_list_push_allocator.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("g_list_push_allocator", allocator);
+            }
+            mh$.invokeExact(allocator);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class g_list_pop_allocator {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.ofVoid(    );
+
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("g_list_pop_allocator");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern void g_list_pop_allocator()
+     * }
+     */
+    public static FunctionDescriptor g_list_pop_allocator$descriptor() {
+        return g_list_pop_allocator.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern void g_list_pop_allocator()
+     * }
+     */
+    public static MethodHandle g_list_pop_allocator$handle() {
+        return g_list_pop_allocator.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern void g_list_pop_allocator()
+     * }
+     */
+    public static MemorySegment g_list_pop_allocator$address() {
+        return g_list_pop_allocator.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern void g_list_pop_allocator()
+     * }
+     */
+    public static void g_list_pop_allocator() {
+        var mh$ = g_list_pop_allocator.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("g_list_pop_allocator");
+            }
+            mh$.invokeExact();
+        } catch (Error | RuntimeException ex) {
+           throw ex;
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
     /**
      * {@snippet lang=c :
      * typedef GDateTime *GDateTime_autoptr
@@ -226,6 +2605,18 @@ class GNUCashBinding_1 extends GNUCashBinding$shared {
      * }
      */
     public static final AddressLayout GList_queueautoptr = GNUCashBinding.C_POINTER;
+    /**
+     * {@snippet lang=c :
+     * typedef GList *GString_listautoptr
+     * }
+     */
+    public static final AddressLayout GString_listautoptr = GNUCashBinding.C_POINTER;
+    /**
+     * {@snippet lang=c :
+     * typedef GList *GRefString_listautoptr
+     * }
+     */
+    public static final AddressLayout GRefString_listautoptr = GNUCashBinding.C_POINTER;
     /**
      * {@snippet lang=c :
      * typedef GTypeClass *GTypeClass_autoptr
@@ -45854,2481 +48245,6 @@ class GNUCashBinding_1 extends GNUCashBinding$shared {
                 traceDowncall("gnc_commodity_get_quote_tz", cm);
             }
             return (MemorySegment)mh$.invokeExact(cm);
-        } catch (Error | RuntimeException ex) {
-           throw ex;
-        } catch (Throwable ex$) {
-           throw new AssertionError("should not reach here", ex$);
-        }
-    }
-
-    private static class gnc_commodity_get_user_symbol {
-        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
-            GNUCashBinding.C_POINTER,
-            GNUCashBinding.C_POINTER
-        );
-
-        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("gnc_commodity_get_user_symbol");
-
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
-    }
-
-    /**
-     * Function descriptor for:
-     * {@snippet lang=c :
-     * const char *gnc_commodity_get_user_symbol(const gnc_commodity *cm)
-     * }
-     */
-    public static FunctionDescriptor gnc_commodity_get_user_symbol$descriptor() {
-        return gnc_commodity_get_user_symbol.DESC;
-    }
-
-    /**
-     * Downcall method handle for:
-     * {@snippet lang=c :
-     * const char *gnc_commodity_get_user_symbol(const gnc_commodity *cm)
-     * }
-     */
-    public static MethodHandle gnc_commodity_get_user_symbol$handle() {
-        return gnc_commodity_get_user_symbol.HANDLE;
-    }
-
-    /**
-     * Address for:
-     * {@snippet lang=c :
-     * const char *gnc_commodity_get_user_symbol(const gnc_commodity *cm)
-     * }
-     */
-    public static MemorySegment gnc_commodity_get_user_symbol$address() {
-        return gnc_commodity_get_user_symbol.ADDR;
-    }
-
-    /**
-     * {@snippet lang=c :
-     * const char *gnc_commodity_get_user_symbol(const gnc_commodity *cm)
-     * }
-     */
-    public static MemorySegment gnc_commodity_get_user_symbol(MemorySegment cm) {
-        var mh$ = gnc_commodity_get_user_symbol.HANDLE;
-        try {
-            if (TRACE_DOWNCALLS) {
-                traceDowncall("gnc_commodity_get_user_symbol", cm);
-            }
-            return (MemorySegment)mh$.invokeExact(cm);
-        } catch (Error | RuntimeException ex) {
-           throw ex;
-        } catch (Throwable ex$) {
-           throw new AssertionError("should not reach here", ex$);
-        }
-    }
-
-    private static class gnc_commodity_get_default_symbol {
-        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
-            GNUCashBinding.C_POINTER,
-            GNUCashBinding.C_POINTER
-        );
-
-        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("gnc_commodity_get_default_symbol");
-
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
-    }
-
-    /**
-     * Function descriptor for:
-     * {@snippet lang=c :
-     * const char *gnc_commodity_get_default_symbol(const gnc_commodity *cm)
-     * }
-     */
-    public static FunctionDescriptor gnc_commodity_get_default_symbol$descriptor() {
-        return gnc_commodity_get_default_symbol.DESC;
-    }
-
-    /**
-     * Downcall method handle for:
-     * {@snippet lang=c :
-     * const char *gnc_commodity_get_default_symbol(const gnc_commodity *cm)
-     * }
-     */
-    public static MethodHandle gnc_commodity_get_default_symbol$handle() {
-        return gnc_commodity_get_default_symbol.HANDLE;
-    }
-
-    /**
-     * Address for:
-     * {@snippet lang=c :
-     * const char *gnc_commodity_get_default_symbol(const gnc_commodity *cm)
-     * }
-     */
-    public static MemorySegment gnc_commodity_get_default_symbol$address() {
-        return gnc_commodity_get_default_symbol.ADDR;
-    }
-
-    /**
-     * {@snippet lang=c :
-     * const char *gnc_commodity_get_default_symbol(const gnc_commodity *cm)
-     * }
-     */
-    public static MemorySegment gnc_commodity_get_default_symbol(MemorySegment cm) {
-        var mh$ = gnc_commodity_get_default_symbol.HANDLE;
-        try {
-            if (TRACE_DOWNCALLS) {
-                traceDowncall("gnc_commodity_get_default_symbol", cm);
-            }
-            return (MemorySegment)mh$.invokeExact(cm);
-        } catch (Error | RuntimeException ex) {
-           throw ex;
-        } catch (Throwable ex$) {
-           throw new AssertionError("should not reach here", ex$);
-        }
-    }
-
-    private static class gnc_commodity_get_nice_symbol {
-        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
-            GNUCashBinding.C_POINTER,
-            GNUCashBinding.C_POINTER
-        );
-
-        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("gnc_commodity_get_nice_symbol");
-
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
-    }
-
-    /**
-     * Function descriptor for:
-     * {@snippet lang=c :
-     * const char *gnc_commodity_get_nice_symbol(const gnc_commodity *cm)
-     * }
-     */
-    public static FunctionDescriptor gnc_commodity_get_nice_symbol$descriptor() {
-        return gnc_commodity_get_nice_symbol.DESC;
-    }
-
-    /**
-     * Downcall method handle for:
-     * {@snippet lang=c :
-     * const char *gnc_commodity_get_nice_symbol(const gnc_commodity *cm)
-     * }
-     */
-    public static MethodHandle gnc_commodity_get_nice_symbol$handle() {
-        return gnc_commodity_get_nice_symbol.HANDLE;
-    }
-
-    /**
-     * Address for:
-     * {@snippet lang=c :
-     * const char *gnc_commodity_get_nice_symbol(const gnc_commodity *cm)
-     * }
-     */
-    public static MemorySegment gnc_commodity_get_nice_symbol$address() {
-        return gnc_commodity_get_nice_symbol.ADDR;
-    }
-
-    /**
-     * {@snippet lang=c :
-     * const char *gnc_commodity_get_nice_symbol(const gnc_commodity *cm)
-     * }
-     */
-    public static MemorySegment gnc_commodity_get_nice_symbol(MemorySegment cm) {
-        var mh$ = gnc_commodity_get_nice_symbol.HANDLE;
-        try {
-            if (TRACE_DOWNCALLS) {
-                traceDowncall("gnc_commodity_get_nice_symbol", cm);
-            }
-            return (MemorySegment)mh$.invokeExact(cm);
-        } catch (Error | RuntimeException ex) {
-           throw ex;
-        } catch (Throwable ex$) {
-           throw new AssertionError("should not reach here", ex$);
-        }
-    }
-
-    private static class gnc_commodity_set_mnemonic {
-        public static final FunctionDescriptor DESC = FunctionDescriptor.ofVoid(
-            GNUCashBinding.C_POINTER,
-            GNUCashBinding.C_POINTER
-        );
-
-        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("gnc_commodity_set_mnemonic");
-
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
-    }
-
-    /**
-     * Function descriptor for:
-     * {@snippet lang=c :
-     * void gnc_commodity_set_mnemonic(gnc_commodity *cm, const char *mnemonic)
-     * }
-     */
-    public static FunctionDescriptor gnc_commodity_set_mnemonic$descriptor() {
-        return gnc_commodity_set_mnemonic.DESC;
-    }
-
-    /**
-     * Downcall method handle for:
-     * {@snippet lang=c :
-     * void gnc_commodity_set_mnemonic(gnc_commodity *cm, const char *mnemonic)
-     * }
-     */
-    public static MethodHandle gnc_commodity_set_mnemonic$handle() {
-        return gnc_commodity_set_mnemonic.HANDLE;
-    }
-
-    /**
-     * Address for:
-     * {@snippet lang=c :
-     * void gnc_commodity_set_mnemonic(gnc_commodity *cm, const char *mnemonic)
-     * }
-     */
-    public static MemorySegment gnc_commodity_set_mnemonic$address() {
-        return gnc_commodity_set_mnemonic.ADDR;
-    }
-
-    /**
-     * {@snippet lang=c :
-     * void gnc_commodity_set_mnemonic(gnc_commodity *cm, const char *mnemonic)
-     * }
-     */
-    public static void gnc_commodity_set_mnemonic(MemorySegment cm, MemorySegment mnemonic) {
-        var mh$ = gnc_commodity_set_mnemonic.HANDLE;
-        try {
-            if (TRACE_DOWNCALLS) {
-                traceDowncall("gnc_commodity_set_mnemonic", cm, mnemonic);
-            }
-            mh$.invokeExact(cm, mnemonic);
-        } catch (Error | RuntimeException ex) {
-           throw ex;
-        } catch (Throwable ex$) {
-           throw new AssertionError("should not reach here", ex$);
-        }
-    }
-
-    private static class gnc_commodity_set_namespace {
-        public static final FunctionDescriptor DESC = FunctionDescriptor.ofVoid(
-            GNUCashBinding.C_POINTER,
-            GNUCashBinding.C_POINTER
-        );
-
-        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("gnc_commodity_set_namespace");
-
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
-    }
-
-    /**
-     * Function descriptor for:
-     * {@snippet lang=c :
-     * void gnc_commodity_set_namespace(gnc_commodity *cm, const char *new_namespace)
-     * }
-     */
-    public static FunctionDescriptor gnc_commodity_set_namespace$descriptor() {
-        return gnc_commodity_set_namespace.DESC;
-    }
-
-    /**
-     * Downcall method handle for:
-     * {@snippet lang=c :
-     * void gnc_commodity_set_namespace(gnc_commodity *cm, const char *new_namespace)
-     * }
-     */
-    public static MethodHandle gnc_commodity_set_namespace$handle() {
-        return gnc_commodity_set_namespace.HANDLE;
-    }
-
-    /**
-     * Address for:
-     * {@snippet lang=c :
-     * void gnc_commodity_set_namespace(gnc_commodity *cm, const char *new_namespace)
-     * }
-     */
-    public static MemorySegment gnc_commodity_set_namespace$address() {
-        return gnc_commodity_set_namespace.ADDR;
-    }
-
-    /**
-     * {@snippet lang=c :
-     * void gnc_commodity_set_namespace(gnc_commodity *cm, const char *new_namespace)
-     * }
-     */
-    public static void gnc_commodity_set_namespace(MemorySegment cm, MemorySegment new_namespace) {
-        var mh$ = gnc_commodity_set_namespace.HANDLE;
-        try {
-            if (TRACE_DOWNCALLS) {
-                traceDowncall("gnc_commodity_set_namespace", cm, new_namespace);
-            }
-            mh$.invokeExact(cm, new_namespace);
-        } catch (Error | RuntimeException ex) {
-           throw ex;
-        } catch (Throwable ex$) {
-           throw new AssertionError("should not reach here", ex$);
-        }
-    }
-
-    private static class gnc_commodity_set_fullname {
-        public static final FunctionDescriptor DESC = FunctionDescriptor.ofVoid(
-            GNUCashBinding.C_POINTER,
-            GNUCashBinding.C_POINTER
-        );
-
-        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("gnc_commodity_set_fullname");
-
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
-    }
-
-    /**
-     * Function descriptor for:
-     * {@snippet lang=c :
-     * void gnc_commodity_set_fullname(gnc_commodity *cm, const char *fullname)
-     * }
-     */
-    public static FunctionDescriptor gnc_commodity_set_fullname$descriptor() {
-        return gnc_commodity_set_fullname.DESC;
-    }
-
-    /**
-     * Downcall method handle for:
-     * {@snippet lang=c :
-     * void gnc_commodity_set_fullname(gnc_commodity *cm, const char *fullname)
-     * }
-     */
-    public static MethodHandle gnc_commodity_set_fullname$handle() {
-        return gnc_commodity_set_fullname.HANDLE;
-    }
-
-    /**
-     * Address for:
-     * {@snippet lang=c :
-     * void gnc_commodity_set_fullname(gnc_commodity *cm, const char *fullname)
-     * }
-     */
-    public static MemorySegment gnc_commodity_set_fullname$address() {
-        return gnc_commodity_set_fullname.ADDR;
-    }
-
-    /**
-     * {@snippet lang=c :
-     * void gnc_commodity_set_fullname(gnc_commodity *cm, const char *fullname)
-     * }
-     */
-    public static void gnc_commodity_set_fullname(MemorySegment cm, MemorySegment fullname) {
-        var mh$ = gnc_commodity_set_fullname.HANDLE;
-        try {
-            if (TRACE_DOWNCALLS) {
-                traceDowncall("gnc_commodity_set_fullname", cm, fullname);
-            }
-            mh$.invokeExact(cm, fullname);
-        } catch (Error | RuntimeException ex) {
-           throw ex;
-        } catch (Throwable ex$) {
-           throw new AssertionError("should not reach here", ex$);
-        }
-    }
-
-    private static class gnc_commodity_set_cusip {
-        public static final FunctionDescriptor DESC = FunctionDescriptor.ofVoid(
-            GNUCashBinding.C_POINTER,
-            GNUCashBinding.C_POINTER
-        );
-
-        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("gnc_commodity_set_cusip");
-
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
-    }
-
-    /**
-     * Function descriptor for:
-     * {@snippet lang=c :
-     * void gnc_commodity_set_cusip(gnc_commodity *cm, const char *cusip)
-     * }
-     */
-    public static FunctionDescriptor gnc_commodity_set_cusip$descriptor() {
-        return gnc_commodity_set_cusip.DESC;
-    }
-
-    /**
-     * Downcall method handle for:
-     * {@snippet lang=c :
-     * void gnc_commodity_set_cusip(gnc_commodity *cm, const char *cusip)
-     * }
-     */
-    public static MethodHandle gnc_commodity_set_cusip$handle() {
-        return gnc_commodity_set_cusip.HANDLE;
-    }
-
-    /**
-     * Address for:
-     * {@snippet lang=c :
-     * void gnc_commodity_set_cusip(gnc_commodity *cm, const char *cusip)
-     * }
-     */
-    public static MemorySegment gnc_commodity_set_cusip$address() {
-        return gnc_commodity_set_cusip.ADDR;
-    }
-
-    /**
-     * {@snippet lang=c :
-     * void gnc_commodity_set_cusip(gnc_commodity *cm, const char *cusip)
-     * }
-     */
-    public static void gnc_commodity_set_cusip(MemorySegment cm, MemorySegment cusip) {
-        var mh$ = gnc_commodity_set_cusip.HANDLE;
-        try {
-            if (TRACE_DOWNCALLS) {
-                traceDowncall("gnc_commodity_set_cusip", cm, cusip);
-            }
-            mh$.invokeExact(cm, cusip);
-        } catch (Error | RuntimeException ex) {
-           throw ex;
-        } catch (Throwable ex$) {
-           throw new AssertionError("should not reach here", ex$);
-        }
-    }
-
-    private static class gnc_commodity_set_fraction {
-        public static final FunctionDescriptor DESC = FunctionDescriptor.ofVoid(
-            GNUCashBinding.C_POINTER,
-            GNUCashBinding.C_INT
-        );
-
-        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("gnc_commodity_set_fraction");
-
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
-    }
-
-    /**
-     * Function descriptor for:
-     * {@snippet lang=c :
-     * void gnc_commodity_set_fraction(gnc_commodity *cm, int smallest_fraction)
-     * }
-     */
-    public static FunctionDescriptor gnc_commodity_set_fraction$descriptor() {
-        return gnc_commodity_set_fraction.DESC;
-    }
-
-    /**
-     * Downcall method handle for:
-     * {@snippet lang=c :
-     * void gnc_commodity_set_fraction(gnc_commodity *cm, int smallest_fraction)
-     * }
-     */
-    public static MethodHandle gnc_commodity_set_fraction$handle() {
-        return gnc_commodity_set_fraction.HANDLE;
-    }
-
-    /**
-     * Address for:
-     * {@snippet lang=c :
-     * void gnc_commodity_set_fraction(gnc_commodity *cm, int smallest_fraction)
-     * }
-     */
-    public static MemorySegment gnc_commodity_set_fraction$address() {
-        return gnc_commodity_set_fraction.ADDR;
-    }
-
-    /**
-     * {@snippet lang=c :
-     * void gnc_commodity_set_fraction(gnc_commodity *cm, int smallest_fraction)
-     * }
-     */
-    public static void gnc_commodity_set_fraction(MemorySegment cm, int smallest_fraction) {
-        var mh$ = gnc_commodity_set_fraction.HANDLE;
-        try {
-            if (TRACE_DOWNCALLS) {
-                traceDowncall("gnc_commodity_set_fraction", cm, smallest_fraction);
-            }
-            mh$.invokeExact(cm, smallest_fraction);
-        } catch (Error | RuntimeException ex) {
-           throw ex;
-        } catch (Throwable ex$) {
-           throw new AssertionError("should not reach here", ex$);
-        }
-    }
-
-    private static class gnc_commodity_user_set_quote_flag {
-        public static final FunctionDescriptor DESC = FunctionDescriptor.ofVoid(
-            GNUCashBinding.C_POINTER,
-            GNUCashBinding.C_INT
-        );
-
-        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("gnc_commodity_user_set_quote_flag");
-
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
-    }
-
-    /**
-     * Function descriptor for:
-     * {@snippet lang=c :
-     * void gnc_commodity_user_set_quote_flag(gnc_commodity *cm, const gboolean flag)
-     * }
-     */
-    public static FunctionDescriptor gnc_commodity_user_set_quote_flag$descriptor() {
-        return gnc_commodity_user_set_quote_flag.DESC;
-    }
-
-    /**
-     * Downcall method handle for:
-     * {@snippet lang=c :
-     * void gnc_commodity_user_set_quote_flag(gnc_commodity *cm, const gboolean flag)
-     * }
-     */
-    public static MethodHandle gnc_commodity_user_set_quote_flag$handle() {
-        return gnc_commodity_user_set_quote_flag.HANDLE;
-    }
-
-    /**
-     * Address for:
-     * {@snippet lang=c :
-     * void gnc_commodity_user_set_quote_flag(gnc_commodity *cm, const gboolean flag)
-     * }
-     */
-    public static MemorySegment gnc_commodity_user_set_quote_flag$address() {
-        return gnc_commodity_user_set_quote_flag.ADDR;
-    }
-
-    /**
-     * {@snippet lang=c :
-     * void gnc_commodity_user_set_quote_flag(gnc_commodity *cm, const gboolean flag)
-     * }
-     */
-    public static void gnc_commodity_user_set_quote_flag(MemorySegment cm, int flag) {
-        var mh$ = gnc_commodity_user_set_quote_flag.HANDLE;
-        try {
-            if (TRACE_DOWNCALLS) {
-                traceDowncall("gnc_commodity_user_set_quote_flag", cm, flag);
-            }
-            mh$.invokeExact(cm, flag);
-        } catch (Error | RuntimeException ex) {
-           throw ex;
-        } catch (Throwable ex$) {
-           throw new AssertionError("should not reach here", ex$);
-        }
-    }
-
-    private static class gnc_commodity_set_quote_flag {
-        public static final FunctionDescriptor DESC = FunctionDescriptor.ofVoid(
-            GNUCashBinding.C_POINTER,
-            GNUCashBinding.C_INT
-        );
-
-        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("gnc_commodity_set_quote_flag");
-
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
-    }
-
-    /**
-     * Function descriptor for:
-     * {@snippet lang=c :
-     * void gnc_commodity_set_quote_flag(gnc_commodity *cm, const gboolean flag)
-     * }
-     */
-    public static FunctionDescriptor gnc_commodity_set_quote_flag$descriptor() {
-        return gnc_commodity_set_quote_flag.DESC;
-    }
-
-    /**
-     * Downcall method handle for:
-     * {@snippet lang=c :
-     * void gnc_commodity_set_quote_flag(gnc_commodity *cm, const gboolean flag)
-     * }
-     */
-    public static MethodHandle gnc_commodity_set_quote_flag$handle() {
-        return gnc_commodity_set_quote_flag.HANDLE;
-    }
-
-    /**
-     * Address for:
-     * {@snippet lang=c :
-     * void gnc_commodity_set_quote_flag(gnc_commodity *cm, const gboolean flag)
-     * }
-     */
-    public static MemorySegment gnc_commodity_set_quote_flag$address() {
-        return gnc_commodity_set_quote_flag.ADDR;
-    }
-
-    /**
-     * {@snippet lang=c :
-     * void gnc_commodity_set_quote_flag(gnc_commodity *cm, const gboolean flag)
-     * }
-     */
-    public static void gnc_commodity_set_quote_flag(MemorySegment cm, int flag) {
-        var mh$ = gnc_commodity_set_quote_flag.HANDLE;
-        try {
-            if (TRACE_DOWNCALLS) {
-                traceDowncall("gnc_commodity_set_quote_flag", cm, flag);
-            }
-            mh$.invokeExact(cm, flag);
-        } catch (Error | RuntimeException ex) {
-           throw ex;
-        } catch (Throwable ex$) {
-           throw new AssertionError("should not reach here", ex$);
-        }
-    }
-
-    private static class gnc_commodity_set_quote_source {
-        public static final FunctionDescriptor DESC = FunctionDescriptor.ofVoid(
-            GNUCashBinding.C_POINTER,
-            GNUCashBinding.C_POINTER
-        );
-
-        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("gnc_commodity_set_quote_source");
-
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
-    }
-
-    /**
-     * Function descriptor for:
-     * {@snippet lang=c :
-     * void gnc_commodity_set_quote_source(gnc_commodity *cm, gnc_quote_source *src)
-     * }
-     */
-    public static FunctionDescriptor gnc_commodity_set_quote_source$descriptor() {
-        return gnc_commodity_set_quote_source.DESC;
-    }
-
-    /**
-     * Downcall method handle for:
-     * {@snippet lang=c :
-     * void gnc_commodity_set_quote_source(gnc_commodity *cm, gnc_quote_source *src)
-     * }
-     */
-    public static MethodHandle gnc_commodity_set_quote_source$handle() {
-        return gnc_commodity_set_quote_source.HANDLE;
-    }
-
-    /**
-     * Address for:
-     * {@snippet lang=c :
-     * void gnc_commodity_set_quote_source(gnc_commodity *cm, gnc_quote_source *src)
-     * }
-     */
-    public static MemorySegment gnc_commodity_set_quote_source$address() {
-        return gnc_commodity_set_quote_source.ADDR;
-    }
-
-    /**
-     * {@snippet lang=c :
-     * void gnc_commodity_set_quote_source(gnc_commodity *cm, gnc_quote_source *src)
-     * }
-     */
-    public static void gnc_commodity_set_quote_source(MemorySegment cm, MemorySegment src) {
-        var mh$ = gnc_commodity_set_quote_source.HANDLE;
-        try {
-            if (TRACE_DOWNCALLS) {
-                traceDowncall("gnc_commodity_set_quote_source", cm, src);
-            }
-            mh$.invokeExact(cm, src);
-        } catch (Error | RuntimeException ex) {
-           throw ex;
-        } catch (Throwable ex$) {
-           throw new AssertionError("should not reach here", ex$);
-        }
-    }
-
-    private static class gnc_commodity_set_quote_tz {
-        public static final FunctionDescriptor DESC = FunctionDescriptor.ofVoid(
-            GNUCashBinding.C_POINTER,
-            GNUCashBinding.C_POINTER
-        );
-
-        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("gnc_commodity_set_quote_tz");
-
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
-    }
-
-    /**
-     * Function descriptor for:
-     * {@snippet lang=c :
-     * void gnc_commodity_set_quote_tz(gnc_commodity *cm, const char *tz)
-     * }
-     */
-    public static FunctionDescriptor gnc_commodity_set_quote_tz$descriptor() {
-        return gnc_commodity_set_quote_tz.DESC;
-    }
-
-    /**
-     * Downcall method handle for:
-     * {@snippet lang=c :
-     * void gnc_commodity_set_quote_tz(gnc_commodity *cm, const char *tz)
-     * }
-     */
-    public static MethodHandle gnc_commodity_set_quote_tz$handle() {
-        return gnc_commodity_set_quote_tz.HANDLE;
-    }
-
-    /**
-     * Address for:
-     * {@snippet lang=c :
-     * void gnc_commodity_set_quote_tz(gnc_commodity *cm, const char *tz)
-     * }
-     */
-    public static MemorySegment gnc_commodity_set_quote_tz$address() {
-        return gnc_commodity_set_quote_tz.ADDR;
-    }
-
-    /**
-     * {@snippet lang=c :
-     * void gnc_commodity_set_quote_tz(gnc_commodity *cm, const char *tz)
-     * }
-     */
-    public static void gnc_commodity_set_quote_tz(MemorySegment cm, MemorySegment tz) {
-        var mh$ = gnc_commodity_set_quote_tz.HANDLE;
-        try {
-            if (TRACE_DOWNCALLS) {
-                traceDowncall("gnc_commodity_set_quote_tz", cm, tz);
-            }
-            mh$.invokeExact(cm, tz);
-        } catch (Error | RuntimeException ex) {
-           throw ex;
-        } catch (Throwable ex$) {
-           throw new AssertionError("should not reach here", ex$);
-        }
-    }
-
-    private static class gnc_commodity_set_user_symbol {
-        public static final FunctionDescriptor DESC = FunctionDescriptor.ofVoid(
-            GNUCashBinding.C_POINTER,
-            GNUCashBinding.C_POINTER
-        );
-
-        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("gnc_commodity_set_user_symbol");
-
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
-    }
-
-    /**
-     * Function descriptor for:
-     * {@snippet lang=c :
-     * void gnc_commodity_set_user_symbol(gnc_commodity *cm, const char *user_symbol)
-     * }
-     */
-    public static FunctionDescriptor gnc_commodity_set_user_symbol$descriptor() {
-        return gnc_commodity_set_user_symbol.DESC;
-    }
-
-    /**
-     * Downcall method handle for:
-     * {@snippet lang=c :
-     * void gnc_commodity_set_user_symbol(gnc_commodity *cm, const char *user_symbol)
-     * }
-     */
-    public static MethodHandle gnc_commodity_set_user_symbol$handle() {
-        return gnc_commodity_set_user_symbol.HANDLE;
-    }
-
-    /**
-     * Address for:
-     * {@snippet lang=c :
-     * void gnc_commodity_set_user_symbol(gnc_commodity *cm, const char *user_symbol)
-     * }
-     */
-    public static MemorySegment gnc_commodity_set_user_symbol$address() {
-        return gnc_commodity_set_user_symbol.ADDR;
-    }
-
-    /**
-     * {@snippet lang=c :
-     * void gnc_commodity_set_user_symbol(gnc_commodity *cm, const char *user_symbol)
-     * }
-     */
-    public static void gnc_commodity_set_user_symbol(MemorySegment cm, MemorySegment user_symbol) {
-        var mh$ = gnc_commodity_set_user_symbol.HANDLE;
-        try {
-            if (TRACE_DOWNCALLS) {
-                traceDowncall("gnc_commodity_set_user_symbol", cm, user_symbol);
-            }
-            mh$.invokeExact(cm, user_symbol);
-        } catch (Error | RuntimeException ex) {
-           throw ex;
-        } catch (Throwable ex$) {
-           throw new AssertionError("should not reach here", ex$);
-        }
-    }
-
-    private static class gnc_commodity_increment_usage_count {
-        public static final FunctionDescriptor DESC = FunctionDescriptor.ofVoid(
-            GNUCashBinding.C_POINTER
-        );
-
-        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("gnc_commodity_increment_usage_count");
-
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
-    }
-
-    /**
-     * Function descriptor for:
-     * {@snippet lang=c :
-     * void gnc_commodity_increment_usage_count(gnc_commodity *cm)
-     * }
-     */
-    public static FunctionDescriptor gnc_commodity_increment_usage_count$descriptor() {
-        return gnc_commodity_increment_usage_count.DESC;
-    }
-
-    /**
-     * Downcall method handle for:
-     * {@snippet lang=c :
-     * void gnc_commodity_increment_usage_count(gnc_commodity *cm)
-     * }
-     */
-    public static MethodHandle gnc_commodity_increment_usage_count$handle() {
-        return gnc_commodity_increment_usage_count.HANDLE;
-    }
-
-    /**
-     * Address for:
-     * {@snippet lang=c :
-     * void gnc_commodity_increment_usage_count(gnc_commodity *cm)
-     * }
-     */
-    public static MemorySegment gnc_commodity_increment_usage_count$address() {
-        return gnc_commodity_increment_usage_count.ADDR;
-    }
-
-    /**
-     * {@snippet lang=c :
-     * void gnc_commodity_increment_usage_count(gnc_commodity *cm)
-     * }
-     */
-    public static void gnc_commodity_increment_usage_count(MemorySegment cm) {
-        var mh$ = gnc_commodity_increment_usage_count.HANDLE;
-        try {
-            if (TRACE_DOWNCALLS) {
-                traceDowncall("gnc_commodity_increment_usage_count", cm);
-            }
-            mh$.invokeExact(cm);
-        } catch (Error | RuntimeException ex) {
-           throw ex;
-        } catch (Throwable ex$) {
-           throw new AssertionError("should not reach here", ex$);
-        }
-    }
-
-    private static class gnc_commodity_decrement_usage_count {
-        public static final FunctionDescriptor DESC = FunctionDescriptor.ofVoid(
-            GNUCashBinding.C_POINTER
-        );
-
-        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("gnc_commodity_decrement_usage_count");
-
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
-    }
-
-    /**
-     * Function descriptor for:
-     * {@snippet lang=c :
-     * void gnc_commodity_decrement_usage_count(gnc_commodity *cm)
-     * }
-     */
-    public static FunctionDescriptor gnc_commodity_decrement_usage_count$descriptor() {
-        return gnc_commodity_decrement_usage_count.DESC;
-    }
-
-    /**
-     * Downcall method handle for:
-     * {@snippet lang=c :
-     * void gnc_commodity_decrement_usage_count(gnc_commodity *cm)
-     * }
-     */
-    public static MethodHandle gnc_commodity_decrement_usage_count$handle() {
-        return gnc_commodity_decrement_usage_count.HANDLE;
-    }
-
-    /**
-     * Address for:
-     * {@snippet lang=c :
-     * void gnc_commodity_decrement_usage_count(gnc_commodity *cm)
-     * }
-     */
-    public static MemorySegment gnc_commodity_decrement_usage_count$address() {
-        return gnc_commodity_decrement_usage_count.ADDR;
-    }
-
-    /**
-     * {@snippet lang=c :
-     * void gnc_commodity_decrement_usage_count(gnc_commodity *cm)
-     * }
-     */
-    public static void gnc_commodity_decrement_usage_count(MemorySegment cm) {
-        var mh$ = gnc_commodity_decrement_usage_count.HANDLE;
-        try {
-            if (TRACE_DOWNCALLS) {
-                traceDowncall("gnc_commodity_decrement_usage_count", cm);
-            }
-            mh$.invokeExact(cm);
-        } catch (Error | RuntimeException ex) {
-           throw ex;
-        } catch (Throwable ex$) {
-           throw new AssertionError("should not reach here", ex$);
-        }
-    }
-
-    private static class gnc_commodity_equiv {
-        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
-            GNUCashBinding.C_INT,
-            GNUCashBinding.C_POINTER,
-            GNUCashBinding.C_POINTER
-        );
-
-        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("gnc_commodity_equiv");
-
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
-    }
-
-    /**
-     * Function descriptor for:
-     * {@snippet lang=c :
-     * gboolean gnc_commodity_equiv(const gnc_commodity *a, const gnc_commodity *b)
-     * }
-     */
-    public static FunctionDescriptor gnc_commodity_equiv$descriptor() {
-        return gnc_commodity_equiv.DESC;
-    }
-
-    /**
-     * Downcall method handle for:
-     * {@snippet lang=c :
-     * gboolean gnc_commodity_equiv(const gnc_commodity *a, const gnc_commodity *b)
-     * }
-     */
-    public static MethodHandle gnc_commodity_equiv$handle() {
-        return gnc_commodity_equiv.HANDLE;
-    }
-
-    /**
-     * Address for:
-     * {@snippet lang=c :
-     * gboolean gnc_commodity_equiv(const gnc_commodity *a, const gnc_commodity *b)
-     * }
-     */
-    public static MemorySegment gnc_commodity_equiv$address() {
-        return gnc_commodity_equiv.ADDR;
-    }
-
-    /**
-     * {@snippet lang=c :
-     * gboolean gnc_commodity_equiv(const gnc_commodity *a, const gnc_commodity *b)
-     * }
-     */
-    public static int gnc_commodity_equiv(MemorySegment a, MemorySegment b) {
-        var mh$ = gnc_commodity_equiv.HANDLE;
-        try {
-            if (TRACE_DOWNCALLS) {
-                traceDowncall("gnc_commodity_equiv", a, b);
-            }
-            return (int)mh$.invokeExact(a, b);
-        } catch (Error | RuntimeException ex) {
-           throw ex;
-        } catch (Throwable ex$) {
-           throw new AssertionError("should not reach here", ex$);
-        }
-    }
-
-    private static class gnc_commodity_equal {
-        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
-            GNUCashBinding.C_INT,
-            GNUCashBinding.C_POINTER,
-            GNUCashBinding.C_POINTER
-        );
-
-        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("gnc_commodity_equal");
-
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
-    }
-
-    /**
-     * Function descriptor for:
-     * {@snippet lang=c :
-     * gboolean gnc_commodity_equal(const gnc_commodity *a, const gnc_commodity *b)
-     * }
-     */
-    public static FunctionDescriptor gnc_commodity_equal$descriptor() {
-        return gnc_commodity_equal.DESC;
-    }
-
-    /**
-     * Downcall method handle for:
-     * {@snippet lang=c :
-     * gboolean gnc_commodity_equal(const gnc_commodity *a, const gnc_commodity *b)
-     * }
-     */
-    public static MethodHandle gnc_commodity_equal$handle() {
-        return gnc_commodity_equal.HANDLE;
-    }
-
-    /**
-     * Address for:
-     * {@snippet lang=c :
-     * gboolean gnc_commodity_equal(const gnc_commodity *a, const gnc_commodity *b)
-     * }
-     */
-    public static MemorySegment gnc_commodity_equal$address() {
-        return gnc_commodity_equal.ADDR;
-    }
-
-    /**
-     * {@snippet lang=c :
-     * gboolean gnc_commodity_equal(const gnc_commodity *a, const gnc_commodity *b)
-     * }
-     */
-    public static int gnc_commodity_equal(MemorySegment a, MemorySegment b) {
-        var mh$ = gnc_commodity_equal.HANDLE;
-        try {
-            if (TRACE_DOWNCALLS) {
-                traceDowncall("gnc_commodity_equal", a, b);
-            }
-            return (int)mh$.invokeExact(a, b);
-        } catch (Error | RuntimeException ex) {
-           throw ex;
-        } catch (Throwable ex$) {
-           throw new AssertionError("should not reach here", ex$);
-        }
-    }
-
-    private static class gnc_commodity_compare {
-        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
-            GNUCashBinding.C_INT,
-            GNUCashBinding.C_POINTER,
-            GNUCashBinding.C_POINTER
-        );
-
-        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("gnc_commodity_compare");
-
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
-    }
-
-    /**
-     * Function descriptor for:
-     * {@snippet lang=c :
-     * int gnc_commodity_compare(const gnc_commodity *a, const gnc_commodity *b)
-     * }
-     */
-    public static FunctionDescriptor gnc_commodity_compare$descriptor() {
-        return gnc_commodity_compare.DESC;
-    }
-
-    /**
-     * Downcall method handle for:
-     * {@snippet lang=c :
-     * int gnc_commodity_compare(const gnc_commodity *a, const gnc_commodity *b)
-     * }
-     */
-    public static MethodHandle gnc_commodity_compare$handle() {
-        return gnc_commodity_compare.HANDLE;
-    }
-
-    /**
-     * Address for:
-     * {@snippet lang=c :
-     * int gnc_commodity_compare(const gnc_commodity *a, const gnc_commodity *b)
-     * }
-     */
-    public static MemorySegment gnc_commodity_compare$address() {
-        return gnc_commodity_compare.ADDR;
-    }
-
-    /**
-     * {@snippet lang=c :
-     * int gnc_commodity_compare(const gnc_commodity *a, const gnc_commodity *b)
-     * }
-     */
-    public static int gnc_commodity_compare(MemorySegment a, MemorySegment b) {
-        var mh$ = gnc_commodity_compare.HANDLE;
-        try {
-            if (TRACE_DOWNCALLS) {
-                traceDowncall("gnc_commodity_compare", a, b);
-            }
-            return (int)mh$.invokeExact(a, b);
-        } catch (Error | RuntimeException ex) {
-           throw ex;
-        } catch (Throwable ex$) {
-           throw new AssertionError("should not reach here", ex$);
-        }
-    }
-
-    private static class gnc_commodity_compare_void {
-        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
-            GNUCashBinding.C_INT,
-            GNUCashBinding.C_POINTER,
-            GNUCashBinding.C_POINTER
-        );
-
-        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("gnc_commodity_compare_void");
-
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
-    }
-
-    /**
-     * Function descriptor for:
-     * {@snippet lang=c :
-     * int gnc_commodity_compare_void(const void *a, const void *b)
-     * }
-     */
-    public static FunctionDescriptor gnc_commodity_compare_void$descriptor() {
-        return gnc_commodity_compare_void.DESC;
-    }
-
-    /**
-     * Downcall method handle for:
-     * {@snippet lang=c :
-     * int gnc_commodity_compare_void(const void *a, const void *b)
-     * }
-     */
-    public static MethodHandle gnc_commodity_compare_void$handle() {
-        return gnc_commodity_compare_void.HANDLE;
-    }
-
-    /**
-     * Address for:
-     * {@snippet lang=c :
-     * int gnc_commodity_compare_void(const void *a, const void *b)
-     * }
-     */
-    public static MemorySegment gnc_commodity_compare_void$address() {
-        return gnc_commodity_compare_void.ADDR;
-    }
-
-    /**
-     * {@snippet lang=c :
-     * int gnc_commodity_compare_void(const void *a, const void *b)
-     * }
-     */
-    public static int gnc_commodity_compare_void(MemorySegment a, MemorySegment b) {
-        var mh$ = gnc_commodity_compare_void.HANDLE;
-        try {
-            if (TRACE_DOWNCALLS) {
-                traceDowncall("gnc_commodity_compare_void", a, b);
-            }
-            return (int)mh$.invokeExact(a, b);
-        } catch (Error | RuntimeException ex) {
-           throw ex;
-        } catch (Throwable ex$) {
-           throw new AssertionError("should not reach here", ex$);
-        }
-    }
-
-    private static class gnc_commodity_namespace_is_iso {
-        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
-            GNUCashBinding.C_INT,
-            GNUCashBinding.C_POINTER
-        );
-
-        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("gnc_commodity_namespace_is_iso");
-
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
-    }
-
-    /**
-     * Function descriptor for:
-     * {@snippet lang=c :
-     * gboolean gnc_commodity_namespace_is_iso(const char *commodity_namespace)
-     * }
-     */
-    public static FunctionDescriptor gnc_commodity_namespace_is_iso$descriptor() {
-        return gnc_commodity_namespace_is_iso.DESC;
-    }
-
-    /**
-     * Downcall method handle for:
-     * {@snippet lang=c :
-     * gboolean gnc_commodity_namespace_is_iso(const char *commodity_namespace)
-     * }
-     */
-    public static MethodHandle gnc_commodity_namespace_is_iso$handle() {
-        return gnc_commodity_namespace_is_iso.HANDLE;
-    }
-
-    /**
-     * Address for:
-     * {@snippet lang=c :
-     * gboolean gnc_commodity_namespace_is_iso(const char *commodity_namespace)
-     * }
-     */
-    public static MemorySegment gnc_commodity_namespace_is_iso$address() {
-        return gnc_commodity_namespace_is_iso.ADDR;
-    }
-
-    /**
-     * {@snippet lang=c :
-     * gboolean gnc_commodity_namespace_is_iso(const char *commodity_namespace)
-     * }
-     */
-    public static int gnc_commodity_namespace_is_iso(MemorySegment commodity_namespace) {
-        var mh$ = gnc_commodity_namespace_is_iso.HANDLE;
-        try {
-            if (TRACE_DOWNCALLS) {
-                traceDowncall("gnc_commodity_namespace_is_iso", commodity_namespace);
-            }
-            return (int)mh$.invokeExact(commodity_namespace);
-        } catch (Error | RuntimeException ex) {
-           throw ex;
-        } catch (Throwable ex$) {
-           throw new AssertionError("should not reach here", ex$);
-        }
-    }
-
-    private static class gnc_commodity_is_iso {
-        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
-            GNUCashBinding.C_INT,
-            GNUCashBinding.C_POINTER
-        );
-
-        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("gnc_commodity_is_iso");
-
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
-    }
-
-    /**
-     * Function descriptor for:
-     * {@snippet lang=c :
-     * gboolean gnc_commodity_is_iso(const gnc_commodity *cm)
-     * }
-     */
-    public static FunctionDescriptor gnc_commodity_is_iso$descriptor() {
-        return gnc_commodity_is_iso.DESC;
-    }
-
-    /**
-     * Downcall method handle for:
-     * {@snippet lang=c :
-     * gboolean gnc_commodity_is_iso(const gnc_commodity *cm)
-     * }
-     */
-    public static MethodHandle gnc_commodity_is_iso$handle() {
-        return gnc_commodity_is_iso.HANDLE;
-    }
-
-    /**
-     * Address for:
-     * {@snippet lang=c :
-     * gboolean gnc_commodity_is_iso(const gnc_commodity *cm)
-     * }
-     */
-    public static MemorySegment gnc_commodity_is_iso$address() {
-        return gnc_commodity_is_iso.ADDR;
-    }
-
-    /**
-     * {@snippet lang=c :
-     * gboolean gnc_commodity_is_iso(const gnc_commodity *cm)
-     * }
-     */
-    public static int gnc_commodity_is_iso(MemorySegment cm) {
-        var mh$ = gnc_commodity_is_iso.HANDLE;
-        try {
-            if (TRACE_DOWNCALLS) {
-                traceDowncall("gnc_commodity_is_iso", cm);
-            }
-            return (int)mh$.invokeExact(cm);
-        } catch (Error | RuntimeException ex) {
-           throw ex;
-        } catch (Throwable ex$) {
-           throw new AssertionError("should not reach here", ex$);
-        }
-    }
-
-    private static class gnc_commodity_is_currency {
-        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
-            GNUCashBinding.C_INT,
-            GNUCashBinding.C_POINTER
-        );
-
-        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("gnc_commodity_is_currency");
-
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
-    }
-
-    /**
-     * Function descriptor for:
-     * {@snippet lang=c :
-     * gboolean gnc_commodity_is_currency(const gnc_commodity *cm)
-     * }
-     */
-    public static FunctionDescriptor gnc_commodity_is_currency$descriptor() {
-        return gnc_commodity_is_currency.DESC;
-    }
-
-    /**
-     * Downcall method handle for:
-     * {@snippet lang=c :
-     * gboolean gnc_commodity_is_currency(const gnc_commodity *cm)
-     * }
-     */
-    public static MethodHandle gnc_commodity_is_currency$handle() {
-        return gnc_commodity_is_currency.HANDLE;
-    }
-
-    /**
-     * Address for:
-     * {@snippet lang=c :
-     * gboolean gnc_commodity_is_currency(const gnc_commodity *cm)
-     * }
-     */
-    public static MemorySegment gnc_commodity_is_currency$address() {
-        return gnc_commodity_is_currency.ADDR;
-    }
-
-    /**
-     * {@snippet lang=c :
-     * gboolean gnc_commodity_is_currency(const gnc_commodity *cm)
-     * }
-     */
-    public static int gnc_commodity_is_currency(MemorySegment cm) {
-        var mh$ = gnc_commodity_is_currency.HANDLE;
-        try {
-            if (TRACE_DOWNCALLS) {
-                traceDowncall("gnc_commodity_is_currency", cm);
-            }
-            return (int)mh$.invokeExact(cm);
-        } catch (Error | RuntimeException ex) {
-           throw ex;
-        } catch (Throwable ex$) {
-           throw new AssertionError("should not reach here", ex$);
-        }
-    }
-
-    private static class gnc_commodity_table_get_table {
-        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
-            GNUCashBinding.C_POINTER,
-            GNUCashBinding.C_POINTER
-        );
-
-        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("gnc_commodity_table_get_table");
-
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
-    }
-
-    /**
-     * Function descriptor for:
-     * {@snippet lang=c :
-     * gnc_commodity_table *gnc_commodity_table_get_table(QofBook *book)
-     * }
-     */
-    public static FunctionDescriptor gnc_commodity_table_get_table$descriptor() {
-        return gnc_commodity_table_get_table.DESC;
-    }
-
-    /**
-     * Downcall method handle for:
-     * {@snippet lang=c :
-     * gnc_commodity_table *gnc_commodity_table_get_table(QofBook *book)
-     * }
-     */
-    public static MethodHandle gnc_commodity_table_get_table$handle() {
-        return gnc_commodity_table_get_table.HANDLE;
-    }
-
-    /**
-     * Address for:
-     * {@snippet lang=c :
-     * gnc_commodity_table *gnc_commodity_table_get_table(QofBook *book)
-     * }
-     */
-    public static MemorySegment gnc_commodity_table_get_table$address() {
-        return gnc_commodity_table_get_table.ADDR;
-    }
-
-    /**
-     * {@snippet lang=c :
-     * gnc_commodity_table *gnc_commodity_table_get_table(QofBook *book)
-     * }
-     */
-    public static MemorySegment gnc_commodity_table_get_table(MemorySegment book) {
-        var mh$ = gnc_commodity_table_get_table.HANDLE;
-        try {
-            if (TRACE_DOWNCALLS) {
-                traceDowncall("gnc_commodity_table_get_table", book);
-            }
-            return (MemorySegment)mh$.invokeExact(book);
-        } catch (Error | RuntimeException ex) {
-           throw ex;
-        } catch (Throwable ex$) {
-           throw new AssertionError("should not reach here", ex$);
-        }
-    }
-
-    private static class gnc_commodity_table_lookup {
-        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
-            GNUCashBinding.C_POINTER,
-            GNUCashBinding.C_POINTER,
-            GNUCashBinding.C_POINTER,
-            GNUCashBinding.C_POINTER
-        );
-
-        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("gnc_commodity_table_lookup");
-
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
-    }
-
-    /**
-     * Function descriptor for:
-     * {@snippet lang=c :
-     * gnc_commodity *gnc_commodity_table_lookup(const gnc_commodity_table *table, const char *commodity_namespace, const char *mnemonic)
-     * }
-     */
-    public static FunctionDescriptor gnc_commodity_table_lookup$descriptor() {
-        return gnc_commodity_table_lookup.DESC;
-    }
-
-    /**
-     * Downcall method handle for:
-     * {@snippet lang=c :
-     * gnc_commodity *gnc_commodity_table_lookup(const gnc_commodity_table *table, const char *commodity_namespace, const char *mnemonic)
-     * }
-     */
-    public static MethodHandle gnc_commodity_table_lookup$handle() {
-        return gnc_commodity_table_lookup.HANDLE;
-    }
-
-    /**
-     * Address for:
-     * {@snippet lang=c :
-     * gnc_commodity *gnc_commodity_table_lookup(const gnc_commodity_table *table, const char *commodity_namespace, const char *mnemonic)
-     * }
-     */
-    public static MemorySegment gnc_commodity_table_lookup$address() {
-        return gnc_commodity_table_lookup.ADDR;
-    }
-
-    /**
-     * {@snippet lang=c :
-     * gnc_commodity *gnc_commodity_table_lookup(const gnc_commodity_table *table, const char *commodity_namespace, const char *mnemonic)
-     * }
-     */
-    public static MemorySegment gnc_commodity_table_lookup(MemorySegment table, MemorySegment commodity_namespace, MemorySegment mnemonic) {
-        var mh$ = gnc_commodity_table_lookup.HANDLE;
-        try {
-            if (TRACE_DOWNCALLS) {
-                traceDowncall("gnc_commodity_table_lookup", table, commodity_namespace, mnemonic);
-            }
-            return (MemorySegment)mh$.invokeExact(table, commodity_namespace, mnemonic);
-        } catch (Error | RuntimeException ex) {
-           throw ex;
-        } catch (Throwable ex$) {
-           throw new AssertionError("should not reach here", ex$);
-        }
-    }
-
-    private static class gnc_commodity_table_lookup_unique {
-        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
-            GNUCashBinding.C_POINTER,
-            GNUCashBinding.C_POINTER,
-            GNUCashBinding.C_POINTER
-        );
-
-        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("gnc_commodity_table_lookup_unique");
-
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
-    }
-
-    /**
-     * Function descriptor for:
-     * {@snippet lang=c :
-     * gnc_commodity *gnc_commodity_table_lookup_unique(const gnc_commodity_table *table, const char *unique_name)
-     * }
-     */
-    public static FunctionDescriptor gnc_commodity_table_lookup_unique$descriptor() {
-        return gnc_commodity_table_lookup_unique.DESC;
-    }
-
-    /**
-     * Downcall method handle for:
-     * {@snippet lang=c :
-     * gnc_commodity *gnc_commodity_table_lookup_unique(const gnc_commodity_table *table, const char *unique_name)
-     * }
-     */
-    public static MethodHandle gnc_commodity_table_lookup_unique$handle() {
-        return gnc_commodity_table_lookup_unique.HANDLE;
-    }
-
-    /**
-     * Address for:
-     * {@snippet lang=c :
-     * gnc_commodity *gnc_commodity_table_lookup_unique(const gnc_commodity_table *table, const char *unique_name)
-     * }
-     */
-    public static MemorySegment gnc_commodity_table_lookup_unique$address() {
-        return gnc_commodity_table_lookup_unique.ADDR;
-    }
-
-    /**
-     * {@snippet lang=c :
-     * gnc_commodity *gnc_commodity_table_lookup_unique(const gnc_commodity_table *table, const char *unique_name)
-     * }
-     */
-    public static MemorySegment gnc_commodity_table_lookup_unique(MemorySegment table, MemorySegment unique_name) {
-        var mh$ = gnc_commodity_table_lookup_unique.HANDLE;
-        try {
-            if (TRACE_DOWNCALLS) {
-                traceDowncall("gnc_commodity_table_lookup_unique", table, unique_name);
-            }
-            return (MemorySegment)mh$.invokeExact(table, unique_name);
-        } catch (Error | RuntimeException ex) {
-           throw ex;
-        } catch (Throwable ex$) {
-           throw new AssertionError("should not reach here", ex$);
-        }
-    }
-
-    private static class gnc_commodity_table_find_full {
-        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
-            GNUCashBinding.C_POINTER,
-            GNUCashBinding.C_POINTER,
-            GNUCashBinding.C_POINTER,
-            GNUCashBinding.C_POINTER
-        );
-
-        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("gnc_commodity_table_find_full");
-
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
-    }
-
-    /**
-     * Function descriptor for:
-     * {@snippet lang=c :
-     * gnc_commodity *gnc_commodity_table_find_full(const gnc_commodity_table *t, const char *commodity_namespace, const char *fullname)
-     * }
-     */
-    public static FunctionDescriptor gnc_commodity_table_find_full$descriptor() {
-        return gnc_commodity_table_find_full.DESC;
-    }
-
-    /**
-     * Downcall method handle for:
-     * {@snippet lang=c :
-     * gnc_commodity *gnc_commodity_table_find_full(const gnc_commodity_table *t, const char *commodity_namespace, const char *fullname)
-     * }
-     */
-    public static MethodHandle gnc_commodity_table_find_full$handle() {
-        return gnc_commodity_table_find_full.HANDLE;
-    }
-
-    /**
-     * Address for:
-     * {@snippet lang=c :
-     * gnc_commodity *gnc_commodity_table_find_full(const gnc_commodity_table *t, const char *commodity_namespace, const char *fullname)
-     * }
-     */
-    public static MemorySegment gnc_commodity_table_find_full$address() {
-        return gnc_commodity_table_find_full.ADDR;
-    }
-
-    /**
-     * {@snippet lang=c :
-     * gnc_commodity *gnc_commodity_table_find_full(const gnc_commodity_table *t, const char *commodity_namespace, const char *fullname)
-     * }
-     */
-    public static MemorySegment gnc_commodity_table_find_full(MemorySegment t, MemorySegment commodity_namespace, MemorySegment fullname) {
-        var mh$ = gnc_commodity_table_find_full.HANDLE;
-        try {
-            if (TRACE_DOWNCALLS) {
-                traceDowncall("gnc_commodity_table_find_full", t, commodity_namespace, fullname);
-            }
-            return (MemorySegment)mh$.invokeExact(t, commodity_namespace, fullname);
-        } catch (Error | RuntimeException ex) {
-           throw ex;
-        } catch (Throwable ex$) {
-           throw new AssertionError("should not reach here", ex$);
-        }
-    }
-
-    private static class gnc_commodity_find_commodity_by_guid {
-        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
-            GNUCashBinding.C_POINTER,
-            GNUCashBinding.C_POINTER,
-            GNUCashBinding.C_POINTER
-        );
-
-        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("gnc_commodity_find_commodity_by_guid");
-
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
-    }
-
-    /**
-     * Function descriptor for:
-     * {@snippet lang=c :
-     * gnc_commodity *gnc_commodity_find_commodity_by_guid(const GncGUID *guid, QofBook *book)
-     * }
-     */
-    public static FunctionDescriptor gnc_commodity_find_commodity_by_guid$descriptor() {
-        return gnc_commodity_find_commodity_by_guid.DESC;
-    }
-
-    /**
-     * Downcall method handle for:
-     * {@snippet lang=c :
-     * gnc_commodity *gnc_commodity_find_commodity_by_guid(const GncGUID *guid, QofBook *book)
-     * }
-     */
-    public static MethodHandle gnc_commodity_find_commodity_by_guid$handle() {
-        return gnc_commodity_find_commodity_by_guid.HANDLE;
-    }
-
-    /**
-     * Address for:
-     * {@snippet lang=c :
-     * gnc_commodity *gnc_commodity_find_commodity_by_guid(const GncGUID *guid, QofBook *book)
-     * }
-     */
-    public static MemorySegment gnc_commodity_find_commodity_by_guid$address() {
-        return gnc_commodity_find_commodity_by_guid.ADDR;
-    }
-
-    /**
-     * {@snippet lang=c :
-     * gnc_commodity *gnc_commodity_find_commodity_by_guid(const GncGUID *guid, QofBook *book)
-     * }
-     */
-    public static MemorySegment gnc_commodity_find_commodity_by_guid(MemorySegment guid, MemorySegment book) {
-        var mh$ = gnc_commodity_find_commodity_by_guid.HANDLE;
-        try {
-            if (TRACE_DOWNCALLS) {
-                traceDowncall("gnc_commodity_find_commodity_by_guid", guid, book);
-            }
-            return (MemorySegment)mh$.invokeExact(guid, book);
-        } catch (Error | RuntimeException ex) {
-           throw ex;
-        } catch (Throwable ex$) {
-           throw new AssertionError("should not reach here", ex$);
-        }
-    }
-
-    private static class gnc_commodity_table_insert {
-        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
-            GNUCashBinding.C_POINTER,
-            GNUCashBinding.C_POINTER,
-            GNUCashBinding.C_POINTER
-        );
-
-        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("gnc_commodity_table_insert");
-
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
-    }
-
-    /**
-     * Function descriptor for:
-     * {@snippet lang=c :
-     * gnc_commodity *gnc_commodity_table_insert(gnc_commodity_table *table, gnc_commodity *comm)
-     * }
-     */
-    public static FunctionDescriptor gnc_commodity_table_insert$descriptor() {
-        return gnc_commodity_table_insert.DESC;
-    }
-
-    /**
-     * Downcall method handle for:
-     * {@snippet lang=c :
-     * gnc_commodity *gnc_commodity_table_insert(gnc_commodity_table *table, gnc_commodity *comm)
-     * }
-     */
-    public static MethodHandle gnc_commodity_table_insert$handle() {
-        return gnc_commodity_table_insert.HANDLE;
-    }
-
-    /**
-     * Address for:
-     * {@snippet lang=c :
-     * gnc_commodity *gnc_commodity_table_insert(gnc_commodity_table *table, gnc_commodity *comm)
-     * }
-     */
-    public static MemorySegment gnc_commodity_table_insert$address() {
-        return gnc_commodity_table_insert.ADDR;
-    }
-
-    /**
-     * {@snippet lang=c :
-     * gnc_commodity *gnc_commodity_table_insert(gnc_commodity_table *table, gnc_commodity *comm)
-     * }
-     */
-    public static MemorySegment gnc_commodity_table_insert(MemorySegment table, MemorySegment comm) {
-        var mh$ = gnc_commodity_table_insert.HANDLE;
-        try {
-            if (TRACE_DOWNCALLS) {
-                traceDowncall("gnc_commodity_table_insert", table, comm);
-            }
-            return (MemorySegment)mh$.invokeExact(table, comm);
-        } catch (Error | RuntimeException ex) {
-           throw ex;
-        } catch (Throwable ex$) {
-           throw new AssertionError("should not reach here", ex$);
-        }
-    }
-
-    private static class gnc_commodity_table_remove {
-        public static final FunctionDescriptor DESC = FunctionDescriptor.ofVoid(
-            GNUCashBinding.C_POINTER,
-            GNUCashBinding.C_POINTER
-        );
-
-        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("gnc_commodity_table_remove");
-
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
-    }
-
-    /**
-     * Function descriptor for:
-     * {@snippet lang=c :
-     * void gnc_commodity_table_remove(gnc_commodity_table *table, gnc_commodity *comm)
-     * }
-     */
-    public static FunctionDescriptor gnc_commodity_table_remove$descriptor() {
-        return gnc_commodity_table_remove.DESC;
-    }
-
-    /**
-     * Downcall method handle for:
-     * {@snippet lang=c :
-     * void gnc_commodity_table_remove(gnc_commodity_table *table, gnc_commodity *comm)
-     * }
-     */
-    public static MethodHandle gnc_commodity_table_remove$handle() {
-        return gnc_commodity_table_remove.HANDLE;
-    }
-
-    /**
-     * Address for:
-     * {@snippet lang=c :
-     * void gnc_commodity_table_remove(gnc_commodity_table *table, gnc_commodity *comm)
-     * }
-     */
-    public static MemorySegment gnc_commodity_table_remove$address() {
-        return gnc_commodity_table_remove.ADDR;
-    }
-
-    /**
-     * {@snippet lang=c :
-     * void gnc_commodity_table_remove(gnc_commodity_table *table, gnc_commodity *comm)
-     * }
-     */
-    public static void gnc_commodity_table_remove(MemorySegment table, MemorySegment comm) {
-        var mh$ = gnc_commodity_table_remove.HANDLE;
-        try {
-            if (TRACE_DOWNCALLS) {
-                traceDowncall("gnc_commodity_table_remove", table, comm);
-            }
-            mh$.invokeExact(table, comm);
-        } catch (Error | RuntimeException ex) {
-           throw ex;
-        } catch (Throwable ex$) {
-           throw new AssertionError("should not reach here", ex$);
-        }
-    }
-
-    private static class gnc_commodity_table_add_default_data {
-        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
-            GNUCashBinding.C_INT,
-            GNUCashBinding.C_POINTER,
-            GNUCashBinding.C_POINTER
-        );
-
-        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("gnc_commodity_table_add_default_data");
-
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
-    }
-
-    /**
-     * Function descriptor for:
-     * {@snippet lang=c :
-     * gboolean gnc_commodity_table_add_default_data(gnc_commodity_table *table, QofBook *book)
-     * }
-     */
-    public static FunctionDescriptor gnc_commodity_table_add_default_data$descriptor() {
-        return gnc_commodity_table_add_default_data.DESC;
-    }
-
-    /**
-     * Downcall method handle for:
-     * {@snippet lang=c :
-     * gboolean gnc_commodity_table_add_default_data(gnc_commodity_table *table, QofBook *book)
-     * }
-     */
-    public static MethodHandle gnc_commodity_table_add_default_data$handle() {
-        return gnc_commodity_table_add_default_data.HANDLE;
-    }
-
-    /**
-     * Address for:
-     * {@snippet lang=c :
-     * gboolean gnc_commodity_table_add_default_data(gnc_commodity_table *table, QofBook *book)
-     * }
-     */
-    public static MemorySegment gnc_commodity_table_add_default_data$address() {
-        return gnc_commodity_table_add_default_data.ADDR;
-    }
-
-    /**
-     * {@snippet lang=c :
-     * gboolean gnc_commodity_table_add_default_data(gnc_commodity_table *table, QofBook *book)
-     * }
-     */
-    public static int gnc_commodity_table_add_default_data(MemorySegment table, MemorySegment book) {
-        var mh$ = gnc_commodity_table_add_default_data.HANDLE;
-        try {
-            if (TRACE_DOWNCALLS) {
-                traceDowncall("gnc_commodity_table_add_default_data", table, book);
-            }
-            return (int)mh$.invokeExact(table, book);
-        } catch (Error | RuntimeException ex) {
-           throw ex;
-        } catch (Throwable ex$) {
-           throw new AssertionError("should not reach here", ex$);
-        }
-    }
-
-    private static class gnc_commodity_namespace_get_name {
-        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
-            GNUCashBinding.C_POINTER,
-            GNUCashBinding.C_POINTER
-        );
-
-        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("gnc_commodity_namespace_get_name");
-
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
-    }
-
-    /**
-     * Function descriptor for:
-     * {@snippet lang=c :
-     * const char *gnc_commodity_namespace_get_name(const gnc_commodity_namespace *ns)
-     * }
-     */
-    public static FunctionDescriptor gnc_commodity_namespace_get_name$descriptor() {
-        return gnc_commodity_namespace_get_name.DESC;
-    }
-
-    /**
-     * Downcall method handle for:
-     * {@snippet lang=c :
-     * const char *gnc_commodity_namespace_get_name(const gnc_commodity_namespace *ns)
-     * }
-     */
-    public static MethodHandle gnc_commodity_namespace_get_name$handle() {
-        return gnc_commodity_namespace_get_name.HANDLE;
-    }
-
-    /**
-     * Address for:
-     * {@snippet lang=c :
-     * const char *gnc_commodity_namespace_get_name(const gnc_commodity_namespace *ns)
-     * }
-     */
-    public static MemorySegment gnc_commodity_namespace_get_name$address() {
-        return gnc_commodity_namespace_get_name.ADDR;
-    }
-
-    /**
-     * {@snippet lang=c :
-     * const char *gnc_commodity_namespace_get_name(const gnc_commodity_namespace *ns)
-     * }
-     */
-    public static MemorySegment gnc_commodity_namespace_get_name(MemorySegment ns) {
-        var mh$ = gnc_commodity_namespace_get_name.HANDLE;
-        try {
-            if (TRACE_DOWNCALLS) {
-                traceDowncall("gnc_commodity_namespace_get_name", ns);
-            }
-            return (MemorySegment)mh$.invokeExact(ns);
-        } catch (Error | RuntimeException ex) {
-           throw ex;
-        } catch (Throwable ex$) {
-           throw new AssertionError("should not reach here", ex$);
-        }
-    }
-
-    private static class gnc_commodity_namespace_get_gui_name {
-        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
-            GNUCashBinding.C_POINTER,
-            GNUCashBinding.C_POINTER
-        );
-
-        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("gnc_commodity_namespace_get_gui_name");
-
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
-    }
-
-    /**
-     * Function descriptor for:
-     * {@snippet lang=c :
-     * const char *gnc_commodity_namespace_get_gui_name(const gnc_commodity_namespace *ns)
-     * }
-     */
-    public static FunctionDescriptor gnc_commodity_namespace_get_gui_name$descriptor() {
-        return gnc_commodity_namespace_get_gui_name.DESC;
-    }
-
-    /**
-     * Downcall method handle for:
-     * {@snippet lang=c :
-     * const char *gnc_commodity_namespace_get_gui_name(const gnc_commodity_namespace *ns)
-     * }
-     */
-    public static MethodHandle gnc_commodity_namespace_get_gui_name$handle() {
-        return gnc_commodity_namespace_get_gui_name.HANDLE;
-    }
-
-    /**
-     * Address for:
-     * {@snippet lang=c :
-     * const char *gnc_commodity_namespace_get_gui_name(const gnc_commodity_namespace *ns)
-     * }
-     */
-    public static MemorySegment gnc_commodity_namespace_get_gui_name$address() {
-        return gnc_commodity_namespace_get_gui_name.ADDR;
-    }
-
-    /**
-     * {@snippet lang=c :
-     * const char *gnc_commodity_namespace_get_gui_name(const gnc_commodity_namespace *ns)
-     * }
-     */
-    public static MemorySegment gnc_commodity_namespace_get_gui_name(MemorySegment ns) {
-        var mh$ = gnc_commodity_namespace_get_gui_name.HANDLE;
-        try {
-            if (TRACE_DOWNCALLS) {
-                traceDowncall("gnc_commodity_namespace_get_gui_name", ns);
-            }
-            return (MemorySegment)mh$.invokeExact(ns);
-        } catch (Error | RuntimeException ex) {
-           throw ex;
-        } catch (Throwable ex$) {
-           throw new AssertionError("should not reach here", ex$);
-        }
-    }
-
-    private static class gnc_commodity_namespace_get_commodity_list {
-        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
-            GNUCashBinding.C_POINTER,
-            GNUCashBinding.C_POINTER
-        );
-
-        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("gnc_commodity_namespace_get_commodity_list");
-
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
-    }
-
-    /**
-     * Function descriptor for:
-     * {@snippet lang=c :
-     * GList *gnc_commodity_namespace_get_commodity_list(const gnc_commodity_namespace *ns)
-     * }
-     */
-    public static FunctionDescriptor gnc_commodity_namespace_get_commodity_list$descriptor() {
-        return gnc_commodity_namespace_get_commodity_list.DESC;
-    }
-
-    /**
-     * Downcall method handle for:
-     * {@snippet lang=c :
-     * GList *gnc_commodity_namespace_get_commodity_list(const gnc_commodity_namespace *ns)
-     * }
-     */
-    public static MethodHandle gnc_commodity_namespace_get_commodity_list$handle() {
-        return gnc_commodity_namespace_get_commodity_list.HANDLE;
-    }
-
-    /**
-     * Address for:
-     * {@snippet lang=c :
-     * GList *gnc_commodity_namespace_get_commodity_list(const gnc_commodity_namespace *ns)
-     * }
-     */
-    public static MemorySegment gnc_commodity_namespace_get_commodity_list$address() {
-        return gnc_commodity_namespace_get_commodity_list.ADDR;
-    }
-
-    /**
-     * {@snippet lang=c :
-     * GList *gnc_commodity_namespace_get_commodity_list(const gnc_commodity_namespace *ns)
-     * }
-     */
-    public static MemorySegment gnc_commodity_namespace_get_commodity_list(MemorySegment ns) {
-        var mh$ = gnc_commodity_namespace_get_commodity_list.HANDLE;
-        try {
-            if (TRACE_DOWNCALLS) {
-                traceDowncall("gnc_commodity_namespace_get_commodity_list", ns);
-            }
-            return (MemorySegment)mh$.invokeExact(ns);
-        } catch (Error | RuntimeException ex) {
-           throw ex;
-        } catch (Throwable ex$) {
-           throw new AssertionError("should not reach here", ex$);
-        }
-    }
-
-    private static class gnc_commodity_table_has_namespace {
-        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
-            GNUCashBinding.C_INT,
-            GNUCashBinding.C_POINTER,
-            GNUCashBinding.C_POINTER
-        );
-
-        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("gnc_commodity_table_has_namespace");
-
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
-    }
-
-    /**
-     * Function descriptor for:
-     * {@snippet lang=c :
-     * int gnc_commodity_table_has_namespace(const gnc_commodity_table *table, const char *commodity_namespace)
-     * }
-     */
-    public static FunctionDescriptor gnc_commodity_table_has_namespace$descriptor() {
-        return gnc_commodity_table_has_namespace.DESC;
-    }
-
-    /**
-     * Downcall method handle for:
-     * {@snippet lang=c :
-     * int gnc_commodity_table_has_namespace(const gnc_commodity_table *table, const char *commodity_namespace)
-     * }
-     */
-    public static MethodHandle gnc_commodity_table_has_namespace$handle() {
-        return gnc_commodity_table_has_namespace.HANDLE;
-    }
-
-    /**
-     * Address for:
-     * {@snippet lang=c :
-     * int gnc_commodity_table_has_namespace(const gnc_commodity_table *table, const char *commodity_namespace)
-     * }
-     */
-    public static MemorySegment gnc_commodity_table_has_namespace$address() {
-        return gnc_commodity_table_has_namespace.ADDR;
-    }
-
-    /**
-     * {@snippet lang=c :
-     * int gnc_commodity_table_has_namespace(const gnc_commodity_table *table, const char *commodity_namespace)
-     * }
-     */
-    public static int gnc_commodity_table_has_namespace(MemorySegment table, MemorySegment commodity_namespace) {
-        var mh$ = gnc_commodity_table_has_namespace.HANDLE;
-        try {
-            if (TRACE_DOWNCALLS) {
-                traceDowncall("gnc_commodity_table_has_namespace", table, commodity_namespace);
-            }
-            return (int)mh$.invokeExact(table, commodity_namespace);
-        } catch (Error | RuntimeException ex) {
-           throw ex;
-        } catch (Throwable ex$) {
-           throw new AssertionError("should not reach here", ex$);
-        }
-    }
-
-    private static class gnc_commodity_table_get_namespaces {
-        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
-            GNUCashBinding.C_POINTER,
-            GNUCashBinding.C_POINTER
-        );
-
-        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("gnc_commodity_table_get_namespaces");
-
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
-    }
-
-    /**
-     * Function descriptor for:
-     * {@snippet lang=c :
-     * GList *gnc_commodity_table_get_namespaces(const gnc_commodity_table *t)
-     * }
-     */
-    public static FunctionDescriptor gnc_commodity_table_get_namespaces$descriptor() {
-        return gnc_commodity_table_get_namespaces.DESC;
-    }
-
-    /**
-     * Downcall method handle for:
-     * {@snippet lang=c :
-     * GList *gnc_commodity_table_get_namespaces(const gnc_commodity_table *t)
-     * }
-     */
-    public static MethodHandle gnc_commodity_table_get_namespaces$handle() {
-        return gnc_commodity_table_get_namespaces.HANDLE;
-    }
-
-    /**
-     * Address for:
-     * {@snippet lang=c :
-     * GList *gnc_commodity_table_get_namespaces(const gnc_commodity_table *t)
-     * }
-     */
-    public static MemorySegment gnc_commodity_table_get_namespaces$address() {
-        return gnc_commodity_table_get_namespaces.ADDR;
-    }
-
-    /**
-     * {@snippet lang=c :
-     * GList *gnc_commodity_table_get_namespaces(const gnc_commodity_table *t)
-     * }
-     */
-    public static MemorySegment gnc_commodity_table_get_namespaces(MemorySegment t) {
-        var mh$ = gnc_commodity_table_get_namespaces.HANDLE;
-        try {
-            if (TRACE_DOWNCALLS) {
-                traceDowncall("gnc_commodity_table_get_namespaces", t);
-            }
-            return (MemorySegment)mh$.invokeExact(t);
-        } catch (Error | RuntimeException ex) {
-           throw ex;
-        } catch (Throwable ex$) {
-           throw new AssertionError("should not reach here", ex$);
-        }
-    }
-
-    private static class gnc_commodity_table_get_namespaces_list {
-        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
-            GNUCashBinding.C_POINTER,
-            GNUCashBinding.C_POINTER
-        );
-
-        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("gnc_commodity_table_get_namespaces_list");
-
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
-    }
-
-    /**
-     * Function descriptor for:
-     * {@snippet lang=c :
-     * GList *gnc_commodity_table_get_namespaces_list(const gnc_commodity_table *t)
-     * }
-     */
-    public static FunctionDescriptor gnc_commodity_table_get_namespaces_list$descriptor() {
-        return gnc_commodity_table_get_namespaces_list.DESC;
-    }
-
-    /**
-     * Downcall method handle for:
-     * {@snippet lang=c :
-     * GList *gnc_commodity_table_get_namespaces_list(const gnc_commodity_table *t)
-     * }
-     */
-    public static MethodHandle gnc_commodity_table_get_namespaces_list$handle() {
-        return gnc_commodity_table_get_namespaces_list.HANDLE;
-    }
-
-    /**
-     * Address for:
-     * {@snippet lang=c :
-     * GList *gnc_commodity_table_get_namespaces_list(const gnc_commodity_table *t)
-     * }
-     */
-    public static MemorySegment gnc_commodity_table_get_namespaces_list$address() {
-        return gnc_commodity_table_get_namespaces_list.ADDR;
-    }
-
-    /**
-     * {@snippet lang=c :
-     * GList *gnc_commodity_table_get_namespaces_list(const gnc_commodity_table *t)
-     * }
-     */
-    public static MemorySegment gnc_commodity_table_get_namespaces_list(MemorySegment t) {
-        var mh$ = gnc_commodity_table_get_namespaces_list.HANDLE;
-        try {
-            if (TRACE_DOWNCALLS) {
-                traceDowncall("gnc_commodity_table_get_namespaces_list", t);
-            }
-            return (MemorySegment)mh$.invokeExact(t);
-        } catch (Error | RuntimeException ex) {
-           throw ex;
-        } catch (Throwable ex$) {
-           throw new AssertionError("should not reach here", ex$);
-        }
-    }
-
-    private static class gnc_commodity_table_add_namespace {
-        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
-            GNUCashBinding.C_POINTER,
-            GNUCashBinding.C_POINTER,
-            GNUCashBinding.C_POINTER,
-            GNUCashBinding.C_POINTER
-        );
-
-        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("gnc_commodity_table_add_namespace");
-
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
-    }
-
-    /**
-     * Function descriptor for:
-     * {@snippet lang=c :
-     * gnc_commodity_namespace *gnc_commodity_table_add_namespace(gnc_commodity_table *table, const char *commodity_namespace, QofBook *book)
-     * }
-     */
-    public static FunctionDescriptor gnc_commodity_table_add_namespace$descriptor() {
-        return gnc_commodity_table_add_namespace.DESC;
-    }
-
-    /**
-     * Downcall method handle for:
-     * {@snippet lang=c :
-     * gnc_commodity_namespace *gnc_commodity_table_add_namespace(gnc_commodity_table *table, const char *commodity_namespace, QofBook *book)
-     * }
-     */
-    public static MethodHandle gnc_commodity_table_add_namespace$handle() {
-        return gnc_commodity_table_add_namespace.HANDLE;
-    }
-
-    /**
-     * Address for:
-     * {@snippet lang=c :
-     * gnc_commodity_namespace *gnc_commodity_table_add_namespace(gnc_commodity_table *table, const char *commodity_namespace, QofBook *book)
-     * }
-     */
-    public static MemorySegment gnc_commodity_table_add_namespace$address() {
-        return gnc_commodity_table_add_namespace.ADDR;
-    }
-
-    /**
-     * {@snippet lang=c :
-     * gnc_commodity_namespace *gnc_commodity_table_add_namespace(gnc_commodity_table *table, const char *commodity_namespace, QofBook *book)
-     * }
-     */
-    public static MemorySegment gnc_commodity_table_add_namespace(MemorySegment table, MemorySegment commodity_namespace, MemorySegment book) {
-        var mh$ = gnc_commodity_table_add_namespace.HANDLE;
-        try {
-            if (TRACE_DOWNCALLS) {
-                traceDowncall("gnc_commodity_table_add_namespace", table, commodity_namespace, book);
-            }
-            return (MemorySegment)mh$.invokeExact(table, commodity_namespace, book);
-        } catch (Error | RuntimeException ex) {
-           throw ex;
-        } catch (Throwable ex$) {
-           throw new AssertionError("should not reach here", ex$);
-        }
-    }
-
-    private static class gnc_commodity_table_find_namespace {
-        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
-            GNUCashBinding.C_POINTER,
-            GNUCashBinding.C_POINTER,
-            GNUCashBinding.C_POINTER
-        );
-
-        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("gnc_commodity_table_find_namespace");
-
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
-    }
-
-    /**
-     * Function descriptor for:
-     * {@snippet lang=c :
-     * gnc_commodity_namespace *gnc_commodity_table_find_namespace(const gnc_commodity_table *table, const char *commodity_namespace)
-     * }
-     */
-    public static FunctionDescriptor gnc_commodity_table_find_namespace$descriptor() {
-        return gnc_commodity_table_find_namespace.DESC;
-    }
-
-    /**
-     * Downcall method handle for:
-     * {@snippet lang=c :
-     * gnc_commodity_namespace *gnc_commodity_table_find_namespace(const gnc_commodity_table *table, const char *commodity_namespace)
-     * }
-     */
-    public static MethodHandle gnc_commodity_table_find_namespace$handle() {
-        return gnc_commodity_table_find_namespace.HANDLE;
-    }
-
-    /**
-     * Address for:
-     * {@snippet lang=c :
-     * gnc_commodity_namespace *gnc_commodity_table_find_namespace(const gnc_commodity_table *table, const char *commodity_namespace)
-     * }
-     */
-    public static MemorySegment gnc_commodity_table_find_namespace$address() {
-        return gnc_commodity_table_find_namespace.ADDR;
-    }
-
-    /**
-     * {@snippet lang=c :
-     * gnc_commodity_namespace *gnc_commodity_table_find_namespace(const gnc_commodity_table *table, const char *commodity_namespace)
-     * }
-     */
-    public static MemorySegment gnc_commodity_table_find_namespace(MemorySegment table, MemorySegment commodity_namespace) {
-        var mh$ = gnc_commodity_table_find_namespace.HANDLE;
-        try {
-            if (TRACE_DOWNCALLS) {
-                traceDowncall("gnc_commodity_table_find_namespace", table, commodity_namespace);
-            }
-            return (MemorySegment)mh$.invokeExact(table, commodity_namespace);
-        } catch (Error | RuntimeException ex) {
-           throw ex;
-        } catch (Throwable ex$) {
-           throw new AssertionError("should not reach here", ex$);
-        }
-    }
-
-    private static class gnc_commodity_table_delete_namespace {
-        public static final FunctionDescriptor DESC = FunctionDescriptor.ofVoid(
-            GNUCashBinding.C_POINTER,
-            GNUCashBinding.C_POINTER
-        );
-
-        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("gnc_commodity_table_delete_namespace");
-
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
-    }
-
-    /**
-     * Function descriptor for:
-     * {@snippet lang=c :
-     * void gnc_commodity_table_delete_namespace(gnc_commodity_table *table, const char *commodity_namespace)
-     * }
-     */
-    public static FunctionDescriptor gnc_commodity_table_delete_namespace$descriptor() {
-        return gnc_commodity_table_delete_namespace.DESC;
-    }
-
-    /**
-     * Downcall method handle for:
-     * {@snippet lang=c :
-     * void gnc_commodity_table_delete_namespace(gnc_commodity_table *table, const char *commodity_namespace)
-     * }
-     */
-    public static MethodHandle gnc_commodity_table_delete_namespace$handle() {
-        return gnc_commodity_table_delete_namespace.HANDLE;
-    }
-
-    /**
-     * Address for:
-     * {@snippet lang=c :
-     * void gnc_commodity_table_delete_namespace(gnc_commodity_table *table, const char *commodity_namespace)
-     * }
-     */
-    public static MemorySegment gnc_commodity_table_delete_namespace$address() {
-        return gnc_commodity_table_delete_namespace.ADDR;
-    }
-
-    /**
-     * {@snippet lang=c :
-     * void gnc_commodity_table_delete_namespace(gnc_commodity_table *table, const char *commodity_namespace)
-     * }
-     */
-    public static void gnc_commodity_table_delete_namespace(MemorySegment table, MemorySegment commodity_namespace) {
-        var mh$ = gnc_commodity_table_delete_namespace.HANDLE;
-        try {
-            if (TRACE_DOWNCALLS) {
-                traceDowncall("gnc_commodity_table_delete_namespace", table, commodity_namespace);
-            }
-            mh$.invokeExact(table, commodity_namespace);
-        } catch (Error | RuntimeException ex) {
-           throw ex;
-        } catch (Throwable ex$) {
-           throw new AssertionError("should not reach here", ex$);
-        }
-    }
-
-    private static class gnc_commodity_table_get_size {
-        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
-            GNUCashBinding.C_INT,
-            GNUCashBinding.C_POINTER
-        );
-
-        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("gnc_commodity_table_get_size");
-
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
-    }
-
-    /**
-     * Function descriptor for:
-     * {@snippet lang=c :
-     * guint gnc_commodity_table_get_size(const gnc_commodity_table *tbl)
-     * }
-     */
-    public static FunctionDescriptor gnc_commodity_table_get_size$descriptor() {
-        return gnc_commodity_table_get_size.DESC;
-    }
-
-    /**
-     * Downcall method handle for:
-     * {@snippet lang=c :
-     * guint gnc_commodity_table_get_size(const gnc_commodity_table *tbl)
-     * }
-     */
-    public static MethodHandle gnc_commodity_table_get_size$handle() {
-        return gnc_commodity_table_get_size.HANDLE;
-    }
-
-    /**
-     * Address for:
-     * {@snippet lang=c :
-     * guint gnc_commodity_table_get_size(const gnc_commodity_table *tbl)
-     * }
-     */
-    public static MemorySegment gnc_commodity_table_get_size$address() {
-        return gnc_commodity_table_get_size.ADDR;
-    }
-
-    /**
-     * {@snippet lang=c :
-     * guint gnc_commodity_table_get_size(const gnc_commodity_table *tbl)
-     * }
-     */
-    public static int gnc_commodity_table_get_size(MemorySegment tbl) {
-        var mh$ = gnc_commodity_table_get_size.HANDLE;
-        try {
-            if (TRACE_DOWNCALLS) {
-                traceDowncall("gnc_commodity_table_get_size", tbl);
-            }
-            return (int)mh$.invokeExact(tbl);
-        } catch (Error | RuntimeException ex) {
-           throw ex;
-        } catch (Throwable ex$) {
-           throw new AssertionError("should not reach here", ex$);
-        }
-    }
-
-    private static class gnc_commodity_table_get_commodities {
-        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
-            GNUCashBinding.C_POINTER,
-            GNUCashBinding.C_POINTER,
-            GNUCashBinding.C_POINTER
-        );
-
-        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("gnc_commodity_table_get_commodities");
-
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
-    }
-
-    /**
-     * Function descriptor for:
-     * {@snippet lang=c :
-     * CommodityList *gnc_commodity_table_get_commodities(const gnc_commodity_table *table, const char *commodity_namespace)
-     * }
-     */
-    public static FunctionDescriptor gnc_commodity_table_get_commodities$descriptor() {
-        return gnc_commodity_table_get_commodities.DESC;
-    }
-
-    /**
-     * Downcall method handle for:
-     * {@snippet lang=c :
-     * CommodityList *gnc_commodity_table_get_commodities(const gnc_commodity_table *table, const char *commodity_namespace)
-     * }
-     */
-    public static MethodHandle gnc_commodity_table_get_commodities$handle() {
-        return gnc_commodity_table_get_commodities.HANDLE;
-    }
-
-    /**
-     * Address for:
-     * {@snippet lang=c :
-     * CommodityList *gnc_commodity_table_get_commodities(const gnc_commodity_table *table, const char *commodity_namespace)
-     * }
-     */
-    public static MemorySegment gnc_commodity_table_get_commodities$address() {
-        return gnc_commodity_table_get_commodities.ADDR;
-    }
-
-    /**
-     * {@snippet lang=c :
-     * CommodityList *gnc_commodity_table_get_commodities(const gnc_commodity_table *table, const char *commodity_namespace)
-     * }
-     */
-    public static MemorySegment gnc_commodity_table_get_commodities(MemorySegment table, MemorySegment commodity_namespace) {
-        var mh$ = gnc_commodity_table_get_commodities.HANDLE;
-        try {
-            if (TRACE_DOWNCALLS) {
-                traceDowncall("gnc_commodity_table_get_commodities", table, commodity_namespace);
-            }
-            return (MemorySegment)mh$.invokeExact(table, commodity_namespace);
         } catch (Error | RuntimeException ex) {
            throw ex;
         } catch (Throwable ex$) {

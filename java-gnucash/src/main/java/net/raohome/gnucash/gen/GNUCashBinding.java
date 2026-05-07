@@ -18,6 +18,2481 @@ public class GNUCashBinding extends GNUCashBinding_1 {
         // Should not be called directly
     }
 
+    private static class gnc_commodity_get_user_symbol {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            GNUCashBinding.C_POINTER,
+            GNUCashBinding.C_POINTER
+        );
+
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("gnc_commodity_get_user_symbol");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * const char *gnc_commodity_get_user_symbol(const gnc_commodity *cm)
+     * }
+     */
+    public static FunctionDescriptor gnc_commodity_get_user_symbol$descriptor() {
+        return gnc_commodity_get_user_symbol.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * const char *gnc_commodity_get_user_symbol(const gnc_commodity *cm)
+     * }
+     */
+    public static MethodHandle gnc_commodity_get_user_symbol$handle() {
+        return gnc_commodity_get_user_symbol.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * const char *gnc_commodity_get_user_symbol(const gnc_commodity *cm)
+     * }
+     */
+    public static MemorySegment gnc_commodity_get_user_symbol$address() {
+        return gnc_commodity_get_user_symbol.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * const char *gnc_commodity_get_user_symbol(const gnc_commodity *cm)
+     * }
+     */
+    public static MemorySegment gnc_commodity_get_user_symbol(MemorySegment cm) {
+        var mh$ = gnc_commodity_get_user_symbol.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("gnc_commodity_get_user_symbol", cm);
+            }
+            return (MemorySegment)mh$.invokeExact(cm);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class gnc_commodity_get_default_symbol {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            GNUCashBinding.C_POINTER,
+            GNUCashBinding.C_POINTER
+        );
+
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("gnc_commodity_get_default_symbol");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * const char *gnc_commodity_get_default_symbol(const gnc_commodity *cm)
+     * }
+     */
+    public static FunctionDescriptor gnc_commodity_get_default_symbol$descriptor() {
+        return gnc_commodity_get_default_symbol.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * const char *gnc_commodity_get_default_symbol(const gnc_commodity *cm)
+     * }
+     */
+    public static MethodHandle gnc_commodity_get_default_symbol$handle() {
+        return gnc_commodity_get_default_symbol.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * const char *gnc_commodity_get_default_symbol(const gnc_commodity *cm)
+     * }
+     */
+    public static MemorySegment gnc_commodity_get_default_symbol$address() {
+        return gnc_commodity_get_default_symbol.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * const char *gnc_commodity_get_default_symbol(const gnc_commodity *cm)
+     * }
+     */
+    public static MemorySegment gnc_commodity_get_default_symbol(MemorySegment cm) {
+        var mh$ = gnc_commodity_get_default_symbol.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("gnc_commodity_get_default_symbol", cm);
+            }
+            return (MemorySegment)mh$.invokeExact(cm);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class gnc_commodity_get_nice_symbol {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            GNUCashBinding.C_POINTER,
+            GNUCashBinding.C_POINTER
+        );
+
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("gnc_commodity_get_nice_symbol");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * const char *gnc_commodity_get_nice_symbol(const gnc_commodity *cm)
+     * }
+     */
+    public static FunctionDescriptor gnc_commodity_get_nice_symbol$descriptor() {
+        return gnc_commodity_get_nice_symbol.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * const char *gnc_commodity_get_nice_symbol(const gnc_commodity *cm)
+     * }
+     */
+    public static MethodHandle gnc_commodity_get_nice_symbol$handle() {
+        return gnc_commodity_get_nice_symbol.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * const char *gnc_commodity_get_nice_symbol(const gnc_commodity *cm)
+     * }
+     */
+    public static MemorySegment gnc_commodity_get_nice_symbol$address() {
+        return gnc_commodity_get_nice_symbol.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * const char *gnc_commodity_get_nice_symbol(const gnc_commodity *cm)
+     * }
+     */
+    public static MemorySegment gnc_commodity_get_nice_symbol(MemorySegment cm) {
+        var mh$ = gnc_commodity_get_nice_symbol.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("gnc_commodity_get_nice_symbol", cm);
+            }
+            return (MemorySegment)mh$.invokeExact(cm);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class gnc_commodity_set_mnemonic {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.ofVoid(
+            GNUCashBinding.C_POINTER,
+            GNUCashBinding.C_POINTER
+        );
+
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("gnc_commodity_set_mnemonic");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * void gnc_commodity_set_mnemonic(gnc_commodity *cm, const char *mnemonic)
+     * }
+     */
+    public static FunctionDescriptor gnc_commodity_set_mnemonic$descriptor() {
+        return gnc_commodity_set_mnemonic.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * void gnc_commodity_set_mnemonic(gnc_commodity *cm, const char *mnemonic)
+     * }
+     */
+    public static MethodHandle gnc_commodity_set_mnemonic$handle() {
+        return gnc_commodity_set_mnemonic.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * void gnc_commodity_set_mnemonic(gnc_commodity *cm, const char *mnemonic)
+     * }
+     */
+    public static MemorySegment gnc_commodity_set_mnemonic$address() {
+        return gnc_commodity_set_mnemonic.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * void gnc_commodity_set_mnemonic(gnc_commodity *cm, const char *mnemonic)
+     * }
+     */
+    public static void gnc_commodity_set_mnemonic(MemorySegment cm, MemorySegment mnemonic) {
+        var mh$ = gnc_commodity_set_mnemonic.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("gnc_commodity_set_mnemonic", cm, mnemonic);
+            }
+            mh$.invokeExact(cm, mnemonic);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class gnc_commodity_set_namespace {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.ofVoid(
+            GNUCashBinding.C_POINTER,
+            GNUCashBinding.C_POINTER
+        );
+
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("gnc_commodity_set_namespace");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * void gnc_commodity_set_namespace(gnc_commodity *cm, const char *new_namespace)
+     * }
+     */
+    public static FunctionDescriptor gnc_commodity_set_namespace$descriptor() {
+        return gnc_commodity_set_namespace.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * void gnc_commodity_set_namespace(gnc_commodity *cm, const char *new_namespace)
+     * }
+     */
+    public static MethodHandle gnc_commodity_set_namespace$handle() {
+        return gnc_commodity_set_namespace.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * void gnc_commodity_set_namespace(gnc_commodity *cm, const char *new_namespace)
+     * }
+     */
+    public static MemorySegment gnc_commodity_set_namespace$address() {
+        return gnc_commodity_set_namespace.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * void gnc_commodity_set_namespace(gnc_commodity *cm, const char *new_namespace)
+     * }
+     */
+    public static void gnc_commodity_set_namespace(MemorySegment cm, MemorySegment new_namespace) {
+        var mh$ = gnc_commodity_set_namespace.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("gnc_commodity_set_namespace", cm, new_namespace);
+            }
+            mh$.invokeExact(cm, new_namespace);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class gnc_commodity_set_fullname {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.ofVoid(
+            GNUCashBinding.C_POINTER,
+            GNUCashBinding.C_POINTER
+        );
+
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("gnc_commodity_set_fullname");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * void gnc_commodity_set_fullname(gnc_commodity *cm, const char *fullname)
+     * }
+     */
+    public static FunctionDescriptor gnc_commodity_set_fullname$descriptor() {
+        return gnc_commodity_set_fullname.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * void gnc_commodity_set_fullname(gnc_commodity *cm, const char *fullname)
+     * }
+     */
+    public static MethodHandle gnc_commodity_set_fullname$handle() {
+        return gnc_commodity_set_fullname.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * void gnc_commodity_set_fullname(gnc_commodity *cm, const char *fullname)
+     * }
+     */
+    public static MemorySegment gnc_commodity_set_fullname$address() {
+        return gnc_commodity_set_fullname.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * void gnc_commodity_set_fullname(gnc_commodity *cm, const char *fullname)
+     * }
+     */
+    public static void gnc_commodity_set_fullname(MemorySegment cm, MemorySegment fullname) {
+        var mh$ = gnc_commodity_set_fullname.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("gnc_commodity_set_fullname", cm, fullname);
+            }
+            mh$.invokeExact(cm, fullname);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class gnc_commodity_set_cusip {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.ofVoid(
+            GNUCashBinding.C_POINTER,
+            GNUCashBinding.C_POINTER
+        );
+
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("gnc_commodity_set_cusip");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * void gnc_commodity_set_cusip(gnc_commodity *cm, const char *cusip)
+     * }
+     */
+    public static FunctionDescriptor gnc_commodity_set_cusip$descriptor() {
+        return gnc_commodity_set_cusip.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * void gnc_commodity_set_cusip(gnc_commodity *cm, const char *cusip)
+     * }
+     */
+    public static MethodHandle gnc_commodity_set_cusip$handle() {
+        return gnc_commodity_set_cusip.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * void gnc_commodity_set_cusip(gnc_commodity *cm, const char *cusip)
+     * }
+     */
+    public static MemorySegment gnc_commodity_set_cusip$address() {
+        return gnc_commodity_set_cusip.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * void gnc_commodity_set_cusip(gnc_commodity *cm, const char *cusip)
+     * }
+     */
+    public static void gnc_commodity_set_cusip(MemorySegment cm, MemorySegment cusip) {
+        var mh$ = gnc_commodity_set_cusip.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("gnc_commodity_set_cusip", cm, cusip);
+            }
+            mh$.invokeExact(cm, cusip);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class gnc_commodity_set_fraction {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.ofVoid(
+            GNUCashBinding.C_POINTER,
+            GNUCashBinding.C_INT
+        );
+
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("gnc_commodity_set_fraction");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * void gnc_commodity_set_fraction(gnc_commodity *cm, int smallest_fraction)
+     * }
+     */
+    public static FunctionDescriptor gnc_commodity_set_fraction$descriptor() {
+        return gnc_commodity_set_fraction.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * void gnc_commodity_set_fraction(gnc_commodity *cm, int smallest_fraction)
+     * }
+     */
+    public static MethodHandle gnc_commodity_set_fraction$handle() {
+        return gnc_commodity_set_fraction.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * void gnc_commodity_set_fraction(gnc_commodity *cm, int smallest_fraction)
+     * }
+     */
+    public static MemorySegment gnc_commodity_set_fraction$address() {
+        return gnc_commodity_set_fraction.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * void gnc_commodity_set_fraction(gnc_commodity *cm, int smallest_fraction)
+     * }
+     */
+    public static void gnc_commodity_set_fraction(MemorySegment cm, int smallest_fraction) {
+        var mh$ = gnc_commodity_set_fraction.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("gnc_commodity_set_fraction", cm, smallest_fraction);
+            }
+            mh$.invokeExact(cm, smallest_fraction);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class gnc_commodity_user_set_quote_flag {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.ofVoid(
+            GNUCashBinding.C_POINTER,
+            GNUCashBinding.C_INT
+        );
+
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("gnc_commodity_user_set_quote_flag");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * void gnc_commodity_user_set_quote_flag(gnc_commodity *cm, const gboolean flag)
+     * }
+     */
+    public static FunctionDescriptor gnc_commodity_user_set_quote_flag$descriptor() {
+        return gnc_commodity_user_set_quote_flag.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * void gnc_commodity_user_set_quote_flag(gnc_commodity *cm, const gboolean flag)
+     * }
+     */
+    public static MethodHandle gnc_commodity_user_set_quote_flag$handle() {
+        return gnc_commodity_user_set_quote_flag.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * void gnc_commodity_user_set_quote_flag(gnc_commodity *cm, const gboolean flag)
+     * }
+     */
+    public static MemorySegment gnc_commodity_user_set_quote_flag$address() {
+        return gnc_commodity_user_set_quote_flag.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * void gnc_commodity_user_set_quote_flag(gnc_commodity *cm, const gboolean flag)
+     * }
+     */
+    public static void gnc_commodity_user_set_quote_flag(MemorySegment cm, int flag) {
+        var mh$ = gnc_commodity_user_set_quote_flag.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("gnc_commodity_user_set_quote_flag", cm, flag);
+            }
+            mh$.invokeExact(cm, flag);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class gnc_commodity_set_quote_flag {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.ofVoid(
+            GNUCashBinding.C_POINTER,
+            GNUCashBinding.C_INT
+        );
+
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("gnc_commodity_set_quote_flag");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * void gnc_commodity_set_quote_flag(gnc_commodity *cm, const gboolean flag)
+     * }
+     */
+    public static FunctionDescriptor gnc_commodity_set_quote_flag$descriptor() {
+        return gnc_commodity_set_quote_flag.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * void gnc_commodity_set_quote_flag(gnc_commodity *cm, const gboolean flag)
+     * }
+     */
+    public static MethodHandle gnc_commodity_set_quote_flag$handle() {
+        return gnc_commodity_set_quote_flag.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * void gnc_commodity_set_quote_flag(gnc_commodity *cm, const gboolean flag)
+     * }
+     */
+    public static MemorySegment gnc_commodity_set_quote_flag$address() {
+        return gnc_commodity_set_quote_flag.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * void gnc_commodity_set_quote_flag(gnc_commodity *cm, const gboolean flag)
+     * }
+     */
+    public static void gnc_commodity_set_quote_flag(MemorySegment cm, int flag) {
+        var mh$ = gnc_commodity_set_quote_flag.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("gnc_commodity_set_quote_flag", cm, flag);
+            }
+            mh$.invokeExact(cm, flag);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class gnc_commodity_set_quote_source {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.ofVoid(
+            GNUCashBinding.C_POINTER,
+            GNUCashBinding.C_POINTER
+        );
+
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("gnc_commodity_set_quote_source");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * void gnc_commodity_set_quote_source(gnc_commodity *cm, gnc_quote_source *src)
+     * }
+     */
+    public static FunctionDescriptor gnc_commodity_set_quote_source$descriptor() {
+        return gnc_commodity_set_quote_source.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * void gnc_commodity_set_quote_source(gnc_commodity *cm, gnc_quote_source *src)
+     * }
+     */
+    public static MethodHandle gnc_commodity_set_quote_source$handle() {
+        return gnc_commodity_set_quote_source.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * void gnc_commodity_set_quote_source(gnc_commodity *cm, gnc_quote_source *src)
+     * }
+     */
+    public static MemorySegment gnc_commodity_set_quote_source$address() {
+        return gnc_commodity_set_quote_source.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * void gnc_commodity_set_quote_source(gnc_commodity *cm, gnc_quote_source *src)
+     * }
+     */
+    public static void gnc_commodity_set_quote_source(MemorySegment cm, MemorySegment src) {
+        var mh$ = gnc_commodity_set_quote_source.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("gnc_commodity_set_quote_source", cm, src);
+            }
+            mh$.invokeExact(cm, src);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class gnc_commodity_set_quote_tz {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.ofVoid(
+            GNUCashBinding.C_POINTER,
+            GNUCashBinding.C_POINTER
+        );
+
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("gnc_commodity_set_quote_tz");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * void gnc_commodity_set_quote_tz(gnc_commodity *cm, const char *tz)
+     * }
+     */
+    public static FunctionDescriptor gnc_commodity_set_quote_tz$descriptor() {
+        return gnc_commodity_set_quote_tz.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * void gnc_commodity_set_quote_tz(gnc_commodity *cm, const char *tz)
+     * }
+     */
+    public static MethodHandle gnc_commodity_set_quote_tz$handle() {
+        return gnc_commodity_set_quote_tz.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * void gnc_commodity_set_quote_tz(gnc_commodity *cm, const char *tz)
+     * }
+     */
+    public static MemorySegment gnc_commodity_set_quote_tz$address() {
+        return gnc_commodity_set_quote_tz.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * void gnc_commodity_set_quote_tz(gnc_commodity *cm, const char *tz)
+     * }
+     */
+    public static void gnc_commodity_set_quote_tz(MemorySegment cm, MemorySegment tz) {
+        var mh$ = gnc_commodity_set_quote_tz.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("gnc_commodity_set_quote_tz", cm, tz);
+            }
+            mh$.invokeExact(cm, tz);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class gnc_commodity_set_user_symbol {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.ofVoid(
+            GNUCashBinding.C_POINTER,
+            GNUCashBinding.C_POINTER
+        );
+
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("gnc_commodity_set_user_symbol");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * void gnc_commodity_set_user_symbol(gnc_commodity *cm, const char *user_symbol)
+     * }
+     */
+    public static FunctionDescriptor gnc_commodity_set_user_symbol$descriptor() {
+        return gnc_commodity_set_user_symbol.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * void gnc_commodity_set_user_symbol(gnc_commodity *cm, const char *user_symbol)
+     * }
+     */
+    public static MethodHandle gnc_commodity_set_user_symbol$handle() {
+        return gnc_commodity_set_user_symbol.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * void gnc_commodity_set_user_symbol(gnc_commodity *cm, const char *user_symbol)
+     * }
+     */
+    public static MemorySegment gnc_commodity_set_user_symbol$address() {
+        return gnc_commodity_set_user_symbol.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * void gnc_commodity_set_user_symbol(gnc_commodity *cm, const char *user_symbol)
+     * }
+     */
+    public static void gnc_commodity_set_user_symbol(MemorySegment cm, MemorySegment user_symbol) {
+        var mh$ = gnc_commodity_set_user_symbol.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("gnc_commodity_set_user_symbol", cm, user_symbol);
+            }
+            mh$.invokeExact(cm, user_symbol);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class gnc_commodity_increment_usage_count {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.ofVoid(
+            GNUCashBinding.C_POINTER
+        );
+
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("gnc_commodity_increment_usage_count");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * void gnc_commodity_increment_usage_count(gnc_commodity *cm)
+     * }
+     */
+    public static FunctionDescriptor gnc_commodity_increment_usage_count$descriptor() {
+        return gnc_commodity_increment_usage_count.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * void gnc_commodity_increment_usage_count(gnc_commodity *cm)
+     * }
+     */
+    public static MethodHandle gnc_commodity_increment_usage_count$handle() {
+        return gnc_commodity_increment_usage_count.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * void gnc_commodity_increment_usage_count(gnc_commodity *cm)
+     * }
+     */
+    public static MemorySegment gnc_commodity_increment_usage_count$address() {
+        return gnc_commodity_increment_usage_count.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * void gnc_commodity_increment_usage_count(gnc_commodity *cm)
+     * }
+     */
+    public static void gnc_commodity_increment_usage_count(MemorySegment cm) {
+        var mh$ = gnc_commodity_increment_usage_count.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("gnc_commodity_increment_usage_count", cm);
+            }
+            mh$.invokeExact(cm);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class gnc_commodity_decrement_usage_count {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.ofVoid(
+            GNUCashBinding.C_POINTER
+        );
+
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("gnc_commodity_decrement_usage_count");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * void gnc_commodity_decrement_usage_count(gnc_commodity *cm)
+     * }
+     */
+    public static FunctionDescriptor gnc_commodity_decrement_usage_count$descriptor() {
+        return gnc_commodity_decrement_usage_count.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * void gnc_commodity_decrement_usage_count(gnc_commodity *cm)
+     * }
+     */
+    public static MethodHandle gnc_commodity_decrement_usage_count$handle() {
+        return gnc_commodity_decrement_usage_count.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * void gnc_commodity_decrement_usage_count(gnc_commodity *cm)
+     * }
+     */
+    public static MemorySegment gnc_commodity_decrement_usage_count$address() {
+        return gnc_commodity_decrement_usage_count.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * void gnc_commodity_decrement_usage_count(gnc_commodity *cm)
+     * }
+     */
+    public static void gnc_commodity_decrement_usage_count(MemorySegment cm) {
+        var mh$ = gnc_commodity_decrement_usage_count.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("gnc_commodity_decrement_usage_count", cm);
+            }
+            mh$.invokeExact(cm);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class gnc_commodity_equiv {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            GNUCashBinding.C_INT,
+            GNUCashBinding.C_POINTER,
+            GNUCashBinding.C_POINTER
+        );
+
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("gnc_commodity_equiv");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * gboolean gnc_commodity_equiv(const gnc_commodity *a, const gnc_commodity *b)
+     * }
+     */
+    public static FunctionDescriptor gnc_commodity_equiv$descriptor() {
+        return gnc_commodity_equiv.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * gboolean gnc_commodity_equiv(const gnc_commodity *a, const gnc_commodity *b)
+     * }
+     */
+    public static MethodHandle gnc_commodity_equiv$handle() {
+        return gnc_commodity_equiv.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * gboolean gnc_commodity_equiv(const gnc_commodity *a, const gnc_commodity *b)
+     * }
+     */
+    public static MemorySegment gnc_commodity_equiv$address() {
+        return gnc_commodity_equiv.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * gboolean gnc_commodity_equiv(const gnc_commodity *a, const gnc_commodity *b)
+     * }
+     */
+    public static int gnc_commodity_equiv(MemorySegment a, MemorySegment b) {
+        var mh$ = gnc_commodity_equiv.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("gnc_commodity_equiv", a, b);
+            }
+            return (int)mh$.invokeExact(a, b);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class gnc_commodity_equal {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            GNUCashBinding.C_INT,
+            GNUCashBinding.C_POINTER,
+            GNUCashBinding.C_POINTER
+        );
+
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("gnc_commodity_equal");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * gboolean gnc_commodity_equal(const gnc_commodity *a, const gnc_commodity *b)
+     * }
+     */
+    public static FunctionDescriptor gnc_commodity_equal$descriptor() {
+        return gnc_commodity_equal.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * gboolean gnc_commodity_equal(const gnc_commodity *a, const gnc_commodity *b)
+     * }
+     */
+    public static MethodHandle gnc_commodity_equal$handle() {
+        return gnc_commodity_equal.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * gboolean gnc_commodity_equal(const gnc_commodity *a, const gnc_commodity *b)
+     * }
+     */
+    public static MemorySegment gnc_commodity_equal$address() {
+        return gnc_commodity_equal.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * gboolean gnc_commodity_equal(const gnc_commodity *a, const gnc_commodity *b)
+     * }
+     */
+    public static int gnc_commodity_equal(MemorySegment a, MemorySegment b) {
+        var mh$ = gnc_commodity_equal.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("gnc_commodity_equal", a, b);
+            }
+            return (int)mh$.invokeExact(a, b);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class gnc_commodity_compare {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            GNUCashBinding.C_INT,
+            GNUCashBinding.C_POINTER,
+            GNUCashBinding.C_POINTER
+        );
+
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("gnc_commodity_compare");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * int gnc_commodity_compare(const gnc_commodity *a, const gnc_commodity *b)
+     * }
+     */
+    public static FunctionDescriptor gnc_commodity_compare$descriptor() {
+        return gnc_commodity_compare.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * int gnc_commodity_compare(const gnc_commodity *a, const gnc_commodity *b)
+     * }
+     */
+    public static MethodHandle gnc_commodity_compare$handle() {
+        return gnc_commodity_compare.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * int gnc_commodity_compare(const gnc_commodity *a, const gnc_commodity *b)
+     * }
+     */
+    public static MemorySegment gnc_commodity_compare$address() {
+        return gnc_commodity_compare.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * int gnc_commodity_compare(const gnc_commodity *a, const gnc_commodity *b)
+     * }
+     */
+    public static int gnc_commodity_compare(MemorySegment a, MemorySegment b) {
+        var mh$ = gnc_commodity_compare.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("gnc_commodity_compare", a, b);
+            }
+            return (int)mh$.invokeExact(a, b);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class gnc_commodity_compare_void {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            GNUCashBinding.C_INT,
+            GNUCashBinding.C_POINTER,
+            GNUCashBinding.C_POINTER
+        );
+
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("gnc_commodity_compare_void");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * int gnc_commodity_compare_void(const void *a, const void *b)
+     * }
+     */
+    public static FunctionDescriptor gnc_commodity_compare_void$descriptor() {
+        return gnc_commodity_compare_void.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * int gnc_commodity_compare_void(const void *a, const void *b)
+     * }
+     */
+    public static MethodHandle gnc_commodity_compare_void$handle() {
+        return gnc_commodity_compare_void.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * int gnc_commodity_compare_void(const void *a, const void *b)
+     * }
+     */
+    public static MemorySegment gnc_commodity_compare_void$address() {
+        return gnc_commodity_compare_void.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * int gnc_commodity_compare_void(const void *a, const void *b)
+     * }
+     */
+    public static int gnc_commodity_compare_void(MemorySegment a, MemorySegment b) {
+        var mh$ = gnc_commodity_compare_void.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("gnc_commodity_compare_void", a, b);
+            }
+            return (int)mh$.invokeExact(a, b);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class gnc_commodity_namespace_is_iso {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            GNUCashBinding.C_INT,
+            GNUCashBinding.C_POINTER
+        );
+
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("gnc_commodity_namespace_is_iso");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * gboolean gnc_commodity_namespace_is_iso(const char *commodity_namespace)
+     * }
+     */
+    public static FunctionDescriptor gnc_commodity_namespace_is_iso$descriptor() {
+        return gnc_commodity_namespace_is_iso.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * gboolean gnc_commodity_namespace_is_iso(const char *commodity_namespace)
+     * }
+     */
+    public static MethodHandle gnc_commodity_namespace_is_iso$handle() {
+        return gnc_commodity_namespace_is_iso.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * gboolean gnc_commodity_namespace_is_iso(const char *commodity_namespace)
+     * }
+     */
+    public static MemorySegment gnc_commodity_namespace_is_iso$address() {
+        return gnc_commodity_namespace_is_iso.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * gboolean gnc_commodity_namespace_is_iso(const char *commodity_namespace)
+     * }
+     */
+    public static int gnc_commodity_namespace_is_iso(MemorySegment commodity_namespace) {
+        var mh$ = gnc_commodity_namespace_is_iso.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("gnc_commodity_namespace_is_iso", commodity_namespace);
+            }
+            return (int)mh$.invokeExact(commodity_namespace);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class gnc_commodity_is_iso {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            GNUCashBinding.C_INT,
+            GNUCashBinding.C_POINTER
+        );
+
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("gnc_commodity_is_iso");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * gboolean gnc_commodity_is_iso(const gnc_commodity *cm)
+     * }
+     */
+    public static FunctionDescriptor gnc_commodity_is_iso$descriptor() {
+        return gnc_commodity_is_iso.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * gboolean gnc_commodity_is_iso(const gnc_commodity *cm)
+     * }
+     */
+    public static MethodHandle gnc_commodity_is_iso$handle() {
+        return gnc_commodity_is_iso.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * gboolean gnc_commodity_is_iso(const gnc_commodity *cm)
+     * }
+     */
+    public static MemorySegment gnc_commodity_is_iso$address() {
+        return gnc_commodity_is_iso.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * gboolean gnc_commodity_is_iso(const gnc_commodity *cm)
+     * }
+     */
+    public static int gnc_commodity_is_iso(MemorySegment cm) {
+        var mh$ = gnc_commodity_is_iso.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("gnc_commodity_is_iso", cm);
+            }
+            return (int)mh$.invokeExact(cm);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class gnc_commodity_is_currency {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            GNUCashBinding.C_INT,
+            GNUCashBinding.C_POINTER
+        );
+
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("gnc_commodity_is_currency");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * gboolean gnc_commodity_is_currency(const gnc_commodity *cm)
+     * }
+     */
+    public static FunctionDescriptor gnc_commodity_is_currency$descriptor() {
+        return gnc_commodity_is_currency.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * gboolean gnc_commodity_is_currency(const gnc_commodity *cm)
+     * }
+     */
+    public static MethodHandle gnc_commodity_is_currency$handle() {
+        return gnc_commodity_is_currency.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * gboolean gnc_commodity_is_currency(const gnc_commodity *cm)
+     * }
+     */
+    public static MemorySegment gnc_commodity_is_currency$address() {
+        return gnc_commodity_is_currency.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * gboolean gnc_commodity_is_currency(const gnc_commodity *cm)
+     * }
+     */
+    public static int gnc_commodity_is_currency(MemorySegment cm) {
+        var mh$ = gnc_commodity_is_currency.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("gnc_commodity_is_currency", cm);
+            }
+            return (int)mh$.invokeExact(cm);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class gnc_commodity_table_get_table {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            GNUCashBinding.C_POINTER,
+            GNUCashBinding.C_POINTER
+        );
+
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("gnc_commodity_table_get_table");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * gnc_commodity_table *gnc_commodity_table_get_table(QofBook *book)
+     * }
+     */
+    public static FunctionDescriptor gnc_commodity_table_get_table$descriptor() {
+        return gnc_commodity_table_get_table.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * gnc_commodity_table *gnc_commodity_table_get_table(QofBook *book)
+     * }
+     */
+    public static MethodHandle gnc_commodity_table_get_table$handle() {
+        return gnc_commodity_table_get_table.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * gnc_commodity_table *gnc_commodity_table_get_table(QofBook *book)
+     * }
+     */
+    public static MemorySegment gnc_commodity_table_get_table$address() {
+        return gnc_commodity_table_get_table.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * gnc_commodity_table *gnc_commodity_table_get_table(QofBook *book)
+     * }
+     */
+    public static MemorySegment gnc_commodity_table_get_table(MemorySegment book) {
+        var mh$ = gnc_commodity_table_get_table.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("gnc_commodity_table_get_table", book);
+            }
+            return (MemorySegment)mh$.invokeExact(book);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class gnc_commodity_table_lookup {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            GNUCashBinding.C_POINTER,
+            GNUCashBinding.C_POINTER,
+            GNUCashBinding.C_POINTER,
+            GNUCashBinding.C_POINTER
+        );
+
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("gnc_commodity_table_lookup");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * gnc_commodity *gnc_commodity_table_lookup(const gnc_commodity_table *table, const char *commodity_namespace, const char *mnemonic)
+     * }
+     */
+    public static FunctionDescriptor gnc_commodity_table_lookup$descriptor() {
+        return gnc_commodity_table_lookup.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * gnc_commodity *gnc_commodity_table_lookup(const gnc_commodity_table *table, const char *commodity_namespace, const char *mnemonic)
+     * }
+     */
+    public static MethodHandle gnc_commodity_table_lookup$handle() {
+        return gnc_commodity_table_lookup.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * gnc_commodity *gnc_commodity_table_lookup(const gnc_commodity_table *table, const char *commodity_namespace, const char *mnemonic)
+     * }
+     */
+    public static MemorySegment gnc_commodity_table_lookup$address() {
+        return gnc_commodity_table_lookup.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * gnc_commodity *gnc_commodity_table_lookup(const gnc_commodity_table *table, const char *commodity_namespace, const char *mnemonic)
+     * }
+     */
+    public static MemorySegment gnc_commodity_table_lookup(MemorySegment table, MemorySegment commodity_namespace, MemorySegment mnemonic) {
+        var mh$ = gnc_commodity_table_lookup.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("gnc_commodity_table_lookup", table, commodity_namespace, mnemonic);
+            }
+            return (MemorySegment)mh$.invokeExact(table, commodity_namespace, mnemonic);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class gnc_commodity_table_lookup_unique {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            GNUCashBinding.C_POINTER,
+            GNUCashBinding.C_POINTER,
+            GNUCashBinding.C_POINTER
+        );
+
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("gnc_commodity_table_lookup_unique");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * gnc_commodity *gnc_commodity_table_lookup_unique(const gnc_commodity_table *table, const char *unique_name)
+     * }
+     */
+    public static FunctionDescriptor gnc_commodity_table_lookup_unique$descriptor() {
+        return gnc_commodity_table_lookup_unique.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * gnc_commodity *gnc_commodity_table_lookup_unique(const gnc_commodity_table *table, const char *unique_name)
+     * }
+     */
+    public static MethodHandle gnc_commodity_table_lookup_unique$handle() {
+        return gnc_commodity_table_lookup_unique.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * gnc_commodity *gnc_commodity_table_lookup_unique(const gnc_commodity_table *table, const char *unique_name)
+     * }
+     */
+    public static MemorySegment gnc_commodity_table_lookup_unique$address() {
+        return gnc_commodity_table_lookup_unique.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * gnc_commodity *gnc_commodity_table_lookup_unique(const gnc_commodity_table *table, const char *unique_name)
+     * }
+     */
+    public static MemorySegment gnc_commodity_table_lookup_unique(MemorySegment table, MemorySegment unique_name) {
+        var mh$ = gnc_commodity_table_lookup_unique.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("gnc_commodity_table_lookup_unique", table, unique_name);
+            }
+            return (MemorySegment)mh$.invokeExact(table, unique_name);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class gnc_commodity_table_find_full {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            GNUCashBinding.C_POINTER,
+            GNUCashBinding.C_POINTER,
+            GNUCashBinding.C_POINTER,
+            GNUCashBinding.C_POINTER
+        );
+
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("gnc_commodity_table_find_full");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * gnc_commodity *gnc_commodity_table_find_full(const gnc_commodity_table *t, const char *commodity_namespace, const char *fullname)
+     * }
+     */
+    public static FunctionDescriptor gnc_commodity_table_find_full$descriptor() {
+        return gnc_commodity_table_find_full.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * gnc_commodity *gnc_commodity_table_find_full(const gnc_commodity_table *t, const char *commodity_namespace, const char *fullname)
+     * }
+     */
+    public static MethodHandle gnc_commodity_table_find_full$handle() {
+        return gnc_commodity_table_find_full.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * gnc_commodity *gnc_commodity_table_find_full(const gnc_commodity_table *t, const char *commodity_namespace, const char *fullname)
+     * }
+     */
+    public static MemorySegment gnc_commodity_table_find_full$address() {
+        return gnc_commodity_table_find_full.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * gnc_commodity *gnc_commodity_table_find_full(const gnc_commodity_table *t, const char *commodity_namespace, const char *fullname)
+     * }
+     */
+    public static MemorySegment gnc_commodity_table_find_full(MemorySegment t, MemorySegment commodity_namespace, MemorySegment fullname) {
+        var mh$ = gnc_commodity_table_find_full.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("gnc_commodity_table_find_full", t, commodity_namespace, fullname);
+            }
+            return (MemorySegment)mh$.invokeExact(t, commodity_namespace, fullname);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class gnc_commodity_find_commodity_by_guid {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            GNUCashBinding.C_POINTER,
+            GNUCashBinding.C_POINTER,
+            GNUCashBinding.C_POINTER
+        );
+
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("gnc_commodity_find_commodity_by_guid");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * gnc_commodity *gnc_commodity_find_commodity_by_guid(const GncGUID *guid, QofBook *book)
+     * }
+     */
+    public static FunctionDescriptor gnc_commodity_find_commodity_by_guid$descriptor() {
+        return gnc_commodity_find_commodity_by_guid.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * gnc_commodity *gnc_commodity_find_commodity_by_guid(const GncGUID *guid, QofBook *book)
+     * }
+     */
+    public static MethodHandle gnc_commodity_find_commodity_by_guid$handle() {
+        return gnc_commodity_find_commodity_by_guid.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * gnc_commodity *gnc_commodity_find_commodity_by_guid(const GncGUID *guid, QofBook *book)
+     * }
+     */
+    public static MemorySegment gnc_commodity_find_commodity_by_guid$address() {
+        return gnc_commodity_find_commodity_by_guid.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * gnc_commodity *gnc_commodity_find_commodity_by_guid(const GncGUID *guid, QofBook *book)
+     * }
+     */
+    public static MemorySegment gnc_commodity_find_commodity_by_guid(MemorySegment guid, MemorySegment book) {
+        var mh$ = gnc_commodity_find_commodity_by_guid.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("gnc_commodity_find_commodity_by_guid", guid, book);
+            }
+            return (MemorySegment)mh$.invokeExact(guid, book);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class gnc_commodity_table_insert {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            GNUCashBinding.C_POINTER,
+            GNUCashBinding.C_POINTER,
+            GNUCashBinding.C_POINTER
+        );
+
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("gnc_commodity_table_insert");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * gnc_commodity *gnc_commodity_table_insert(gnc_commodity_table *table, gnc_commodity *comm)
+     * }
+     */
+    public static FunctionDescriptor gnc_commodity_table_insert$descriptor() {
+        return gnc_commodity_table_insert.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * gnc_commodity *gnc_commodity_table_insert(gnc_commodity_table *table, gnc_commodity *comm)
+     * }
+     */
+    public static MethodHandle gnc_commodity_table_insert$handle() {
+        return gnc_commodity_table_insert.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * gnc_commodity *gnc_commodity_table_insert(gnc_commodity_table *table, gnc_commodity *comm)
+     * }
+     */
+    public static MemorySegment gnc_commodity_table_insert$address() {
+        return gnc_commodity_table_insert.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * gnc_commodity *gnc_commodity_table_insert(gnc_commodity_table *table, gnc_commodity *comm)
+     * }
+     */
+    public static MemorySegment gnc_commodity_table_insert(MemorySegment table, MemorySegment comm) {
+        var mh$ = gnc_commodity_table_insert.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("gnc_commodity_table_insert", table, comm);
+            }
+            return (MemorySegment)mh$.invokeExact(table, comm);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class gnc_commodity_table_remove {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.ofVoid(
+            GNUCashBinding.C_POINTER,
+            GNUCashBinding.C_POINTER
+        );
+
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("gnc_commodity_table_remove");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * void gnc_commodity_table_remove(gnc_commodity_table *table, gnc_commodity *comm)
+     * }
+     */
+    public static FunctionDescriptor gnc_commodity_table_remove$descriptor() {
+        return gnc_commodity_table_remove.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * void gnc_commodity_table_remove(gnc_commodity_table *table, gnc_commodity *comm)
+     * }
+     */
+    public static MethodHandle gnc_commodity_table_remove$handle() {
+        return gnc_commodity_table_remove.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * void gnc_commodity_table_remove(gnc_commodity_table *table, gnc_commodity *comm)
+     * }
+     */
+    public static MemorySegment gnc_commodity_table_remove$address() {
+        return gnc_commodity_table_remove.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * void gnc_commodity_table_remove(gnc_commodity_table *table, gnc_commodity *comm)
+     * }
+     */
+    public static void gnc_commodity_table_remove(MemorySegment table, MemorySegment comm) {
+        var mh$ = gnc_commodity_table_remove.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("gnc_commodity_table_remove", table, comm);
+            }
+            mh$.invokeExact(table, comm);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class gnc_commodity_table_add_default_data {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            GNUCashBinding.C_INT,
+            GNUCashBinding.C_POINTER,
+            GNUCashBinding.C_POINTER
+        );
+
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("gnc_commodity_table_add_default_data");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * gboolean gnc_commodity_table_add_default_data(gnc_commodity_table *table, QofBook *book)
+     * }
+     */
+    public static FunctionDescriptor gnc_commodity_table_add_default_data$descriptor() {
+        return gnc_commodity_table_add_default_data.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * gboolean gnc_commodity_table_add_default_data(gnc_commodity_table *table, QofBook *book)
+     * }
+     */
+    public static MethodHandle gnc_commodity_table_add_default_data$handle() {
+        return gnc_commodity_table_add_default_data.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * gboolean gnc_commodity_table_add_default_data(gnc_commodity_table *table, QofBook *book)
+     * }
+     */
+    public static MemorySegment gnc_commodity_table_add_default_data$address() {
+        return gnc_commodity_table_add_default_data.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * gboolean gnc_commodity_table_add_default_data(gnc_commodity_table *table, QofBook *book)
+     * }
+     */
+    public static int gnc_commodity_table_add_default_data(MemorySegment table, MemorySegment book) {
+        var mh$ = gnc_commodity_table_add_default_data.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("gnc_commodity_table_add_default_data", table, book);
+            }
+            return (int)mh$.invokeExact(table, book);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class gnc_commodity_namespace_get_name {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            GNUCashBinding.C_POINTER,
+            GNUCashBinding.C_POINTER
+        );
+
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("gnc_commodity_namespace_get_name");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * const char *gnc_commodity_namespace_get_name(const gnc_commodity_namespace *ns)
+     * }
+     */
+    public static FunctionDescriptor gnc_commodity_namespace_get_name$descriptor() {
+        return gnc_commodity_namespace_get_name.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * const char *gnc_commodity_namespace_get_name(const gnc_commodity_namespace *ns)
+     * }
+     */
+    public static MethodHandle gnc_commodity_namespace_get_name$handle() {
+        return gnc_commodity_namespace_get_name.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * const char *gnc_commodity_namespace_get_name(const gnc_commodity_namespace *ns)
+     * }
+     */
+    public static MemorySegment gnc_commodity_namespace_get_name$address() {
+        return gnc_commodity_namespace_get_name.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * const char *gnc_commodity_namespace_get_name(const gnc_commodity_namespace *ns)
+     * }
+     */
+    public static MemorySegment gnc_commodity_namespace_get_name(MemorySegment ns) {
+        var mh$ = gnc_commodity_namespace_get_name.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("gnc_commodity_namespace_get_name", ns);
+            }
+            return (MemorySegment)mh$.invokeExact(ns);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class gnc_commodity_namespace_get_gui_name {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            GNUCashBinding.C_POINTER,
+            GNUCashBinding.C_POINTER
+        );
+
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("gnc_commodity_namespace_get_gui_name");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * const char *gnc_commodity_namespace_get_gui_name(const gnc_commodity_namespace *ns)
+     * }
+     */
+    public static FunctionDescriptor gnc_commodity_namespace_get_gui_name$descriptor() {
+        return gnc_commodity_namespace_get_gui_name.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * const char *gnc_commodity_namespace_get_gui_name(const gnc_commodity_namespace *ns)
+     * }
+     */
+    public static MethodHandle gnc_commodity_namespace_get_gui_name$handle() {
+        return gnc_commodity_namespace_get_gui_name.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * const char *gnc_commodity_namespace_get_gui_name(const gnc_commodity_namespace *ns)
+     * }
+     */
+    public static MemorySegment gnc_commodity_namespace_get_gui_name$address() {
+        return gnc_commodity_namespace_get_gui_name.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * const char *gnc_commodity_namespace_get_gui_name(const gnc_commodity_namespace *ns)
+     * }
+     */
+    public static MemorySegment gnc_commodity_namespace_get_gui_name(MemorySegment ns) {
+        var mh$ = gnc_commodity_namespace_get_gui_name.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("gnc_commodity_namespace_get_gui_name", ns);
+            }
+            return (MemorySegment)mh$.invokeExact(ns);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class gnc_commodity_namespace_get_commodity_list {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            GNUCashBinding.C_POINTER,
+            GNUCashBinding.C_POINTER
+        );
+
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("gnc_commodity_namespace_get_commodity_list");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * GList *gnc_commodity_namespace_get_commodity_list(const gnc_commodity_namespace *ns)
+     * }
+     */
+    public static FunctionDescriptor gnc_commodity_namespace_get_commodity_list$descriptor() {
+        return gnc_commodity_namespace_get_commodity_list.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * GList *gnc_commodity_namespace_get_commodity_list(const gnc_commodity_namespace *ns)
+     * }
+     */
+    public static MethodHandle gnc_commodity_namespace_get_commodity_list$handle() {
+        return gnc_commodity_namespace_get_commodity_list.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * GList *gnc_commodity_namespace_get_commodity_list(const gnc_commodity_namespace *ns)
+     * }
+     */
+    public static MemorySegment gnc_commodity_namespace_get_commodity_list$address() {
+        return gnc_commodity_namespace_get_commodity_list.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * GList *gnc_commodity_namespace_get_commodity_list(const gnc_commodity_namespace *ns)
+     * }
+     */
+    public static MemorySegment gnc_commodity_namespace_get_commodity_list(MemorySegment ns) {
+        var mh$ = gnc_commodity_namespace_get_commodity_list.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("gnc_commodity_namespace_get_commodity_list", ns);
+            }
+            return (MemorySegment)mh$.invokeExact(ns);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class gnc_commodity_table_has_namespace {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            GNUCashBinding.C_INT,
+            GNUCashBinding.C_POINTER,
+            GNUCashBinding.C_POINTER
+        );
+
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("gnc_commodity_table_has_namespace");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * int gnc_commodity_table_has_namespace(const gnc_commodity_table *table, const char *commodity_namespace)
+     * }
+     */
+    public static FunctionDescriptor gnc_commodity_table_has_namespace$descriptor() {
+        return gnc_commodity_table_has_namespace.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * int gnc_commodity_table_has_namespace(const gnc_commodity_table *table, const char *commodity_namespace)
+     * }
+     */
+    public static MethodHandle gnc_commodity_table_has_namespace$handle() {
+        return gnc_commodity_table_has_namespace.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * int gnc_commodity_table_has_namespace(const gnc_commodity_table *table, const char *commodity_namespace)
+     * }
+     */
+    public static MemorySegment gnc_commodity_table_has_namespace$address() {
+        return gnc_commodity_table_has_namespace.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * int gnc_commodity_table_has_namespace(const gnc_commodity_table *table, const char *commodity_namespace)
+     * }
+     */
+    public static int gnc_commodity_table_has_namespace(MemorySegment table, MemorySegment commodity_namespace) {
+        var mh$ = gnc_commodity_table_has_namespace.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("gnc_commodity_table_has_namespace", table, commodity_namespace);
+            }
+            return (int)mh$.invokeExact(table, commodity_namespace);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class gnc_commodity_table_get_namespaces {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            GNUCashBinding.C_POINTER,
+            GNUCashBinding.C_POINTER
+        );
+
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("gnc_commodity_table_get_namespaces");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * GList *gnc_commodity_table_get_namespaces(const gnc_commodity_table *t)
+     * }
+     */
+    public static FunctionDescriptor gnc_commodity_table_get_namespaces$descriptor() {
+        return gnc_commodity_table_get_namespaces.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * GList *gnc_commodity_table_get_namespaces(const gnc_commodity_table *t)
+     * }
+     */
+    public static MethodHandle gnc_commodity_table_get_namespaces$handle() {
+        return gnc_commodity_table_get_namespaces.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * GList *gnc_commodity_table_get_namespaces(const gnc_commodity_table *t)
+     * }
+     */
+    public static MemorySegment gnc_commodity_table_get_namespaces$address() {
+        return gnc_commodity_table_get_namespaces.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * GList *gnc_commodity_table_get_namespaces(const gnc_commodity_table *t)
+     * }
+     */
+    public static MemorySegment gnc_commodity_table_get_namespaces(MemorySegment t) {
+        var mh$ = gnc_commodity_table_get_namespaces.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("gnc_commodity_table_get_namespaces", t);
+            }
+            return (MemorySegment)mh$.invokeExact(t);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class gnc_commodity_table_get_namespaces_list {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            GNUCashBinding.C_POINTER,
+            GNUCashBinding.C_POINTER
+        );
+
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("gnc_commodity_table_get_namespaces_list");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * GList *gnc_commodity_table_get_namespaces_list(const gnc_commodity_table *t)
+     * }
+     */
+    public static FunctionDescriptor gnc_commodity_table_get_namespaces_list$descriptor() {
+        return gnc_commodity_table_get_namespaces_list.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * GList *gnc_commodity_table_get_namespaces_list(const gnc_commodity_table *t)
+     * }
+     */
+    public static MethodHandle gnc_commodity_table_get_namespaces_list$handle() {
+        return gnc_commodity_table_get_namespaces_list.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * GList *gnc_commodity_table_get_namespaces_list(const gnc_commodity_table *t)
+     * }
+     */
+    public static MemorySegment gnc_commodity_table_get_namespaces_list$address() {
+        return gnc_commodity_table_get_namespaces_list.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * GList *gnc_commodity_table_get_namespaces_list(const gnc_commodity_table *t)
+     * }
+     */
+    public static MemorySegment gnc_commodity_table_get_namespaces_list(MemorySegment t) {
+        var mh$ = gnc_commodity_table_get_namespaces_list.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("gnc_commodity_table_get_namespaces_list", t);
+            }
+            return (MemorySegment)mh$.invokeExact(t);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class gnc_commodity_table_add_namespace {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            GNUCashBinding.C_POINTER,
+            GNUCashBinding.C_POINTER,
+            GNUCashBinding.C_POINTER,
+            GNUCashBinding.C_POINTER
+        );
+
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("gnc_commodity_table_add_namespace");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * gnc_commodity_namespace *gnc_commodity_table_add_namespace(gnc_commodity_table *table, const char *commodity_namespace, QofBook *book)
+     * }
+     */
+    public static FunctionDescriptor gnc_commodity_table_add_namespace$descriptor() {
+        return gnc_commodity_table_add_namespace.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * gnc_commodity_namespace *gnc_commodity_table_add_namespace(gnc_commodity_table *table, const char *commodity_namespace, QofBook *book)
+     * }
+     */
+    public static MethodHandle gnc_commodity_table_add_namespace$handle() {
+        return gnc_commodity_table_add_namespace.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * gnc_commodity_namespace *gnc_commodity_table_add_namespace(gnc_commodity_table *table, const char *commodity_namespace, QofBook *book)
+     * }
+     */
+    public static MemorySegment gnc_commodity_table_add_namespace$address() {
+        return gnc_commodity_table_add_namespace.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * gnc_commodity_namespace *gnc_commodity_table_add_namespace(gnc_commodity_table *table, const char *commodity_namespace, QofBook *book)
+     * }
+     */
+    public static MemorySegment gnc_commodity_table_add_namespace(MemorySegment table, MemorySegment commodity_namespace, MemorySegment book) {
+        var mh$ = gnc_commodity_table_add_namespace.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("gnc_commodity_table_add_namespace", table, commodity_namespace, book);
+            }
+            return (MemorySegment)mh$.invokeExact(table, commodity_namespace, book);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class gnc_commodity_table_find_namespace {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            GNUCashBinding.C_POINTER,
+            GNUCashBinding.C_POINTER,
+            GNUCashBinding.C_POINTER
+        );
+
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("gnc_commodity_table_find_namespace");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * gnc_commodity_namespace *gnc_commodity_table_find_namespace(const gnc_commodity_table *table, const char *commodity_namespace)
+     * }
+     */
+    public static FunctionDescriptor gnc_commodity_table_find_namespace$descriptor() {
+        return gnc_commodity_table_find_namespace.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * gnc_commodity_namespace *gnc_commodity_table_find_namespace(const gnc_commodity_table *table, const char *commodity_namespace)
+     * }
+     */
+    public static MethodHandle gnc_commodity_table_find_namespace$handle() {
+        return gnc_commodity_table_find_namespace.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * gnc_commodity_namespace *gnc_commodity_table_find_namespace(const gnc_commodity_table *table, const char *commodity_namespace)
+     * }
+     */
+    public static MemorySegment gnc_commodity_table_find_namespace$address() {
+        return gnc_commodity_table_find_namespace.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * gnc_commodity_namespace *gnc_commodity_table_find_namespace(const gnc_commodity_table *table, const char *commodity_namespace)
+     * }
+     */
+    public static MemorySegment gnc_commodity_table_find_namespace(MemorySegment table, MemorySegment commodity_namespace) {
+        var mh$ = gnc_commodity_table_find_namespace.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("gnc_commodity_table_find_namespace", table, commodity_namespace);
+            }
+            return (MemorySegment)mh$.invokeExact(table, commodity_namespace);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class gnc_commodity_table_delete_namespace {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.ofVoid(
+            GNUCashBinding.C_POINTER,
+            GNUCashBinding.C_POINTER
+        );
+
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("gnc_commodity_table_delete_namespace");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * void gnc_commodity_table_delete_namespace(gnc_commodity_table *table, const char *commodity_namespace)
+     * }
+     */
+    public static FunctionDescriptor gnc_commodity_table_delete_namespace$descriptor() {
+        return gnc_commodity_table_delete_namespace.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * void gnc_commodity_table_delete_namespace(gnc_commodity_table *table, const char *commodity_namespace)
+     * }
+     */
+    public static MethodHandle gnc_commodity_table_delete_namespace$handle() {
+        return gnc_commodity_table_delete_namespace.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * void gnc_commodity_table_delete_namespace(gnc_commodity_table *table, const char *commodity_namespace)
+     * }
+     */
+    public static MemorySegment gnc_commodity_table_delete_namespace$address() {
+        return gnc_commodity_table_delete_namespace.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * void gnc_commodity_table_delete_namespace(gnc_commodity_table *table, const char *commodity_namespace)
+     * }
+     */
+    public static void gnc_commodity_table_delete_namespace(MemorySegment table, MemorySegment commodity_namespace) {
+        var mh$ = gnc_commodity_table_delete_namespace.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("gnc_commodity_table_delete_namespace", table, commodity_namespace);
+            }
+            mh$.invokeExact(table, commodity_namespace);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class gnc_commodity_table_get_size {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            GNUCashBinding.C_INT,
+            GNUCashBinding.C_POINTER
+        );
+
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("gnc_commodity_table_get_size");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * guint gnc_commodity_table_get_size(const gnc_commodity_table *tbl)
+     * }
+     */
+    public static FunctionDescriptor gnc_commodity_table_get_size$descriptor() {
+        return gnc_commodity_table_get_size.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * guint gnc_commodity_table_get_size(const gnc_commodity_table *tbl)
+     * }
+     */
+    public static MethodHandle gnc_commodity_table_get_size$handle() {
+        return gnc_commodity_table_get_size.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * guint gnc_commodity_table_get_size(const gnc_commodity_table *tbl)
+     * }
+     */
+    public static MemorySegment gnc_commodity_table_get_size$address() {
+        return gnc_commodity_table_get_size.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * guint gnc_commodity_table_get_size(const gnc_commodity_table *tbl)
+     * }
+     */
+    public static int gnc_commodity_table_get_size(MemorySegment tbl) {
+        var mh$ = gnc_commodity_table_get_size.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("gnc_commodity_table_get_size", tbl);
+            }
+            return (int)mh$.invokeExact(tbl);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class gnc_commodity_table_get_commodities {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            GNUCashBinding.C_POINTER,
+            GNUCashBinding.C_POINTER,
+            GNUCashBinding.C_POINTER
+        );
+
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("gnc_commodity_table_get_commodities");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * CommodityList *gnc_commodity_table_get_commodities(const gnc_commodity_table *table, const char *commodity_namespace)
+     * }
+     */
+    public static FunctionDescriptor gnc_commodity_table_get_commodities$descriptor() {
+        return gnc_commodity_table_get_commodities.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * CommodityList *gnc_commodity_table_get_commodities(const gnc_commodity_table *table, const char *commodity_namespace)
+     * }
+     */
+    public static MethodHandle gnc_commodity_table_get_commodities$handle() {
+        return gnc_commodity_table_get_commodities.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * CommodityList *gnc_commodity_table_get_commodities(const gnc_commodity_table *table, const char *commodity_namespace)
+     * }
+     */
+    public static MemorySegment gnc_commodity_table_get_commodities$address() {
+        return gnc_commodity_table_get_commodities.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * CommodityList *gnc_commodity_table_get_commodities(const gnc_commodity_table *table, const char *commodity_namespace)
+     * }
+     */
+    public static MemorySegment gnc_commodity_table_get_commodities(MemorySegment table, MemorySegment commodity_namespace) {
+        var mh$ = gnc_commodity_table_get_commodities.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("gnc_commodity_table_get_commodities", table, commodity_namespace);
+            }
+            return (MemorySegment)mh$.invokeExact(table, commodity_namespace);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
     private static class gnc_commodity_table_get_quotable_commodities {
         public static final FunctionDescriptor DESC = FunctionDescriptor.of(
             GNUCashBinding.C_POINTER,

@@ -23,11 +23,12 @@ cat <<EOF > /tmp/gnucash_files.h
 #include <gnucash/SX-ttinfo.h>
 #include <gnucash/Transaction.h>
 #include <gnucash/TransLog.h>
+#include <glib/glist.h>
 EOF
 
 #Step 1, to create the dump of includes
 jextract --dump-includes /tmp/all-includes `pkg-config --cflags glib-2.0` -I/usr/include/gnucash --header-class-name GCashBinding /tmp/gnucash_files.h
 
-grep -e "gnucash\|GList\|GDate\|_GObjectClass\|_GObject\|GTypeClass\|_GSList\|_GTypeInstance" /tmp/all-includes > /tmp/gnucash.includes
+grep -e "gnucash\|GList\|GDate\|_GObjectClass\|_GObject\|GTypeClass\|_GSList\|_GTypeInstance\|g_list" /tmp/all-includes > /tmp/gnucash.includes
 
-jextract '@/tmp/gnucash.includes' --output "../java-gnucash/src/main/java" -t net.raohome.gnucash.gen  `pkg-config --cflags glib-2.0` -I/usr/include/gnucash -l gnc-engine -l gnc-core-utils  --header-class-name GNUCashBinding /tmp/gnucash_files.h 
+jextract '@/tmp/gnucash.includes' --output "../java-gnucash/src/main/java" -t net.raohome.gnucash.gen  `pkg-config --cflags glib-2.0` -I/usr/include/gnucash -l gnc-engine -l gnc-core-utils -l glib-2.0  --header-class-name GNUCashBinding /tmp/gnucash_files.h 
