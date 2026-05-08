@@ -1,10 +1,14 @@
 package net.raohome.gnucash.objects;
 
+import static net.raohome.gnucash.gen.GNUCashBinding.gnc_price_get_time64;
+import static net.raohome.gnucash.gen.GNUCashBinding.gnc_price_get_value;
+
 import java.lang.foreign.Arena;
 import java.lang.foreign.MemorySegment;
 import java.math.BigDecimal;
-
-import static net.raohome.gnucash.gen.GNUCashBinding.*;
+import java.time.Instant;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
 
 public class Price extends BaseObject {
 
@@ -18,5 +22,10 @@ public class Price extends BaseObject {
 			return null;
 		}
 		return convertNumber(value);
+	}
+	
+	public LocalDateTime getTime() {
+		long value = gnc_price_get_time64(pointer);
+		return getTimestamp(value);
 	}
 }

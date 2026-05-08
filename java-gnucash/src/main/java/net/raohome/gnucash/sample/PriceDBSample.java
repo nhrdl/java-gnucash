@@ -1,6 +1,7 @@
 package net.raohome.gnucash.sample;
 
 import java.io.IOException;
+import java.math.BigDecimal;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.text.NumberFormat;
@@ -43,12 +44,13 @@ public class PriceDBSample {
 				}
 				Commodity commodity = commidityTable.lookup(data[0], data[2]);
 				if (commodity != null) {
+					BigDecimal latestPrice = priceDB.getLatestPrice(commodity, usd);
 					GList<Price> prices = priceDB.getPrice(commodity, usd);
 
 					Iterator<Price> iterator = prices.iterator();
 					if (iterator.hasNext()) {
 						Price price = iterator.next();
-						System.out.printf("%s,%s%n", data[1], currencyInstance.format( price.getValue()));
+						System.out.printf("%s,%s,%s,%s%n", data[1], currencyInstance.format( price.getValue()), price.getTime(), currencyInstance.format(latestPrice));
 					}
 					else {
 						System.out.printf("%s,(No prices available)%n", data[1]);

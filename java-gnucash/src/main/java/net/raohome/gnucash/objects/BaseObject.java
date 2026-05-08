@@ -3,6 +3,9 @@ package net.raohome.gnucash.objects;
 import java.lang.foreign.MemorySegment;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
+import java.time.Instant;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.util.concurrent.ConcurrentHashMap;
 
 import net.raohome.gnucash.gen.gnc_numeric;
@@ -14,10 +17,13 @@ public abstract class BaseObject {
 	private static ConcurrentHashMap<MemorySegment,  BaseObject> objectMap = new ConcurrentHashMap<>();
 	public BaseObject(MemorySegment pointer) {
 		this.pointer = pointer;
+		if (pointer == null || MemorySegment.NULL.equals(pointer)) {
+			throw new NullPointerException();
+		}
 		objectMap.put(pointer, this);
 	}
 
-	public BigDecimal convertNumber(MemorySegment balance) {
+	public static BigDecimal convertNumber(MemorySegment balance) {
 
 		BigDecimal numerator = BigDecimal.valueOf(gnc_numeric.num(balance));
 		BigDecimal denominator = BigDecimal.valueOf(gnc_numeric.denom(balance));
@@ -29,5 +35,14 @@ public abstract class BaseObject {
 	@SuppressWarnings("unchecked")
 	public static <T extends BaseObject> T getObjectFor(MemorySegment ptr) {
 		return (T) objectMap.get(ptr);
+	}
+	
+	public static LocalDateTime getTimestamp(long time64) {
+		LocalDateTime ldt = LocalDateTime.ofInstant(
+			    Instant.ofEpochSecond(time64), 
+			    ZoneId.systemDefault()
+			);
+		
+		return ldt;
 	}
 }
