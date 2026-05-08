@@ -3,6 +3,8 @@ package net.raohome.gnucash.sample;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.text.NumberFormat;
+import java.util.Iterator;
 import java.util.List;
 
 import net.raohome.gnucash.objects.Commodity;
@@ -18,7 +20,7 @@ public class PriceDBSample {
 
 	// Expects a simple csv file as parameter. CSV file format is Namespce,Commodity
 	// Basically output from PrintAllCommodities
-	
+
 	public static void main(String[] args) throws Exception {
 		if (args.length != 2) {
 			System.err.println("Usage AccountTotals <gnucash file path> <commodities to update>");
@@ -31,8 +33,9 @@ public class PriceDBSample {
 			session.load();
 			CommodityTable commidityTable = session.getBook().getCommidityTable();
 			Commodity usd = commidityTable.lookup("ISO4217", "USD");
-			
+
 			PriceDB priceDB = session.getBook().getPriceDB();
+			NumberFormat currencyInstance = NumberFormat.getCurrencyInstance();
 			for (String line : lines) {
 				String[] data = line.split(",", -1);
 				if (data.length != 3) {
@@ -41,8 +44,15 @@ public class PriceDBSample {
 				Commodity commodity = commidityTable.lookup(data[0], data[2]);
 				if (commodity != null) {
 					GList<Price> prices = priceDB.getPrice(commodity, usd);
-					Price price = prices.iterator().next();
-					System.out.printf("%s,%s%n", data[1], price.getValue());
+
+					Iterator<Price> iterator = prices.iterator();
+					if (iterator.hasNext()) {
+						Price price = iterator.next();
+						System.out.printf("%s,%s%n", data[1], currencyInstance.format( price.getValue()));
+					}
+					else {
+						System.out.printf("%s,(No prices available)%n", data[1]);
+					}
 				}
 			}
 		}
