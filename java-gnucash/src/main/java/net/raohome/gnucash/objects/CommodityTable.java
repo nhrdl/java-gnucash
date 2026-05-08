@@ -18,9 +18,22 @@ public class CommodityTable extends BaseObject {
 		MemorySegment mnemonicPtr = Arena.ofAuto().allocateFrom(mnemonic);
 
 		MemorySegment commodity = gnc_commodity_table_lookup(pointer, namespacePtr, mnemonicPtr);
+		if (commodity.equals(MemorySegment.NULL)) {
+			return null;
+		}
 		return new Commodity(commodity);
 	}
 
+	public Commodity findFull(String namespace, String fullname) {
+		MemorySegment namespacePtr = Arena.ofAuto().allocateFrom(namespace);
+		MemorySegment fullnamePtr = Arena.ofAuto().allocateFrom(fullname);
+
+		MemorySegment commodity = gnc_commodity_table_find_full(pointer, namespacePtr, fullnamePtr);
+		if (commodity.equals(MemorySegment.NULL)) {
+			return null;
+		}
+		return new Commodity(commodity);
+	}
 	public List<String> getNamespaces() {
 		MemorySegment clist = gnc_commodity_table_get_namespaces(pointer);
 		try {

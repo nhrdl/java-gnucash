@@ -12,6 +12,8 @@ import net.raohome.gnucash.objects.Session.SessionMode;
 public class PrintAllCommodities {
 
 	private static record CommodityRecord(String namespace, Commodity commodity) {}
+
+		
 	public static void main(String[] args) throws Exception {
 		if (args.length != 1) {
 			System.err.println("Usage AccountTotals <gnucash file path>");
@@ -44,7 +46,7 @@ public class PrintAllCommodities {
 			});
 			
 			for (CommodityRecord rec : list) {
-				System.out.printf("%s: %s%n", rec.namespace, rec.commodity.getFullName());
+				System.out.printf("%s,%s,%s%n", rec.namespace, rec.commodity.getFullName(), rec.commodity.getMnemonic());
 			}
 		}
 	}
