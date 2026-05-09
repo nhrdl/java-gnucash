@@ -5,6 +5,7 @@ import java.math.BigDecimal;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.text.NumberFormat;
+import java.time.LocalDateTime;
 import java.util.Iterator;
 import java.util.List;
 
@@ -30,33 +31,52 @@ public class PriceDBSample {
 		List<String> lines = Files.readAllLines(Paths.get(args[1]));
 		Engine.init();
 		try (Session session = Session.newSession()) {
-			session.beginSession(args[0], SessionMode.SESSION_READ_ONLY);
+			session.beginSession(args[0], SessionMode.SESSION_NORMAL_OPEN);
 			session.load();
 			CommodityTable commidityTable = session.getBook().getCommidityTable();
 			Commodity usd = commidityTable.lookup("ISO4217", "USD");
 
 			PriceDB priceDB = session.getBook().getPriceDB();
 			NumberFormat currencyInstance = NumberFormat.getCurrencyInstance();
+			PriceProvider priceDataProvider = new TwelveDataPriceProvider();
+
 			for (String line : lines) {
 				String[] data = line.split(",", -1);
 				if (data.length != 3) {
 					System.out.println(line);
 				}
 				Commodity commodity = commidityTable.lookup(data[0], data[2]);
+
 				if (commodity != null) {
 					BigDecimal latestPrice = priceDB.getLatestPrice(commodity, usd);
 					GList<Price> prices = priceDB.getPrice(commodity, usd);
 
+					if (prices == null) {
+						continue;
+					}
 					Iterator<Price> iterator = prices.iterator();
+
 					if (iterator.hasNext()) {
 						Price price = iterator.next();
-						System.out.printf("%s,%s,%s,%s%n", data[1], currencyInstance.format( price.getValue()), price.getTime(), currencyInstance.format(latestPrice));
-					}
-					else {
+						System.out.printf("%s,%s,%s,%s,%s%n", data[1], data[2],
+								currencyInstance.format(price.getValue()), price.getTime(),
+								currencyInstance.format(latestPrice));
+
+						Price clone = price.clone(session.getBook());
+						clone.setTime(LocalDateTime.now());
+						BigDecimal newPrice = priceDataProvider.latestPrice(data[2]);
+						if (newPrice != null) {
+							clone.setPrice(newPrice);
+							clone.setSourceString("Finance::Quote");
+							priceDB.addPrice(clone);
+						}
+					} else {
 						System.out.printf("%s,(No prices available)%n", data[1]);
 					}
 				}
 			}
+
+			session.save();
 		}
 	}
 }

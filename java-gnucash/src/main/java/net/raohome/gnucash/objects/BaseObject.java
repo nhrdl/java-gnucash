@@ -1,5 +1,6 @@
 package net.raohome.gnucash.objects;
 
+import java.lang.foreign.Arena;
 import java.lang.foreign.MemorySegment;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
@@ -8,6 +9,7 @@ import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.util.concurrent.ConcurrentHashMap;
 
+import net.raohome.gnucash.gen.GNUCashBinding;
 import net.raohome.gnucash.gen.gnc_numeric;
 
 public abstract class BaseObject {
@@ -44,5 +46,9 @@ public abstract class BaseObject {
 			);
 		
 		return ldt;
+	}
+	
+	public static MemorySegment convertNumber(String toConvert) {
+		return GNUCashBinding.gnc_numeric_from_string(Arena.ofAuto(), Arena.ofAuto().allocateFrom(toConvert));
 	}
 }
