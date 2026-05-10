@@ -94,25 +94,43 @@ public class CheckBalancesFromCSV {
 			for (TotalBalance total : totalBalances) {
 				for (String name : accountNames) {
 					if (name.contains(total.acctNo)) {
-						System.out.printf("Found account number %s for symbol %s%n", name, total.symbol);
 						Account symbolAccount = findSymbolAccount(total, accountsMap.get(name));
 						if (symbolAccount == null) {
 							System.out.printf("No account found for %s%n", total.symbol);
 							continue;
 						}
-						System.out.printf("Balances :CSV %s ^^^^^ gnucash balance %s%n", symbolAccount.getBalance(), total.shares);
+						if (symbolAccount.getBalance().equals(total.shares) == false) {
+							System.out.printf("%s %s: CSV balance: %s, Gnucash balance: %s%n", total.acctNo, total.symbol, total.shares,
+									symbolAccount.getBalance());
+							
+							List<Transaction> transactionsForAFund = findTransactions(total, transactions);
+							for (Transaction t : transactionsForAFund) {
+								System.out.printf("%s, Total shares %s%n", t, total.shares);
+							}
+							
+							System.out.println("*******************************************************************************");
+						}
 					}
 				}
 			}
 		}
 	}
 
+	private static List<Transaction> findTransactions(TotalBalance key, List<Transaction> transactions) {
+
+		return transactions.stream().filter(a -> {
+			// System.out.println(a.transactionType);
+			return a.accountNumber.equals(key.acctNo) && a.symbol.equals(key.symbol)
+					&& (a.transactionType.startsWith("Reinvestment") || a.transactionType.equals("Buy")
+							|| a.transactionType.equals("Sell"));
+		}).toList();
+	}
+	
 	private static Account findSymbolAccount(TotalBalance total, Account account) {
 
 		for (Account child : account.getDescendends()) {
 			Commodity cmdty = child.getCommodity();
 			if (cmdty.getMnemonic().equals(total.symbol)) {
-				System.out.printf("Found subaccount for symbol %s%n", total.symbol);
 				return child;
 			}
 		}

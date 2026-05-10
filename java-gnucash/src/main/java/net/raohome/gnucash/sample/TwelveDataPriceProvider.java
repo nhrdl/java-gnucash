@@ -124,6 +124,7 @@ public class TwelveDataPriceProvider implements PriceProvider {
 	public static void main(String[] args) throws Exception {
 		if (args.length != 1) {
 			System.err.println("TwelveDataPriceProvider <symbols file>\nOne symbol per line");
+			System.exit(1);
 		}
 		for (String symbol : Files.readAllLines(Paths.get(args[0]))) {
 
