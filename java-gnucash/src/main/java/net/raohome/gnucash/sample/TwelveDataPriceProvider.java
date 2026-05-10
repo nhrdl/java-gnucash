@@ -3,6 +3,9 @@ package net.raohome.gnucash.sample;
 import java.io.InputStream;
 import java.math.BigDecimal;
 import java.net.URI;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.time.Duration;
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect.Visibility;
 import com.fasterxml.jackson.annotation.JsonInclude;
@@ -82,6 +85,18 @@ public class TwelveDataPriceProvider implements PriceProvider {
 		}
 		String sUrl = String.format("https://api.twelvedata.com/price?symbol=%s&apikey=%s", symbol, key);
 
+		PriceInformation info = makeCall(sUrl,symbol, 0);
+		if (info != null) {
+			return info.price;
+		}
+		return null;
+	}
+
+	PriceInformation makeCall(String sUrl, String symbol, int count) {
+		if (count == 3) {
+			System.err.println("Too many attempts. Aborting call for " + sUrl);
+			return null;
+		}
 		URI url = URI.create(sUrl);
 		try (InputStream is = url.toURL().openStream()) {
 			// byte[] allBytes = is.readAllBytes();
@@ -89,16 +104,32 @@ public class TwelveDataPriceProvider implements PriceProvider {
 			ObjectReader reader = mapper.readerFor(PriceInformation.class);
 			PriceInformation info = reader.readValue(is);
 			if (info.code != null) {
-				System.out.printf("Error, cannot find price for %s, message %s%n",symbol, info.status);
+				if (429 == info.code) {
+					System.out.println("Encountered rate limit. Waiting...");
+					Thread.sleep(Duration.ofSeconds(90));
+					return makeCall(sUrl, symbol, count + 1);
+				}
+				else {
+					System.out.printf("Error, cannot find price for %s, message %s, code %d%n", symbol, info.message,
+							info.code); // The site rate limits
+					return null;
+				}
 			}
-			return info.price;
+			return info;
 		} catch (Exception e) {
 			throw new RuntimeException(e);
 		}
 	}
 
-	public static void main(String[] args) {
-		new TwelveDataPriceProvider().latestPrice("PAY");
+	public static void main(String[] args) throws Exception {
+		if (args.length != 1) {
+			System.err.println("TwelveDataPriceProvider <symbols file>\nOne symbol per line");
+		}
+		for (String symbol : Files.readAllLines(Paths.get(args[0]))) {
+
+			System.out.printf("%s:%s%n", symbol, new TwelveDataPriceProvider().latestPrice(symbol));
+		}
+
 	}
 
 }
