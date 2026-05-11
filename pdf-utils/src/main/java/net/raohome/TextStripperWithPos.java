@@ -1,0 +1,91 @@
+package net.raohome;
+
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import java.util.stream.Collectors;
+
+import org.apache.pdfbox.text.PDFTextStripper;
+import org.apache.pdfbox.text.TextPosition;
+
+public class TextStripperWithPos extends PDFTextStripper {
+
+	private List<TextData> textData;
+
+	public static record TextData(String text, List<TextPosition> textPositions) {
+
+		@Override
+		public final String toString() {
+			TextPosition first = textPositions.getFirst();
+			TextPosition last = textPositions.getLast();
+
+			return String.format("(%d,%d)=>(%d,%d) %s", (int) first.getX(), (int) first.getY(), (int) last.getEndX(),
+					(int) last.getEndY(), text);
+		}
+	}
+
+	Map<Integer, List<TextData>> lines;
+
+	public List<TextData> getTextData() {
+		return textData;
+	}
+
+	public TextStripperWithPos() {
+		this.textData = new ArrayList<TextData>();
+		lines = new HashMap<>();
+	}
+
+	protected void writeString(String text, List<TextPosition> textPositions) throws IOException {
+		TextData currentTextData = new TextData(text, textPositions);
+		textData.add(currentTextData);
+		List<TextData> line = lines.computeIfAbsent((int) textPositions.getFirst().getY(), (_) -> {
+			return new ArrayList<>();
+		});
+		line.add(currentTextData);
+
+		super.writeString(text, textPositions);
+	}
+
+	public List<TextData> findWordsStartingAtXAfterY(int xPos, int yAfter) {
+		return textData.stream().filter(td -> {
+			return xPos == (int) td.textPositions.getFirst().getX();
+		}).filter(td -> {
+			return td.textPositions.getLast().getEndY() < yAfter;
+		}).toList();
+	}
+
+	public List<TextData> findLine(String... lineWords) {
+
+		List<List<TextData>> linesContainingWords = lines.values().stream().filter(tdList -> {
+			Set<String> curlineWords = tdList.stream().map(t -> t.text).collect(Collectors.toSet());
+			for (String word : lineWords) {
+
+				if (curlineWords.contains(word) == false) {
+					return false;
+				}
+			}
+			return true;
+		}).filter(tdList -> {
+			return tdList.size() >= lineWords.length;
+		}).collect(Collectors.toList());
+
+		return linesContainingWords.isEmpty() == false ? linesContainingWords.getFirst() : List.of();
+
+	}
+
+	public List<TextData> findWordsAfter(TextData td) {
+		int beginX = (int) td.textPositions.getFirst().getX();
+		int beginY = (int)td.textPositions.getFirst().getY();
+		List<TextData> list = textData.stream().filter(data-> {
+			return beginX < data.textPositions.getFirst().getX();
+		})
+		.filter(data-> {
+			return beginY == (int)data.textPositions.getFirst().getY();
+		}).toList();
+		
+		return list;
+	}
+}
