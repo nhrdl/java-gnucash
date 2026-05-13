@@ -88,4 +88,35 @@ public class TextStripperWithPos extends PDFTextStripper {
 		
 		return list;
 	}
+	
+	public  List<List<TextPosition>> getSeparatedTextPositionsIfSpacePresent(List<TextPosition> textPositions) {
+
+		if (textPositions == null || textPositions.isEmpty()) {
+			return List.of();
+		}
+
+		var resultList = new ArrayList<List<TextPosition>>();
+		int start = 0;
+
+		for (int i = 0; i < textPositions.size() - 1; i++) {
+			var current = textPositions.get(i);
+			var next = textPositions.get(i + 1);
+
+			float diff = next.getX() - current.getEndX();
+
+			// Detect a "space" or large horizontal gap
+			if (diff > getSpacingTolerance()) {
+				var part = List.copyOf(textPositions.subList(start, i + 1));
+				resultList.add(part);
+				start = i + 1;
+			}
+		}
+
+		if (start < textPositions.size()) {
+			var lastPart = List.copyOf(textPositions.subList(start, textPositions.size()));
+			resultList.add(lastPart);
+		}
+
+		return List.copyOf(resultList);
+	}
 }

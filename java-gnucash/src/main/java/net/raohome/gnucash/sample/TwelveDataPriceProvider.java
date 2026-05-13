@@ -16,25 +16,10 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectReader;
 import com.fasterxml.jackson.databind.SerializationFeature;
 
+import net.raohome.gnucash.objects.JSONUtils;
+
 public class TwelveDataPriceProvider implements PriceProvider {
 
-	private static ObjectMapper mapper;
-
-	static {
-		final JsonFactory factory = new JsonFactory();
-		mapper = new ObjectMapper(factory);
-		mapper.setVisibility(PropertyAccessor.ALL, Visibility.NONE);
-		mapper.setVisibility(PropertyAccessor.FIELD, Visibility.ANY);
-		mapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, null == System.getProperty("SKIP_STRICT"));
-		// convertValue uses valueToTree(), so serialization inclusion applies.
-		// NON_EMPTY strips empty
-		// collections from that tree (e.g. cookies=[]), then the field reads back as
-		// null.
-		mapper.setDefaultPropertyInclusion(
-				JsonInclude.Value.construct(JsonInclude.Include.NON_NULL, JsonInclude.Include.NON_NULL));
-		mapper.disable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS);
-		mapper.configure(DeserializationFeature.READ_UNKNOWN_ENUM_VALUES_AS_NULL, true);
-	}
 
 	static class PriceInformation {
 		private BigDecimal price;
@@ -101,7 +86,7 @@ public class TwelveDataPriceProvider implements PriceProvider {
 		try (InputStream is = url.toURL().openStream()) {
 			// byte[] allBytes = is.readAllBytes();
 			// String str = new String(allBytes);
-			ObjectReader reader = mapper.readerFor(PriceInformation.class);
+			ObjectReader reader = JSONUtils.getMapper().readerFor(PriceInformation.class);
 			PriceInformation info = reader.readValue(is);
 			if (info.code != null) {
 				if (429 == info.code) {

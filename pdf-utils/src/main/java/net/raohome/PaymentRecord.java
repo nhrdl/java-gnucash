@@ -10,6 +10,15 @@ public class PaymentRecord {
 	BigDecimal interest;
 	BigDecimal escrow;
 	BigDecimal fees;
+	String postingDate;
+	
+	public String getPostingDate() {
+		return postingDate;
+	}
+
+	public void setPostingDate(String postingDate) {
+		this.postingDate = postingDate;
+	}
 
 	public BigDecimal getPrincipal() {
 		return principal;

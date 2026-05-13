@@ -16,7 +16,8 @@ public abstract class BaseObject {
 
 	protected MemorySegment pointer;
 
-	private static ConcurrentHashMap<MemorySegment,  BaseObject> objectMap = new ConcurrentHashMap<>();
+	private static ConcurrentHashMap<MemorySegment, BaseObject> objectMap = new ConcurrentHashMap<>();
+
 	public BaseObject(MemorySegment pointer) {
 		this.pointer = pointer;
 		if (pointer == null || MemorySegment.NULL.equals(pointer)) {
@@ -33,22 +34,23 @@ public abstract class BaseObject {
 		BigDecimal number = numerator.divide(denominator, 10, RoundingMode.HALF_UP).stripTrailingZeros();
 		return number;
 	}
-	
+
 	@SuppressWarnings("unchecked")
 	public static <T extends BaseObject> T getObjectFor(MemorySegment ptr) {
 		return (T) objectMap.get(ptr);
 	}
-	
+
 	public static LocalDateTime getTimestamp(long time64) {
-		LocalDateTime ldt = LocalDateTime.ofInstant(
-			    Instant.ofEpochSecond(time64), 
-			    ZoneId.systemDefault()
-			);
-		
+		LocalDateTime ldt = LocalDateTime.ofInstant(Instant.ofEpochSecond(time64), ZoneId.systemDefault());
+
 		return ldt;
 	}
-	
+
 	public static MemorySegment convertNumber(String toConvert) {
 		return GNUCashBinding.gnc_numeric_from_string(Arena.ofAuto(), Arena.ofAuto().allocateFrom(toConvert));
+	}
+
+	public GNCGUID getGUID() {
+		return new GNCGUID(GNUCashBinding.qof_entity_get_guid(pointer));
 	}
 }

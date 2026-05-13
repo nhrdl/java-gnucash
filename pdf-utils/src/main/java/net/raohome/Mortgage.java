@@ -1,5 +1,6 @@
 package net.raohome;
 
+import java.io.IOException;
 import java.math.BigDecimal;
 import java.util.List;
 
@@ -18,13 +19,23 @@ public class Mortgage {
 			System.err.println("Usage Mortgage <statement path>");
 			System.exit(1);
 		}
-		try (PDDocument document = Loader.loadPDF(new RandomAccessReadBufferedFile(args[0]));) {
+		String filename = args[0];
+		getMortgateData(filename);
+	}
+
+	public static PaymentRecord getMortgateData(String filePath) throws IOException {
+		try (PDDocument document = Loader.loadPDF(new RandomAccessReadBufferedFile(filePath));) {
 			TextStripperWithPos stripper = new TextStripperWithPos();
+			stripper.setShouldSeparateByBeads(true);
+			stripper.setSortByPosition(true);
+
 			stripper.setStartPage(1);
 			stripper.setEndPage(2);
 
 			stripper.getText(document);
 
+			// System.out.println(text);
+			System.out.println("*******************************************");
 			List<TextData> textData = stripper.getTextData();
 			textData.forEach(td -> {
 				System.out.println(td);
@@ -60,8 +71,19 @@ public class Mortgage {
 				System.out.println(wordsAfter);
 			}
 
-//			System.out.println(list);
+			list = stripper.findLine("Transaction", "Activity");
+			first = list.getFirst().textPositions().getFirst();
+			// Now search for the entries starting at same x position, but bellow the words
+			list = stripper.findWordsStartingAtXAfterY((int) first.getX(), (int) first.getEndY());
+			System.out.println(list);
+
+			if (list.size() >= 2) {
+				TextData postingDate = list.get(1);
+				pd.setPostingDate(postingDate.text());
+				System.out.printf("Posting date is %s%n", postingDate.text());
+			}
 			System.out.println(pd);
+			return pd;
 		}
 	}
 

@@ -51,6 +51,12 @@
 			<version>2.21.2</version>
 			<scope>compile</scope>
 		</dependency>
+
+		<dependency>
+			<groupId>net.raohome</groupId>
+			<artifactId>pdf-utils</artifactId>
+			<version>1.0</version>
+		</dependency>
 	</dependencies>
 
 	<build>
