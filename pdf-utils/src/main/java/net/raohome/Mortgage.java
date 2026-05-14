@@ -23,7 +23,7 @@ public class Mortgage {
 		getMortgateData(filename);
 	}
 
-	public static PaymentRecord getMortgateData(String filePath) throws IOException {
+	public static PaymentRecord getMortgateData(String filePath)  {
 		try (PDDocument document = Loader.loadPDF(new RandomAccessReadBufferedFile(filePath));) {
 			TextStripperWithPos stripper = new TextStripperWithPos();
 			stripper.setShouldSeparateByBeads(true);
@@ -35,11 +35,11 @@ public class Mortgage {
 			stripper.getText(document);
 
 			// System.out.println(text);
-			System.out.println("*******************************************");
+			//System.out.println("*******************************************");
 			List<TextData> textData = stripper.getTextData();
-			textData.forEach(td -> {
-				System.out.println(td);
-			});
+//			textData.forEach(td -> {
+//				System.out.println(td);
+//			});
 
 			// Look for the line where Past Payments Breakdown words appear
 			List<TextData> list = stripper.findLine("Past", "Payments", "Breakdown");
@@ -68,22 +68,22 @@ public class Mortgage {
 					break;
 				}
 
-				System.out.println(wordsAfter);
+		//		System.out.println(wordsAfter);
 			}
 
 			list = stripper.findLine("Transaction", "Activity");
 			first = list.getFirst().textPositions().getFirst();
 			// Now search for the entries starting at same x position, but bellow the words
 			list = stripper.findWordsStartingAtXAfterY((int) first.getX(), (int) first.getEndY());
-			System.out.println(list);
+		//	System.out.println(list);
 
 			if (list.size() >= 2) {
 				TextData postingDate = list.get(1);
 				pd.setPostingDate(postingDate.text());
-				System.out.printf("Posting date is %s%n", postingDate.text());
 			}
-			System.out.println(pd);
 			return pd;
+		} catch (Exception e) {
+			throw new RuntimeException(e);
 		}
 	}
 

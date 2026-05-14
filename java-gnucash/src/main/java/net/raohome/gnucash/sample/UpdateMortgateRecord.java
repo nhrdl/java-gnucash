@@ -1,6 +1,7 @@
 package net.raohome.gnucash.sample;
 
 import java.nio.file.Paths;
+import java.time.LocalDate;
 import java.util.Collection;
 import java.util.Map;
 import java.util.Set;
@@ -8,12 +9,15 @@ import java.util.stream.Collectors;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 
+import net.raohome.Mortgage;
+import net.raohome.PaymentRecord;
 import net.raohome.gnucash.objects.Account;
 import net.raohome.gnucash.objects.Engine;
 import net.raohome.gnucash.objects.GList;
 import net.raohome.gnucash.objects.JSONUtils;
 import net.raohome.gnucash.objects.Session;
 import net.raohome.gnucash.objects.Session.SessionMode;
+import net.raohome.gnucash.objects.Transaction;
 
 public class UpdateMortgateRecord {
 	public static void main(String[] args) {
@@ -42,6 +46,16 @@ public class UpdateMortgateRecord {
 			}).collect(Collectors.toSet());
 			
 			System.out.printf("Found %d accounts in the set%n", splitAccounts.size());
+			
+			PaymentRecord mortgageData = Mortgage.getMortgateData(args[2]);
+			
+			System.out.printf("%s%n", mortgageData);
+			
+			Transaction trans = Transaction.newTransaction(session.getBook());
+			trans.setDate(LocalDate.now());
+			trans.setDescription("Trans descr");
+			trans.setNotes("trans notes");
+			trans.setDocsLink("Updated from " + args[2]);
 		}
 
 	}
