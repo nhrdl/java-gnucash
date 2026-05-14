@@ -79,7 +79,7 @@ public class Mortgage {
 
 			if (list.size() >= 2) {
 				TextData postingDate = list.get(1);
-				pd.setPostingDate(postingDate.text());
+				pd.setPostingDate(PaymentRecord.convertDate( postingDate.text()));
 			}
 			return pd;
 		} catch (Exception e) {

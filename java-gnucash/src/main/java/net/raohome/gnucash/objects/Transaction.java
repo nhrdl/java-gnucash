@@ -70,11 +70,15 @@ public class Transaction extends BaseObject {
 		xaccTransSetDate(pointer, date.getDayOfMonth(), date.getMonthValue(), date.getYear());
 	}
 	
-	public void setCommodity(Commodity commodity) {
+	public void setCurrency(Commodity commodity) {
 		xaccTransSetCurrency(pointer, commodity.pointer);
 	}
 	
+	public void beginEdit() {
+		xaccTransBeginEdit(pointer);
+	}
 	
-	
-
+	public void commitEdit() {
+		xaccTransCommitEdit(pointer);
+	}
 }

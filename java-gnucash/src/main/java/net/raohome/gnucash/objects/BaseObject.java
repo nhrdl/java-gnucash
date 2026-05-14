@@ -47,10 +47,18 @@ public abstract class BaseObject {
 	}
 
 	public static MemorySegment convertNumber(String toConvert) {
-		return GNUCashBinding.gnc_numeric_from_string(Arena.ofAuto(), Arena.ofAuto().allocateFrom(toConvert));
+		return GNUCashBinding.gnc_numeric_from_string(Arena.global(), Arena.ofAuto().allocateFrom(toConvert));
 	}
 
 	public GNCGUID getGUID() {
 		return new GNCGUID(GNUCashBinding.qof_entity_get_guid(pointer));
+	}
+	
+	@Override
+	public boolean equals(Object obj) {
+		if (obj instanceof BaseObject thatObject) {
+			return pointer.equals(thatObject);
+		}
+		return super.equals(obj);
 	}
 }
