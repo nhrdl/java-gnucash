@@ -57,43 +57,10 @@ public class UpdateMortgateRecord {
 			{
 				BigDecimal amount = mortgageData.getEscrow();
 				if (BigDecimal.ZERO.equals(amount) == false) {
-					Transaction trans = Transaction.newTransaction(session.getBook());
-					trans.beginEdit();
-
-					trans.setCurrency(usd);
-					trans.setDescription("Trans descr");
-					trans.setNotes("trans notes");
-					trans.setDocsLink("Updated from " + args[2]);
-					trans.setDate(mortgageData.getPostingDate());
-
 					String acctGuid = splitAccountsTable.get("escrow account guid");
 					Optional<Account> optional = findAccountForGUID(javaList, acctGuid);
-
-					{
-						Split split = Split.newSplit(session.getBook());
-						split.setValue(amount);
-						split.setAccount(optional.orElseThrow());
-						split.setParent(trans);
-						
-						
-						split.setMemo("Split memo for escrow");
-
-						split.setAmount(amount);
-					}
-
-					{
-						Split split = Split.newSplit(session.getBook());
-						split.setParent(trans);
-
-						split.setAccount(mortgageAccount.orElseThrow());
-						split.setAmount(amount.negate());
-						split.setMemo("Split memo for escrow");
-
-						split.setValue(amount.negate());
-					}
-
-					trans.commitEdit();
-
+					
+					Transaction.createTransaction(session, "Imported from " +  args[2], null, null, mortgageData.getPostingDate(), optional.orElseThrow(), mortgageAccount.orElseThrow(), amount);
 				}
 			}
 
