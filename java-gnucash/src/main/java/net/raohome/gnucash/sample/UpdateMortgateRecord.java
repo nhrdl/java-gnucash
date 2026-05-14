@@ -64,6 +64,15 @@ public class UpdateMortgateRecord {
 				}
 			}
 
+			{
+				BigDecimal amount = mortgageData.getInterest();
+				if (BigDecimal.ZERO.equals(amount) == false) {
+					String acctGuid = splitAccountsTable.get("interest account guid");
+					Optional<Account> optional = findAccountForGUID(javaList, acctGuid);
+					
+					Transaction.createTransaction(session, "Imported from " +  args[2], null, null, mortgageData.getPostingDate(), optional.orElseThrow(), mortgageAccount.orElseThrow(), amount);
+				}
+			}
 			session.save();
 		}
 
