@@ -30,7 +30,7 @@ public class AccountTotals {
 			
 			for (Account a : list) {
 				if (false == BigDecimal.ZERO.equals(a.getBalanceInCurrency(usd))) {
-					System.out.printf("%s,%s,%s,%s,%s%n", a.getName(), a.getCode(), a.getDescription(),
+					System.out.printf("%s\t%s\t%s\t%s\t%s%n", a.getName(), a.getCode(), a.getDescription(),
 							nf.format(a.getBalance()), nf.format(a.getBalanceInCurrency(usd)));
 				}
 			}

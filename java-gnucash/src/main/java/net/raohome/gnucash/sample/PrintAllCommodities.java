@@ -46,7 +46,7 @@ public class PrintAllCommodities {
 			});
 			
 			for (CommodityRecord rec : list) {
-				System.out.printf("%s,%s,%s%n", rec.namespace, rec.commodity.getFullName(), rec.commodity.getMnemonic());
+				System.out.printf("%s,%s,%s%n", rec.namespace, rec.commodity.getMnemonic(), rec.commodity.getFullName());
 			}
 		}
 	}
