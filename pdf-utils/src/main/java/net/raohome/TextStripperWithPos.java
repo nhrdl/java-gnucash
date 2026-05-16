@@ -7,6 +7,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
 import org.apache.pdfbox.text.PDFTextStripper;
@@ -23,8 +24,8 @@ public class TextStripperWithPos extends PDFTextStripper {
 			TextPosition first = textPositions.getFirst();
 			TextPosition last = textPositions.getLast();
 
-			return String.format("(%d,%d)=>(%d,%d) %s", (int) first.getX(), (int) first.getY(), (int) last.getEndX(),
-					(int) last.getEndY(), text);
+			return String.format("(%d,%d)=>(%d,%d) (%s/%f) %s", (int) first.getX(), (int) first.getY(), (int) last.getEndX(),
+					(int) last.getEndY(), first.getFont().getName(), first.getFontSize(), text);
 		}
 
 		public int getX() {
@@ -163,10 +164,10 @@ public class TextStripperWithPos extends PDFTextStripper {
 		return List.copyOf(resultList);
 	}
 
-	public List<List<TextData>> findLinesBetween(String firstWord, String secondWord) {
-		List<List<TextData>> firstWordList = findLinesStartingWith(firstWord);
+	public List<List<TextData>> findLinesBetween(String firstWord, String secondWord, Predicate<TextData> acceptor) {
+		List<List<TextData>> firstWordList = findLinesStartingWith(firstWord, acceptor);
 
-		List<List<TextData>> secondWordList = findLinesStartingWith(secondWord);
+		List<List<TextData>> secondWordList = findLinesStartingWith(secondWord, acceptor);
 
 		if (firstWordList.size() != 1 || secondWordList.size() != 1) {
 			firstWordList.forEach(System.out::println);
@@ -185,9 +186,11 @@ public class TextStripperWithPos extends PDFTextStripper {
 		return list;
 	}
 
-	public List<List<TextData>> findLinesStartingWith(String text) {
+	public List<List<TextData>> findLinesStartingWith(String text, Predicate<TextData> acceptor) {
 		return lines.values().stream().filter(t -> {
 			return text.equals(t.getFirst().text());
+		}).filter(l-> {
+			return acceptor.test(l.getFirst());
 		}).toList();
 	}
 }

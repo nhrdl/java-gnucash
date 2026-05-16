@@ -30,6 +30,7 @@ public class Paystub {
 		public BigDecimal gross;
 
 		public List<LineItem> earnings = new ArrayList<Paystub.LineItem>();
+		public List<LineItem> taxes = new ArrayList<>();
 	}
 
 	private static Collection<PaystubInformation> getPaystubInformation(String filePath) {
@@ -83,9 +84,22 @@ public class Paystub {
 		}
 		info.gross = PaymentRecord.convertCurrency(current.get(1).text());
 
-		List<List<TextData>> earnings = stripper.findLinesBetween("Earnings", "Deductions");
+		List<List<TextData>> earnings = stripper.findLinesBetween("Earnings", "Deductions", Paystub::sectionHeadingFontSizeChecker);
+		findLineItemsInTheSection(info.earnings, earnings);
+		info.earnings.forEach(System.out::println);
+		
+		System.out.printf("****************************************%n");
+		List<List<TextData>> taxes = stripper.findLinesBetween("Taxes", "Paid Time Off", Paystub::sectionHeadingFontSizeChecker);
+		findLineItemsInTheSection(info.taxes, taxes);
+		info.taxes.forEach(System.out::println);
+		return info;
+	}
 
-		earnings.forEach(elist -> {
+	static boolean sectionHeadingFontSizeChecker(TextData td) {
+		return 14 == (int)td.textPositions().getFirst().getFontSize();
+	}
+	public static void findLineItemsInTheSection(List<LineItem> dest, List<List<TextData>> section) {
+		section.forEach(elist -> {
 			if (elist.size() != 3 && elist.size() != 4) {
 				throw new RuntimeException("Unexpected size");
 			}
@@ -95,12 +109,11 @@ public class Paystub {
 				BigDecimal amount = PaymentRecord.convertCurrency(amt);
 				if (BigDecimal.ZERO.compareTo(amount) != 0) {
 					LineItem lineItem = new LineItem(item, amount);
-					info.earnings.add(lineItem);
+					dest.add(lineItem);
 				}
 			}
 		});
-		info.earnings.forEach(System.out::println);
-		return info;
 	}
 
+	
 }
