@@ -2,6 +2,7 @@ package net.raohome;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -28,6 +29,29 @@ public class TextStripperWithPos extends PDFTextStripper {
 	}
 
 	Map<Integer, List<TextData>> lines;
+
+	List<TextData> sortedList = new ArrayList<>();
+
+	public List<TextData> getSortedTextDataList() {
+		if (sortedList.isEmpty()) {
+			sortedList.addAll(textData);
+
+			sortedList.sort(compareTextData());
+		}
+
+		return sortedList;
+	}
+
+	public Comparator<? super TextData> compareTextData() {
+		return (t1, t2) -> {
+			int compare = Float.compare(t1.textPositions.getFirst().getY(), t2.textPositions.getFirst().getY());
+			if (compare != 0) {
+				return compare;
+			}
+			compare = Float.compare(t1.textPositions.getFirst().getX(), t2.textPositions.getFirst().getX());
+			return compare;
+		};
+	}
 
 	public List<TextData> getTextData() {
 		return textData;
@@ -57,7 +81,7 @@ public class TextStripperWithPos extends PDFTextStripper {
 		}).toList();
 	}
 
-	public List<TextData> findLine(String... lineWords) {
+	public List<List<TextData>> findLines(String... lineWords) {
 
 		List<List<TextData>> linesContainingWords = lines.values().stream().filter(tdList -> {
 			Set<String> curlineWords = tdList.stream().map(t -> t.text).collect(Collectors.toSet());
@@ -72,24 +96,27 @@ public class TextStripperWithPos extends PDFTextStripper {
 			return tdList.size() >= lineWords.length;
 		}).collect(Collectors.toList());
 
-		return linesContainingWords.isEmpty() == false ? linesContainingWords.getFirst() : List.of();
+		linesContainingWords.forEach(t -> {
+			t.sort(compareTextData());
+		});
+
+		return linesContainingWords;
 
 	}
 
 	public List<TextData> findWordsAfter(TextData td) {
 		int beginX = (int) td.textPositions.getFirst().getX();
-		int beginY = (int)td.textPositions.getFirst().getY();
-		List<TextData> list = textData.stream().filter(data-> {
+		int beginY = (int) td.textPositions.getFirst().getY();
+		List<TextData> list = textData.stream().filter(data -> {
 			return beginX < data.textPositions.getFirst().getX();
-		})
-		.filter(data-> {
-			return beginY == (int)data.textPositions.getFirst().getY();
+		}).filter(data -> {
+			return beginY == (int) data.textPositions.getFirst().getY();
 		}).toList();
-		
+
 		return list;
 	}
-	
-	public  List<List<TextPosition>> getSeparatedTextPositionsIfSpacePresent(List<TextPosition> textPositions) {
+
+	public List<List<TextPosition>> getSeparatedTextPositionsIfSpacePresent(List<TextPosition> textPositions) {
 
 		if (textPositions == null || textPositions.isEmpty()) {
 			return List.of();

@@ -42,7 +42,7 @@ public class Mortgage {
 //			});
 
 			// Look for the line where Past Payments Breakdown words appear
-			List<TextData> list = stripper.findLine("Past", "Payments", "Breakdown");
+			List<TextData> list = stripper.findLines("Past", "Payments", "Breakdown").getFirst();
 
 			TextPosition first = list.getFirst().textPositions().getFirst();
 
@@ -71,7 +71,7 @@ public class Mortgage {
 		//		System.out.println(wordsAfter);
 			}
 
-			list = stripper.findLine("Transaction", "Activity");
+			list = stripper.findLines("Transaction", "Activity").getFirst();
 			first = list.getFirst().textPositions().getFirst();
 			// Now search for the entries starting at same x position, but bellow the words
 			list = stripper.findWordsStartingAtXAfterY((int) first.getX(), (int) first.getEndY());
