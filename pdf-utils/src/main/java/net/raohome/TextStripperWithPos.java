@@ -26,6 +26,14 @@ public class TextStripperWithPos extends PDFTextStripper {
 			return String.format("(%d,%d)=>(%d,%d) %s", (int) first.getX(), (int) first.getY(), (int) last.getEndX(),
 					(int) last.getEndY(), text);
 		}
+
+		public int getX() {
+			return (int) textPositions.getFirst().getX();
+		}
+
+		int getY() {
+			return (int) textPositions.getFirst().getY();
+		}
 	}
 
 	Map<Integer, List<TextData>> lines;
@@ -70,6 +78,14 @@ public class TextStripperWithPos extends PDFTextStripper {
 		});
 		line.add(currentTextData);
 
+		line.sort((a, b) -> {
+
+			int result = Integer.compare(a.getY(), b.getY());
+			if (result != 0)
+				return result;
+
+			return Integer.compare(a.getX(), b.getX());
+		});
 		super.writeString(text, textPositions);
 	}
 
@@ -145,5 +161,33 @@ public class TextStripperWithPos extends PDFTextStripper {
 		}
 
 		return List.copyOf(resultList);
+	}
+
+	public List<List<TextData>> findLinesBetween(String firstWord, String secondWord) {
+		List<List<TextData>> firstWordList = findLinesStartingWith(firstWord);
+
+		List<List<TextData>> secondWordList = findLinesStartingWith(secondWord);
+
+		if (firstWordList.size() != 1 || secondWordList.size() != 1) {
+			firstWordList.forEach(System.out::println);
+
+			System.out.println("******************");
+			secondWordList.forEach(System.out::println);
+			throw new RuntimeException("Does not match ");
+		}
+		int lowerY = secondWordList.getFirst().getFirst().getY();
+		int upperY = firstWordList.getFirst().getFirst().getY();
+
+		List<List<TextData>> list = lines.values().stream().filter(t -> {
+			int y = t.getFirst().getY();
+			return y > upperY && y < lowerY;
+		}).toList();
+		return list;
+	}
+
+	public List<List<TextData>> findLinesStartingWith(String text) {
+		return lines.values().stream().filter(t -> {
+			return text.equals(t.getFirst().text());
+		}).toList();
 	}
 }

@@ -29,6 +29,7 @@ public class Paystub {
 		public LocalDate payDate;
 		public BigDecimal gross;
 
+		public List<LineItem> earnings = new ArrayList<Paystub.LineItem>();
 	}
 
 	private static Collection<PaystubInformation> getPaystubInformation(String filePath) {
@@ -45,6 +46,10 @@ public class Paystub {
 		return dataList;
 	}
 
+	public static record LineItem(String key, BigDecimal amount) {
+
+	}
+
 	private static PaystubInformation getPaystubInformation(PDDocument document, int i) throws Exception {
 		PaystubInformation info = new PaystubInformation();
 		TextStripperWithPos stripper = new TextStripperWithPos();
@@ -55,30 +60,46 @@ public class Paystub {
 		stripper.setEndPage(i + 1);
 
 		stripper.getText(document);
-		
+
 		List<TextData> line = stripper.findLines("Pay Date").getFirst();
-		if (line.isEmpty() == false ) {
+		if (line.isEmpty() == false) {
 			info.payDate = PaymentRecord.convertDate(line.getLast().text());
 		}
-		
+
 		List<TextData> paySummaryLines = stripper.findLines("Pay Summary").getFirst();
 		TextData paySummaryLine = paySummaryLines.getFirst();
 		int paySummaryLineY = (int) paySummaryLine.textPositions().getFirst().getY();
 		List<List<TextData>> lines = stripper.findLines("Current");
-		
-		Optional<List<TextData>> currentLine = lines.stream().filter(l-> {
-			int y = (int)l.getFirst().textPositions().getFirst().getY();
-			return l.getFirst().text().equals("Current") &&
-					paySummaryLineY < y
-					;
+
+		Optional<List<TextData>> currentLine = lines.stream().filter(l -> {
+			int y = (int) l.getFirst().textPositions().getFirst().getY();
+			return l.getFirst().text().equals("Current") && paySummaryLineY < y;
 		}).findFirst();
-		
+
 		List<TextData> current = currentLine.orElseThrow();
-		
+
 		if (current.size() != 6) {
 			throw new RuntimeException("Unexpcted current line size");
 		}
 		info.gross = PaymentRecord.convertCurrency(current.get(1).text());
+
+		List<List<TextData>> earnings = stripper.findLinesBetween("Earnings", "Deductions");
+
+		earnings.forEach(elist -> {
+			if (elist.size() != 3 && elist.size() != 4) {
+				throw new RuntimeException("Unexpected size");
+			}
+			String item = elist.getFirst().text();
+			String amt = elist.get(2).text();
+			if (amt.startsWith("$")) {
+				BigDecimal amount = PaymentRecord.convertCurrency(amt);
+				if (BigDecimal.ZERO.compareTo(amount) != 0) {
+					LineItem lineItem = new LineItem(item, amount);
+					info.earnings.add(lineItem);
+				}
+			}
+		});
+		info.earnings.forEach(System.out::println);
 		return info;
 	}
 
