@@ -1,6 +1,5 @@
 package net.raohome;
 
-import java.io.IOException;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -53,7 +52,7 @@ public class Paystub {
 		stripper.setSortByPosition(true);
 
 		stripper.setStartPage(i + 1);
-		stripper.setEndPage(i + 2);
+		stripper.setEndPage(i + 1);
 
 		stripper.getText(document);
 		
@@ -75,6 +74,7 @@ public class Paystub {
 		}).findFirst();
 		
 		List<TextData> current = currentLine.orElseThrow();
+		
 		if (current.size() != 6) {
 			throw new RuntimeException("Unexpcted current line size");
 		}
