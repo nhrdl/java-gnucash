@@ -31,6 +31,7 @@ public class Paystub {
 
 		public List<LineItem> earnings = new ArrayList<Paystub.LineItem>();
 		public List<LineItem> taxes = new ArrayList<>();
+		public List<LineItem> deductions = new ArrayList<>();
 	}
 
 	private static Collection<PaystubInformation> getPaystubInformation(String filePath) {
@@ -92,12 +93,42 @@ public class Paystub {
 		List<List<TextData>> taxes = stripper.findLinesBetween("Taxes", "Paid Time Off", Paystub::sectionHeadingFontSizeChecker);
 		findLineItemsInTheSection(info.taxes, taxes);
 		info.taxes.forEach(System.out::println);
+		
+		System.out.printf("****************************************%n");
+		List<List<TextData>> deductions = stripper.findLinesBetween("Deductions", "Taxes", Paystub::sectionHeadingFontSizeChecker);
+		findLineItemsInTheSectionDeductions(info.deductions, deductions);
+		info.deductions.forEach(System.out::println);
 		return info;
 	}
 
 	static boolean sectionHeadingFontSizeChecker(TextData td) {
 		return 14 == (int)td.textPositions().getFirst().getFontSize();
 	}
+	public static void findLineItemsInTheSectionDeductions(List<LineItem> dest, List<List<TextData>> section) {
+		section.forEach(elist -> {
+			if (elist.size() != 6) {
+				throw new RuntimeException("Unexpected size");
+			}
+			String item = elist.getFirst().text();
+			String amt = elist.get(2).text();
+			if (amt.startsWith("$")) {
+				BigDecimal amount = PaymentRecord.convertCurrency(amt);
+				if (BigDecimal.ZERO.compareTo(amount) != 0) {
+					LineItem lineItem = new LineItem("Employee: " + item, amount);
+					dest.add(lineItem);
+				}
+			}
+			amt = elist.get(4).text();
+			if (amt.startsWith("$")) {
+				BigDecimal amount = PaymentRecord.convertCurrency(amt);
+				if (BigDecimal.ZERO.compareTo(amount) != 0) {
+					LineItem lineItem = new LineItem("Employer: " + item, amount);
+					dest.add(lineItem);
+				}
+			}
+		});
+	}
+	
 	public static void findLineItemsInTheSection(List<LineItem> dest, List<List<TextData>> section) {
 		section.forEach(elist -> {
 			if (elist.size() != 3 && elist.size() != 4) {
