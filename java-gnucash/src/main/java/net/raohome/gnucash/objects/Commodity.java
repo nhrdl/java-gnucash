@@ -19,4 +19,9 @@ public class Commodity extends BaseObject {
 		MemorySegment namespace = gnc_commodity_get_namespace(this.pointer);
 		return namespace.getString(0);
 	}
+
+	public String getMnemonic() {
+		MemorySegment namespace = gnc_commodity_get_mnemonic(this.pointer);
+		return namespace.getString(0);
+	}
 }

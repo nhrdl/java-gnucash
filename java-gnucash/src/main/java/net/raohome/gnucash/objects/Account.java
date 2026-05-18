@@ -83,4 +83,10 @@ public class Account extends BaseObject {
 	public Commodity getCommodity() {
 		return new Commodity(xaccAccountGetCommodity(pointer));
 	}
+	
+	public String getFullName() {
+		MemorySegment full_name = gnc_account_get_full_name(this.pointer);
+		String name = full_name.getString(0);
+		return name;
+	}
 }

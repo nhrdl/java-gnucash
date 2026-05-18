@@ -25,4 +25,9 @@ public class Book extends BaseObject {
 		MemorySegment segment = gnc_commodity_table_get_table(pointer);
 		return new CommodityTable(segment);
 	}
+	
+	public PriceDB getPriceDB() {
+		MemorySegment segment = gnc_pricedb_get_db(pointer);
+		return new PriceDB(segment);
+	}
 }
