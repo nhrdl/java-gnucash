@@ -301,6 +301,12 @@ public class TextStripperWithPos extends PDFTextStripper {
 			List<TableRow> rows = new ArrayList<TextStripperWithPos.TableRow>();
 			for (int i = 1; i < lines.size(); i++) {
 				List<TextData> line = lines.get(i);
+				if (line.size() < columns.size()) {
+					continue;
+				}
+				if (line.getFirst().textPositions.getFirst().getFont().getName().contains("Bold")) {
+					continue;
+				}
 				TableRow row = new TableRow();
 				rows.add(row);
 				for (Column clmn : columns) {

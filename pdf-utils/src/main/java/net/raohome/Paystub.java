@@ -99,47 +99,48 @@ public class Paystub {
 				.addColumn(Column.ofColumn("Current", Justification.Right));
 
 		List<TableRow> earnings = earninesBuilder.process();
+
+		buildLineItems(info.earnings, earnings);
 		
-		earnings.forEach(tr-> {
-			tr.cells.forEach(td-> {
+		earnings.forEach(tr -> {
+			tr.cells.forEach(td -> {
 				System.out.printf("%s:%s%n", td.column.getName(), td.data.text());
 			});
-			
+
 			System.out.println("***************************************************************");
 		});
-
 
 		System.err.println("****************************************%n");
 		TableBuilder deductionsTable = stripper.newTableBuilder();
-		deductionsTable.startingWord("Deductions").endingWord("Taxes").withLineFiter(Paystub::sectionHeadingFontSizeChecker)
-		.addColumn(Column.ofColumn("Deduction", Justification.Left))
-		.addColumn(Column.ofColumn("Employee Current", Justification.Right))
-		.addColumn(Column.ofColumn("Employer Current", Justification.Right));
-		
+		deductionsTable.startingWord("Deductions").endingWord("Taxes")
+				.withLineFiter(Paystub::sectionHeadingFontSizeChecker)
+				.addColumn(Column.ofColumn("Deduction", Justification.Left))
+				.addColumn(Column.ofColumn("Employee Current", Justification.Right));
+
 		List<TableRow> deductions = deductionsTable.process();
-		deductions.forEach(tr-> {
-			tr.cells.forEach(td-> {
+		deductions.forEach(tr -> {
+			tr.cells.forEach(td -> {
 				System.out.printf("%s:%s%n", td.column.getName(), td.data.text());
 			});
-			
+
 			System.out.println("***************************************************************");
 		});
-		
+
 		System.err.printf("****************************************%n");
-		
+
 		TableBuilder taxesBuilder = stripper.newTableBuilder();
 		taxesBuilder.startingWord("Taxes").endingWord("Paid Time Off")
-		.withLineFiter(Paystub::sectionHeadingFontSizeChecker)
-		.addColumn(Column.ofColumn("Tax", Justification.Left))
-		.addColumn(Column.ofColumn("Current", Justification.Right));
-		
+				.withLineFiter(Paystub::sectionHeadingFontSizeChecker)
+				.addColumn(Column.ofColumn("Tax", Justification.Left))
+				.addColumn(Column.ofColumn("Current", Justification.Right));
+
 		List<TableRow> taxes = taxesBuilder.process();
-		
-		taxes.forEach(tr-> {
-			tr.cells.forEach(td-> {
+
+		taxes.forEach(tr -> {
+			tr.cells.forEach(td -> {
 				System.out.printf("%s:%s%n", td.column.getName(), td.data.text());
 			});
-			
+
 			System.out.println("***************************************************************");
 		});
 
@@ -148,33 +149,17 @@ public class Paystub {
 		return info;
 	}
 
-	static boolean sectionHeadingFontSizeChecker(TextData td) {
-		return 14 == (int) td.textPositions().getFirst().getFontSize();
-	}
-
-	public static void findLineItemsInTheSectionDeductions(List<LineItem> dest, List<List<TextData>> section) {
-		section.forEach(elist -> {
-			if (elist.size() != 6) {
-				throw new RuntimeException("Unexpected size");
-			}
-			String item = elist.getFirst().text();
-			String amt = elist.get(2).text();
-			if (amt.startsWith("$")) {
-				BigDecimal amount = PaymentRecord.convertCurrency(amt);
-				if (BigDecimal.ZERO.compareTo(amount) != 0) {
-					LineItem lineItem = new LineItem("Employee: " + item, amount);
-					dest.add(lineItem);
-				}
-			}
-			amt = elist.get(4).text();
-			if (amt.startsWith("$")) {
-				BigDecimal amount = PaymentRecord.convertCurrency(amt);
-				if (BigDecimal.ZERO.compareTo(amount) != 0) {
-					LineItem lineItem = new LineItem("Employer: " + item, amount);
-					dest.add(lineItem);
-				}
+	private static void buildLineItems(List<LineItem> lineItemList, List<TableRow> rows) {
+		
+		rows.forEach(row-> {
+			if (row.cells.size() != 2) {
+				throw new RuntimeException("Unexpected size:" + row.cells.size());
 			}
 		});
+	}
+
+	static boolean sectionHeadingFontSizeChecker(TextData td) {
+		return 14 == (int) td.textPositions().getFirst().getFontSize();
 	}
 
 	public static void findLineItemsInTheSection(List<LineItem> dest, List<List<TextData>> section) {
