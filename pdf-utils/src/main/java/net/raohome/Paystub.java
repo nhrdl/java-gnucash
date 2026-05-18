@@ -37,6 +37,7 @@ public class Paystub {
 		public List<LineItem> earnings = new ArrayList<Paystub.LineItem>();
 		public List<LineItem> taxes = new ArrayList<>();
 		public List<LineItem> deductions = new ArrayList<>();
+		public int page;
 		
 		@Override
 		public String toString() {
@@ -60,15 +61,14 @@ public class Paystub {
 		}
 	}
 
-	private static Collection<PaystubInformation> getPaystubInformation(String filePath) {
+	public static Collection<PaystubInformation> getPaystubInformation(String filePath) {
 		List<PaystubInformation> dataList = new ArrayList<>();
 		try (PDDocument document = Loader.loadPDF(new RandomAccessReadBufferedFile(filePath));) {
 
 			for (int i = 0; i < document.getNumberOfPages(); i++) {
 				PaystubInformation info = getPaystubInformation(document, i);
+				info.page = i;
 				dataList.add(info);
-
-				System.out.printf("Page %d%n%s%n", i, info);
 			}
 		} catch (Exception e) {
 			throw new RuntimeException(e);

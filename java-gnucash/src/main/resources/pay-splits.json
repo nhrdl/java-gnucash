@@ -1,0 +1,21 @@
+{
+	"Net Pay": "29b7389923fb4f92a7b7541e5054bb7f",
+	"Gross": "1b9623398f4246879d42d035b61008d2",
+	
+	"Federal Income Tax": "00ccd28861d848cdbaf3451336853705",
+	"Employee Medicare":"52e6328eca3441ffa64e3cc4f4d6cfa5",
+	"Social Security Employee Tax":"4d3cfc7ab8b1469f85c74b07111212ea",
+	"CA State Income Tax":"3b8f917aa0ae4826b67d88e88e2f7168",
+	"CA Disability Employee":"606a85a005ff4a74a1de7fcfbf34aa78",
+	
+	"401K Flat": "00b871d7670146988deb6e12f060065f",
+	
+	"BCBS - Medical": "747373ac13c5489589d365c02b2fd5fc",
+	"Group Term Life": "4e9c58ffead7401eaff93df6c351103b",
+	"Legal/ID Shield": "917793b9792a465694513838f0b3f173",
+	"Sun-Vol Life EE": "4e9c58ffead7401eaff93df6c351103b",
+	"SunLife-Acc Bas": "4e9c58ffead7401eaff93df6c351103b",
+	"SunLife-Hos In": "4e9c58ffead7401eaff93df6c351103b",
+	"Sunlife-Vision": "747373ac13c5489589d365c02b2fd5fc",
+	"SunLife-High De": "4e9c58ffead7401eaff93df6c351103b"
+}
