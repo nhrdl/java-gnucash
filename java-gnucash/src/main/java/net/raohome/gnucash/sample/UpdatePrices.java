@@ -15,7 +15,7 @@ import net.raohome.gnucash.objects.PriceDB;
 import net.raohome.gnucash.objects.Session;
 import net.raohome.gnucash.objects.Session.SessionMode;
 
-public class PriceDBSample {
+public class UpdatePrices {
 
 	// Expects a simple csv file as parameter. CSV file format is Namespce,Commodity
 		// Basically output from PrintAllCommodities
