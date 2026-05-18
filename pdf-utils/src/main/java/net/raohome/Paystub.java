@@ -11,6 +11,10 @@ import org.apache.pdfbox.Loader;
 import org.apache.pdfbox.io.RandomAccessReadBufferedFile;
 import org.apache.pdfbox.pdmodel.PDDocument;
 
+import net.raohome.TextStripperWithPos.Column;
+import net.raohome.TextStripperWithPos.TableBuilder;
+import net.raohome.TextStripperWithPos.TableBuilder.Justification;
+import net.raohome.TextStripperWithPos.TableRow;
 import net.raohome.TextStripperWithPos.TextData;
 
 public class Paystub {
@@ -41,6 +45,8 @@ public class Paystub {
 			for (int i = 0; i < document.getNumberOfPages(); i++) {
 				PaystubInformation info = getPaystubInformation(document, i);
 				dataList.add(info);
+
+				System.err.println("*********************************************************");
 			}
 		} catch (Exception e) {
 			throw new RuntimeException(e);
@@ -85,25 +91,45 @@ public class Paystub {
 		}
 		info.gross = PaymentRecord.convertCurrency(current.get(1).text());
 
-		List<List<TextData>> earnings = stripper.findLinesBetween("Earnings", "Deductions", Paystub::sectionHeadingFontSizeChecker);
-		findLineItemsInTheSection(info.earnings, earnings);
-		info.earnings.forEach(System.out::println);
+		TableBuilder earninesBuilder = stripper.newTableBuilder();
+
+		earninesBuilder.startingWord("Earnings").endingWord("Deductions")
+				.withLineFiter(Paystub::sectionHeadingFontSizeChecker)
+				.addColumn(Column.ofColumn("Pay Type", Justification.Left))
+				.addColumn(Column.ofColumn("Current", Justification.Right));
+
+		List<TableRow> earnings = earninesBuilder.process();
 		
+		earnings.forEach(tr-> {
+			tr.cells.forEach(td-> {
+				System.out.printf("%s:%s%n", td.column.getName(), td.data.text());
+			});
+			
+			System.out.println("***************************************************************");
+		});
+//		List<List<TextData>> earnings = stripper.findLinesBetween("Earnings", "Deductions",
+//				Paystub::sectionHeadingFontSizeChecker);
+//		findLineItemsInTheSection(info.earnings, earnings);
+//		info.earnings.forEach(System.out::println);
+
 		System.out.printf("****************************************%n");
-		List<List<TextData>> taxes = stripper.findLinesBetween("Taxes", "Paid Time Off", Paystub::sectionHeadingFontSizeChecker);
+		List<List<TextData>> taxes = stripper.findLinesBetween("Taxes", "Paid Time Off",
+				Paystub::sectionHeadingFontSizeChecker);
 		findLineItemsInTheSection(info.taxes, taxes);
 		info.taxes.forEach(System.out::println);
-		
+
 		System.out.printf("****************************************%n");
-		List<List<TextData>> deductions = stripper.findLinesBetween("Deductions", "Taxes", Paystub::sectionHeadingFontSizeChecker);
+		List<List<TextData>> deductions = stripper.findLinesBetween("Deductions", "Taxes",
+				Paystub::sectionHeadingFontSizeChecker);
 		findLineItemsInTheSectionDeductions(info.deductions, deductions);
 		info.deductions.forEach(System.out::println);
 		return info;
 	}
 
 	static boolean sectionHeadingFontSizeChecker(TextData td) {
-		return 14 == (int)td.textPositions().getFirst().getFontSize();
+		return 14 == (int) td.textPositions().getFirst().getFontSize();
 	}
+
 	public static void findLineItemsInTheSectionDeductions(List<LineItem> dest, List<List<TextData>> section) {
 		section.forEach(elist -> {
 			if (elist.size() != 6) {
@@ -128,7 +154,7 @@ public class Paystub {
 			}
 		});
 	}
-	
+
 	public static void findLineItemsInTheSection(List<LineItem> dest, List<List<TextData>> section) {
 		section.forEach(elist -> {
 			if (elist.size() != 3 && elist.size() != 4) {
@@ -146,5 +172,4 @@ public class Paystub {
 		});
 	}
 
-	
 }
