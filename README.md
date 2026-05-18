@@ -15,7 +15,7 @@ mvn package
 LD_LIBRARY_PATH=/usr/lib/x86_64-linux-gnu/gnucash java --enable-native-access=ALL-UNNAMED -cp target/java-gnucash-1.0-SNAPSHOT.jar net.raohome.gnucash.sample.AccountTotals <path to gnucash file>
 ```
 
-*As code is still in development phase, highly recommended to make sure you have adequate backup of required files or better make a copy of the file and work with the copy.*
+**As code is still in development phase, highly recommended to make sure you have adequate backup of required files or better make a copy of the file and work with the copy.**
 
 There are few sample utilities built mostly based on my needs
 
