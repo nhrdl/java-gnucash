@@ -46,7 +46,7 @@ public class Paystub {
 				PaystubInformation info = getPaystubInformation(document, i);
 				dataList.add(info);
 
-				System.err.println("*********************************************************");
+				System.err.println("End page *********************************************************");
 			}
 		} catch (Exception e) {
 			throw new RuntimeException(e);
@@ -107,22 +107,44 @@ public class Paystub {
 			
 			System.out.println("***************************************************************");
 		});
-//		List<List<TextData>> earnings = stripper.findLinesBetween("Earnings", "Deductions",
-//				Paystub::sectionHeadingFontSizeChecker);
-//		findLineItemsInTheSection(info.earnings, earnings);
-//		info.earnings.forEach(System.out::println);
 
-		System.out.printf("****************************************%n");
-		List<List<TextData>> taxes = stripper.findLinesBetween("Taxes", "Paid Time Off",
-				Paystub::sectionHeadingFontSizeChecker);
-		findLineItemsInTheSection(info.taxes, taxes);
-		info.taxes.forEach(System.out::println);
 
-		System.out.printf("****************************************%n");
-		List<List<TextData>> deductions = stripper.findLinesBetween("Deductions", "Taxes",
-				Paystub::sectionHeadingFontSizeChecker);
-		findLineItemsInTheSectionDeductions(info.deductions, deductions);
-		info.deductions.forEach(System.out::println);
+		System.err.println("****************************************%n");
+		TableBuilder deductionsTable = stripper.newTableBuilder();
+		deductionsTable.startingWord("Deductions").endingWord("Taxes").withLineFiter(Paystub::sectionHeadingFontSizeChecker)
+		.addColumn(Column.ofColumn("Deduction", Justification.Left))
+		.addColumn(Column.ofColumn("Employee Current", Justification.Right))
+		.addColumn(Column.ofColumn("Employer Current", Justification.Right));
+		
+		List<TableRow> deductions = deductionsTable.process();
+		deductions.forEach(tr-> {
+			tr.cells.forEach(td-> {
+				System.out.printf("%s:%s%n", td.column.getName(), td.data.text());
+			});
+			
+			System.out.println("***************************************************************");
+		});
+		
+		System.err.printf("****************************************%n");
+		
+		TableBuilder taxesBuilder = stripper.newTableBuilder();
+		taxesBuilder.startingWord("Taxes").endingWord("Paid Time Off")
+		.withLineFiter(Paystub::sectionHeadingFontSizeChecker)
+		.addColumn(Column.ofColumn("Tax", Justification.Left))
+		.addColumn(Column.ofColumn("Current", Justification.Right));
+		
+		List<TableRow> taxes = taxesBuilder.process();
+		
+		taxes.forEach(tr-> {
+			tr.cells.forEach(td-> {
+				System.out.printf("%s:%s%n", td.column.getName(), td.data.text());
+			});
+			
+			System.out.println("***************************************************************");
+		});
+
+		System.err.printf("****************************************%n");
+
 		return info;
 	}
 
