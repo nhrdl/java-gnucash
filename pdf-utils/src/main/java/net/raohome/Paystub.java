@@ -31,11 +31,33 @@ public class Paystub {
 	public static class PaystubInformation {
 
 		public LocalDate payDate;
+		public BigDecimal netPay;
 		public BigDecimal gross;
 
 		public List<LineItem> earnings = new ArrayList<Paystub.LineItem>();
 		public List<LineItem> taxes = new ArrayList<>();
 		public List<LineItem> deductions = new ArrayList<>();
+		
+		@Override
+		public String toString() {
+			StringBuilder bldr = new StringBuilder("Pay date:");
+			
+			bldr.append(payDate).append(" Gross:").append(gross).append(" Net Pay:").append(netPay) .append("\n");
+			
+			
+			writeSection(bldr, "Earnings", earnings);
+			writeSection(bldr, "Taxes", taxes);
+			writeSection(bldr, "Deductions", deductions);
+			
+			return bldr.toString();
+		}
+
+		private void writeSection(StringBuilder bldr, String header, List<LineItem> list) {
+			bldr.append(header).append("\n");
+			for (LineItem item : list) {
+				bldr.append("\t").append(item.key).append(":").append(item.amount).append("\n");
+			}
+		}
 	}
 
 	private static Collection<PaystubInformation> getPaystubInformation(String filePath) {
@@ -46,7 +68,7 @@ public class Paystub {
 				PaystubInformation info = getPaystubInformation(document, i);
 				dataList.add(info);
 
-				System.err.println("End page *********************************************************");
+				System.out.printf("Page %d%n%s%n", i, info);
 			}
 		} catch (Exception e) {
 			throw new RuntimeException(e);
@@ -74,6 +96,11 @@ public class Paystub {
 			info.payDate = PaymentRecord.convertDate(line.getLast().text());
 		}
 
+		line = stripper.findLines("Net Pay").getFirst();
+		if (line.isEmpty() == false) {
+			info.netPay = PaymentRecord.convertCurrency(line.getLast().text());
+		}
+		
 		List<TextData> paySummaryLines = stripper.findLines("Pay Summary").getFirst();
 		TextData paySummaryLine = paySummaryLines.getFirst();
 		int paySummaryLineY = (int) paySummaryLine.textPositions().getFirst().getY();

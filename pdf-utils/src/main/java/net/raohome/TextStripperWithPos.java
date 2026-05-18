@@ -59,11 +59,11 @@ public class TextStripperWithPos extends PDFTextStripper {
 
 	public Comparator<? super TextData> compareTextData() {
 		return (t1, t2) -> {
-			int compare = Float.compare(t1.textPositions.getFirst().getY(), t2.textPositions.getFirst().getY());
+			int compare = Integer.compare(t1.getY(), t2.getY());
 			if (compare != 0) {
 				return compare;
 			}
-			compare = Float.compare(t1.textPositions.getFirst().getX(), t2.textPositions.getFirst().getX());
+			compare = Integer.compare(t1.getX(), t2.getX());
 			return compare;
 		};
 	}
