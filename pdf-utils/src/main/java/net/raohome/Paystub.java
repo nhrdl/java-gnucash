@@ -101,16 +101,7 @@ public class Paystub {
 		List<TableRow> earnings = earninesBuilder.process();
 
 		buildLineItems(info.earnings, earnings);
-		
-		earnings.forEach(tr -> {
-			tr.cells.forEach(td -> {
-				System.out.printf("%s:%s%n", td.column.getName(), td.data.text());
-			});
 
-			System.out.println("***************************************************************");
-		});
-
-		System.err.println("****************************************%n");
 		TableBuilder deductionsTable = stripper.newTableBuilder();
 		deductionsTable.startingWord("Deductions").endingWord("Taxes")
 				.withLineFiter(Paystub::sectionHeadingFontSizeChecker)
@@ -118,15 +109,7 @@ public class Paystub {
 				.addColumn(Column.ofColumn("Employee Current", Justification.Right));
 
 		List<TableRow> deductions = deductionsTable.process();
-		deductions.forEach(tr -> {
-			tr.cells.forEach(td -> {
-				System.out.printf("%s:%s%n", td.column.getName(), td.data.text());
-			});
-
-			System.out.println("***************************************************************");
-		});
-
-		System.err.printf("****************************************%n");
+		buildLineItems(info.deductions, deductions);
 
 		TableBuilder taxesBuilder = stripper.newTableBuilder();
 		taxesBuilder.startingWord("Taxes").endingWord("Paid Time Off")
@@ -136,24 +119,21 @@ public class Paystub {
 
 		List<TableRow> taxes = taxesBuilder.process();
 
-		taxes.forEach(tr -> {
-			tr.cells.forEach(td -> {
-				System.out.printf("%s:%s%n", td.column.getName(), td.data.text());
-			});
-
-			System.out.println("***************************************************************");
-		});
-
-		System.err.printf("****************************************%n");
-
+		buildLineItems(info.taxes, taxes);
 		return info;
 	}
 
 	private static void buildLineItems(List<LineItem> lineItemList, List<TableRow> rows) {
-		
-		rows.forEach(row-> {
+
+		rows.forEach(row -> {
 			if (row.cells.size() != 2) {
 				throw new RuntimeException("Unexpected size:" + row.cells.size());
+			}
+
+			BigDecimal amt = PaymentRecord.convertCurrency(row.cells.getLast().data.text());
+			if (BigDecimal.ZERO.compareTo(amt) != 0) {
+				LineItem lineItem = new LineItem(row.cells.getFirst().data.text(), amt);
+				lineItemList.add(lineItem);
 			}
 		});
 	}

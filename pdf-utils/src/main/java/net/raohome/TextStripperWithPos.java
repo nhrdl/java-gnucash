@@ -209,6 +209,7 @@ public class TextStripperWithPos extends PDFTextStripper {
 	public static class Column {
 
 		private String name;
+
 		public String getName() {
 			return name;
 		}
@@ -282,7 +283,6 @@ public class TextStripperWithPos extends PDFTextStripper {
 			List<List<TextData>> lines = findLinesBetween(startingWord, endingWord, textFilter);
 			// Let's assume first row is the header row and find coordinates
 			List<TextData> headerLine = lines.getFirst();
-			System.out.println(headerLine);
 			for (Column clmn : columns) {
 				for (TextData td : headerLine) {
 					if (td.text.equals(clmn.name)) {
