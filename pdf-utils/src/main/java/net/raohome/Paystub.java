@@ -44,7 +44,10 @@ public class Paystub {
 			System.exit(1);
 		}
 
-		getPaystubInformation(args[0]);
+		Collection<PaystubInformation> paystubInformation = getPaystubInformation(args[0]);
+		for (PaystubInformation paystub : paystubInformation) {
+			System.out.printf("%s%n", paystub);
+		}
 	}
 
 	public static class PaystubInformation {
