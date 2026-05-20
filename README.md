@@ -14,6 +14,8 @@ cd java-gnucash
 mvn package
 LD_LIBRARY_PATH=/usr/lib/x86_64-linux-gnu/gnucash java --enable-native-access=ALL-UNNAMED -cp target/java-gnucash-1.0-SNAPSHOT.jar net.raohome.gnucash.sample.AccountTotals <path to gnucash file>
 ```
+Path to the file needs to be specified in the format xml://file path e.g. xml:///Documents/mycash.gnucash
+
 
 **As code is still in development phase, highly recommended to make sure you have adequate backup of required files or better make a copy of the file and work with the copy.**
 
