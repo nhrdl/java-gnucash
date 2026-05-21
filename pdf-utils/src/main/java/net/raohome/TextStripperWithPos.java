@@ -43,10 +43,9 @@ public class TextStripperWithPos extends PDFTextStripper {
 		@Override
 		public final String toString() {
 			TextPosition first = textPositions.getFirst();
-			TextPosition last = textPositions.getLast();
 
-			return String.format("(%d,%d)=>(%d,%d) (%s/%f) %s", (int) first.getX(), (int) first.getY(),
-					(int) last.getEndX(), (int) last.getEndY(), first.getFont().getName(), first.getFontSize(), text);
+			return String.format("(%d,%d)=>(%d,%d) (%s/%f) %s", (int) first.getX(), (int) first.getY(), (int) getEndX(),
+					getEndY(), first.getFont().getName(), first.getFontSize(), text);
 		}
 
 		public int getX() {
@@ -58,7 +57,12 @@ public class TextStripperWithPos extends PDFTextStripper {
 		}
 
 		public int getEndX() {
-			return (int) textPositions.getLast().getEndX();
+			return (int) (textPositions.getLast().getX() + textPositions.getLast().getWidth());
+		}
+
+		public int getEndY() {
+			TextPosition last = textPositions.getLast();
+			return (int) (last.getY() + last.getHeight());
 		}
 	}
 
@@ -78,9 +82,14 @@ public class TextStripperWithPos extends PDFTextStripper {
 
 	public Comparator<? super TextData> compareTextData() {
 		return (t1, t2) -> {
+			int diff = Math.abs(t1.getY() - t2.getY());
+			if (diff <= Y_TOLERANCE) {
+				return Integer.compare(t1.getX(), t2.getX());
+			}
+
 			int compare = Integer.compare(t1.getY(), t2.getY());
 			if (compare != 0) {
-				return compare;
+				return 0;
 			}
 			compare = Integer.compare(t1.getX(), t2.getX());
 			return compare;
@@ -96,10 +105,18 @@ public class TextStripperWithPos extends PDFTextStripper {
 		lines = new HashMap<>();
 	}
 
+	public static final int Y_TOLERANCE = 1;
+
 	protected void writeString(String text, List<TextPosition> textPositions) throws IOException {
 		TextData currentTextData = new TextData(text, textPositions);
 		textData.add(currentTextData);
-		List<TextData> line = lines.computeIfAbsent((int) textPositions.getFirst().getY(), (_) -> {
+		List<TextData> line = lines.computeIfAbsent((int) textPositions.getFirst().getY(), (y) -> {
+			if (lines.containsKey(y - Y_TOLERANCE)) {
+				return lines.get(y - Y_TOLERANCE);
+			} else if (lines.containsKey(y + Y_TOLERANCE)) {
+				return lines.get(y + Y_TOLERANCE);
+			}
+
 			return new ArrayList<>();
 		});
 		line.add(currentTextData);

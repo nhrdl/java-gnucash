@@ -60,18 +60,17 @@ public class Paystub {
 		public List<LineItem> taxes = new ArrayList<>();
 		public List<LineItem> deductions = new ArrayList<>();
 		public int page;
-		
+
 		@Override
 		public String toString() {
 			StringBuilder bldr = new StringBuilder("Pay date:");
-			
-			bldr.append(payDate).append(" Gross:").append(gross).append(" Net Pay:").append(netPay) .append("\n");
-			
-			
+
+			bldr.append(payDate).append(" Gross:").append(gross).append(" Net Pay:").append(netPay).append("\n");
+
 			writeSection(bldr, "Earnings", earnings);
 			writeSection(bldr, "Taxes", taxes);
 			writeSection(bldr, "Deductions", deductions);
-			
+
 			return bldr.toString();
 		}
 
@@ -114,15 +113,18 @@ public class Paystub {
 		stripper.getText(document);
 
 		List<TextData> line = stripper.findLines("Pay Date").getFirst();
+
 		if (line.isEmpty() == false) {
 			info.payDate = PaymentRecord.convertDate(line.getLast().text());
 		}
 
 		line = stripper.findLines("Net Pay").getFirst();
+
+		
 		if (line.isEmpty() == false) {
 			info.netPay = PaymentRecord.convertCurrency(line.getLast().text());
 		}
-		
+
 		List<TextData> paySummaryLines = stripper.findLines("Pay Summary").getFirst();
 		TextData paySummaryLine = paySummaryLines.getFirst();
 		int paySummaryLineY = (int) paySummaryLine.textPositions().getFirst().getY();
