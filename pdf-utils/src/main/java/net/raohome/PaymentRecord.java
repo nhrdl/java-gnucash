@@ -21,6 +21,7 @@ package net.raohome;
 
 import java.math.BigDecimal;
 import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
 import java.text.ParseException;
 import java.time.LocalDate;
 import java.time.Year;
@@ -29,6 +30,7 @@ import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeFormatterBuilder;
 import java.time.temporal.ChronoField;
 import java.time.temporal.TemporalAccessor;
+import java.util.Locale;
 
 public class PaymentRecord {
 	private static DateTimeFormatter MDY_DATE_FORMATTER;
@@ -100,6 +102,7 @@ public class PaymentRecord {
 	}
 
 	public static LocalDate convertDate(String dateString) {
+		dateString = dateString.replaceAll("\\p{C}", "");
 		TemporalAccessor date = MDY_DATE_FORMATTER.parse(dateString);
 
 		return LocalDate.of(getYear(date), date.get(ChronoField.MONTH_OF_YEAR), date.get(ChronoField.DAY_OF_MONTH));
@@ -131,8 +134,14 @@ public class PaymentRecord {
 	}
 
 	public static BigDecimal convertCurrency(String val) {
+		val = val.replaceAll("\\p{C}", "");
+		if (val.startsWith("$") == false) {
+			val = "$"+val;
+		}
+		DecimalFormatSymbols symbols = new DecimalFormatSymbols(Locale.US);
 
-		DecimalFormat cf = new DecimalFormat("$##,##0.00;($##,##0.00)");
+		DecimalFormat cf = new DecimalFormat("¤##,##0.00;(¤##,##0.00)", symbols);
+
 		cf.setParseBigDecimal(true);
 		try {
 			return (BigDecimal) cf.parse(val);
@@ -145,7 +154,8 @@ public class PaymentRecord {
 		{
 			DateTimeFormatterBuilder bldr = new DateTimeFormatterBuilder();
 			bldr.parseCaseInsensitive().appendOptional(DateTimeFormatter.ofPattern("LLLL d,[ ]y"))
-					.appendOptional(DateTimeFormatter.ofPattern("LLLL d y"))
+					.appendOptional(DateTimeFormatter.ofPattern("LLLL d y")) //
+					.appendOptional(DateTimeFormatter.ofPattern("d-MMM-yyyy")) //
 					.appendOptional(DateTimeFormatter.ofPattern("L d,[ ]y")) //
 					.appendOptional(DateTimeFormatter.ofPattern("L d, y")) //
 					.appendOptional(DateTimeFormatter.ofPattern("LLL d, y")) //
