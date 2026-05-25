@@ -84,19 +84,32 @@ public class UpdateRSU {
 			// Quantity => awarded
 			for (RSURecord rsuRecord : rsuRecords) {
 				System.out.println(rsuRecord);
-				Transaction trans = createTransaction(session, comment, rsuRecord.date, usd);
-				handler.transaction = trans;
-				Split split = handler.createSplit("commodity");
-//				split.setSharePriceAndAmount(rsuRecord.value, rsuRecord.awarded);
 
-				split.setValue(rsuRecord.value);
-				split.setAmount(rsuRecord.awarded);
+				{
 
-				// handler.addShareSplit("commodity", BigDecimal.ONE, BigDecimal.TWO);
+					Transaction trans = createTransaction(session, comment, rsuRecord.date, usd);
+					handler.transaction = trans;
+					Split split = handler.createSplit("commodity");
+					split.setValue(rsuRecord.value);
+					split.setAmount(rsuRecord.awarded);
 
-				handler.addShareSplit("RSU Income", rsuRecord.value.negate(), rsuRecord.value);
+					handler.addShareSplit("RSU Income", rsuRecord.value.negate(), rsuRecord.value);
+					trans.commitEdit();
+				}
 
-				trans.commitEdit();
+				{
+					Transaction trans = createTransaction(session, comment, rsuRecord.date, usd);
+					handler.transaction = trans;
+					Split split = handler.createSplit("commodity");
+
+					BigDecimal withheldAmt = rsuRecord.withheld.multiply(rsuRecord.releasePrice);
+					split.setValue(withheldAmt.negate());
+					split.setAmount(rsuRecord.withheld.negate());
+
+					handler.addShareSplit("expenses", withheldAmt, withheldAmt);
+					trans.commitEdit();
+				}
+
 			}
 			session.save();
 		}
