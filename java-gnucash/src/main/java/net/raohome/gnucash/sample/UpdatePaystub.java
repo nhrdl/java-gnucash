@@ -117,15 +117,45 @@ public class UpdatePaystub {
 		Map<String, String> splitAccountsTable;
 		Session session;
 
-		public void addNegativeSplit(String keyword, BigDecimal amount) {
-			addSplit(keyword, amount.negate());
+		public Split addNegativeSplit(String keyword, BigDecimal amount) {
+			return addSplit(keyword, amount.negate());
 		}
 
-		public void addSplit(String keyword, BigDecimal amount) {
+		public Split createSplit(String keyword) {
 			String guid = splitAccountsTable.get(keyword);
 			if (guid == null) {
 				System.err.printf("Cannot find account for %s%n", keyword);
-				return;
+				return null;
+			}
+			Optional<Account> account = findAccountForGUID(javaList, guid);
+			Split split = Split.newSplit(session.getBook());
+			split.setAccount(account.orElseThrow());
+			split.setParent(transaction);
+			
+			return split;
+		}
+		public Split addShareSplit(String keyword, BigDecimal value, BigDecimal quantity) {
+			String guid = splitAccountsTable.get(keyword);
+			if (guid == null) {
+				System.err.printf("Cannot find account for %s%n", keyword);
+				return null;
+			}
+			Optional<Account> account = findAccountForGUID(javaList, guid);
+			Split split = Split.newSplit(session.getBook());
+			split.setAccount(account.orElseThrow());
+			split.setParent(transaction);
+			
+			split.setValue(value);
+			split.setAmount(quantity);
+			
+			return split;
+		}
+		
+		public Split addSplit(String keyword, BigDecimal amount) {
+			String guid = splitAccountsTable.get(keyword);
+			if (guid == null) {
+				System.err.printf("Cannot find account for %s%n", keyword);
+				return null;
 			}
 			Optional<Account> account = findAccountForGUID(javaList, guid);
 			Split split = Split.newSplit(session.getBook());
@@ -134,6 +164,7 @@ public class UpdatePaystub {
 			split.setAmount(amount);
 			split.setMemo(keyword);
 			split.setParent(transaction);
+			return split;
 		}
 	}
 }

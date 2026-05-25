@@ -42,7 +42,7 @@ public class RSU {
 		rsuRecords.forEach(System.out::println);
 	}
 
-	private static List<RSURecord> process(String filePath) {
+	public static List<RSURecord> process(String filePath) {
 		List<RSURecord> rsuRecords = new ArrayList<>();
 		try (PDDocument document = Loader.loadPDF(new RandomAccessReadBufferedFile(filePath));) {
 
@@ -77,7 +77,7 @@ public class RSU {
 
 			RSURecord rsu = new RSURecord();
 			rsuRecords.add(rsu);
-			
+
 			rsu.header = releaseEntry.text();
 
 			Optional<TextData> endMarker = textDataList.stream().filter(t -> {
@@ -130,6 +130,26 @@ public class RSU {
 					rsu.withheld = PaymentRecord.convertCurrency(rowEntries.getFirst().text());
 				}
 			}
+
+			entry = findColumn(dataList, "Gross Release Value:​​");
+			if (entry.isEmpty()) {
+				System.err.println("Not found Gross Release Value:​ for " + releaseEntry.text());
+			} else {
+				List<TextData> rowEntries = findRowEntries(dataList, entry.get());
+				if (rowEntries.isEmpty() == false) {
+					rsu.value = PaymentRecord.convertCurrency(rowEntries.getFirst().text());
+				}
+			}
+			
+			entry = findColumn(dataList, "Release Price:​​​");
+			if (entry.isEmpty()) {
+				System.err.println("Not found Release Price:​  for " + releaseEntry.text());
+			} else {
+				List<TextData> rowEntries = findRowEntries(dataList, entry.get());
+				if (rowEntries.isEmpty() == false) {
+					rsu.releasePrice = PaymentRecord.convertCurrency(rowEntries.getFirst().text());
+				}
+			}
 		}
 
 	}
@@ -150,6 +170,8 @@ public class RSU {
 
 	public static class RSURecord {
 
+		public BigDecimal releasePrice;
+		public BigDecimal value;
 		public BigDecimal withheld;
 		public BigDecimal awarded;
 		public LocalDate date;
@@ -157,7 +179,7 @@ public class RSU {
 
 		@Override
 		public String toString() {
-		return String.format("%s, %s, Awarded %s, withheld %s", header, date, awarded, withheld);
+			return String.format("%s, %s, Value %s, Awarded %s, withheld %s", header, date, value, awarded, withheld);
 		}
 	}
 }

@@ -19,11 +19,105 @@
 \********************************************************************/
 package net.raohome.gnucash.sample;
 
+import java.io.IOException;
+import java.io.OutputStream;
+import java.math.BigDecimal;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.time.LocalDate;
+import java.util.List;
+import java.util.Map;
+import java.util.zip.GZIPInputStream;
+
+import org.apache.commons.io.IOUtils;
+
+import com.fasterxml.jackson.core.type.TypeReference;
+
+import net.raohome.RSU;
+import net.raohome.RSU.RSURecord;
+import net.raohome.gnucash.objects.Account;
+import net.raohome.gnucash.objects.Commodity;
+import net.raohome.gnucash.objects.Engine;
+import net.raohome.gnucash.objects.GList;
+import net.raohome.gnucash.objects.JSONUtils;
+import net.raohome.gnucash.objects.Session;
+import net.raohome.gnucash.objects.Transaction;
+import net.raohome.gnucash.objects.Session.SessionMode;
+import net.raohome.gnucash.objects.Split;
+import net.raohome.gnucash.sample.UpdatePaystub.TransactionHandler;
+
 public class UpdateRSU {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		if (args.length != 3) {
+			System.err
+					.println("Usage AccountTotals <gnucash file path> <paystub splits defintion path> <pdf file path>");
+			System.exit(1);
+		}
+		Engine.init();
+		try (Session session = Session.newSession()) {
+			session.beginSession(args[0], SessionMode.SESSION_NORMAL_OPEN);
+			session.load();
 
+			TypeReference<Map<String, String>> splitAccountsTableRef = new TypeReference<Map<String, String>>() {
+			};
+
+			Map<String, String> splitAccountsTable = JSONUtils.fromJson(Paths.get(args[1]), splitAccountsTableRef);
+
+			Commodity usd = session.getBook().getCommidityTable().lookup("CURRENCY", "USD");
+			GList<Account> list = session.getBook().getRootAccount().getDescendends();
+
+			List<Account> javaList = list.toJavaList(Account::new);
+
+			List<RSURecord> rsuRecords = RSU.process(args[2]);
+
+			TransactionHandler handler = new TransactionHandler();
+
+			handler.javaList = javaList;
+			handler.splitAccountsTable = splitAccountsTable;
+			handler.session = session;
+
+			String comment = String.format("Imported from %s", args[2]);
+
+			// To commodity account
+			// Value => rsuRecord.value
+			// Quantity => awarded
+			for (RSURecord rsuRecord : rsuRecords) {
+				System.out.println(rsuRecord);
+				Transaction trans = createTransaction(session, comment, rsuRecord.date, usd);
+				handler.transaction = trans;
+				Split split = handler.createSplit("commodity");
+//				split.setSharePriceAndAmount(rsuRecord.value, rsuRecord.awarded);
+
+				split.setValue(rsuRecord.value);
+				split.setAmount(rsuRecord.awarded);
+
+				// handler.addShareSplit("commodity", BigDecimal.ONE, BigDecimal.TWO);
+
+				handler.addShareSplit("RSU Income", rsuRecord.value.negate(), rsuRecord.value);
+
+				trans.commitEdit();
+			}
+			session.save();
+		}
+
+		try (GZIPInputStream gs = new GZIPInputStream(Files.newInputStream(Paths.get(args[0])));
+				OutputStream os = Files.newOutputStream(Paths.get("/tmp/expanded.xml"))) {
+
+			IOUtils.copy(gs, os);
+		} catch (IOException e) {
+			throw new RuntimeException(e);
+		}
 	}
 
+	private static Transaction createTransaction(Session session, String comment, LocalDate date, Commodity commodity) {
+
+		Transaction trans = Transaction.newTransaction(session.getBook());
+		trans.beginEdit();
+
+		trans.setCurrency(commodity);
+		trans.setDescription(comment);
+		trans.setDate(date);
+		return trans;
+	}
 }
